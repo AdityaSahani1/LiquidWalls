@@ -6,23 +6,50 @@
 <title>LiquidWalls — Privacy Policy</title>
 <style>
   :root { color-scheme: light dark; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
-         line-height: 1.6; padding: 18px 16px 48px; max-width: 720px; margin: 0 auto; }
-  h1 { font-size: 22px; margin: 4px 0 4px; }
-  h2 { font-size: 16px; margin: 24px 0 6px; border-bottom: 1px solid rgba(127,127,127,0.2); padding-bottom: 4px; }
-  p, li { font-size: 14px; }
-  .muted { color: #888; font-size: 12px; margin-bottom: 20px; }
-  ul { padding-left: 20px; margin: 6px 0; }
-  li { margin-bottom: 5px; }
-  code { background: rgba(127,127,127,0.18); padding: 1px 5px; border-radius: 4px; font-size: 13px; }
-  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 10px 0; }
-  th { text-align: left; padding: 6px 8px; background: rgba(127,127,127,0.12); }
-  td { padding: 6px 8px; border-bottom: 1px solid rgba(127,127,127,0.15); vertical-align: top; }
-  .note { background: rgba(127,127,127,0.08); border-left: 3px solid rgba(127,127,127,0.4);
-          padding: 8px 12px; border-radius: 0 6px 6px 0; margin: 10px 0; font-size: 13px; }
+         background: #0a0a0f; color: #f0f0fa; line-height: 1.6; }
+  nav { display: flex; align-items: center; gap: 20px; padding: 16px 24px;
+        border-bottom: 1px solid #2a2a3d; background: #13131c; }
+  nav .brand { font-weight: 700; font-size: 18px;
+               background: linear-gradient(135deg, #7c6fff, #ff2bd6);
+               -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  nav a { color: #8888aa; font-size: 14px; text-decoration: none; }
+  nav a:hover { color: #f0f0fa; }
+  .content { max-width: 720px; margin: 0 auto; padding: 40px 24px 80px; }
+  h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; }
+  .muted { color: #555577; font-size: 13px; margin-bottom: 32px; }
+  .muted a { color: #7c6fff; text-decoration: none; }
+  h2 { font-size: 17px; font-weight: 700; margin: 32px 0 8px;
+       border-bottom: 1px solid #2a2a3d; padding-bottom: 6px; color: #c8c8f0; }
+  h3 { font-size: 15px; font-weight: 600; margin: 20px 0 6px; color: #a0a0d0; }
+  p, li { font-size: 14px; color: #c0c0e0; margin-bottom: 8px; }
+  ul { padding-left: 20px; margin: 8px 0 12px; }
+  li { margin-bottom: 6px; }
+  code { background: #1a1a2e; color: #a78bfa; padding: 1px 6px;
+         border-radius: 4px; font-size: 13px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0 20px; }
+  th { text-align: left; padding: 8px 10px; background: #13131c;
+       color: #8888aa; font-weight: 600; }
+  td { padding: 8px 10px; border-bottom: 1px solid #2a2a3d; color: #c0c0e0;
+       vertical-align: top; }
+  .note { background: #13131c; border-left: 3px solid #7c6fff;
+          padding: 10px 14px; border-radius: 0 8px 8px 0; margin: 12px 0;
+          font-size: 13px; color: #a0a0d0; }
+  a { color: #7c6fff; }
+  footer { text-align: center; padding: 32px 24px; color: #555577; font-size: 13px;
+           border-top: 1px solid #2a2a3d; margin-top: 40px; }
+  footer a { color: #7c6fff; text-decoration: none; }
 </style>
 </head>
 <body>
+<nav>
+  <a class="brand" href="index.html">LiquidWalls</a>
+  <a href="privacy.html" style="color:#f0f0fa">Privacy Policy</a>
+  <a href="terms.html">Terms of Use</a>
+</nav>
+
+<div class="content">
   <h1>Privacy Policy</h1>
   <p class="muted">Effective: April 26, 2026 &middot; LiquidWalls v1.0.0 &middot; Adisoft &middot;
      <a href="mailto:adisoftcollection@gmail.com">adisoftcollection@gmail.com</a></p>
@@ -37,7 +64,7 @@
 
   <h2>2. Third-party services and the data they collect</h2>
 
-  <h3 style="font-size:14px;margin:16px 0 6px;">Google AdMob (Advertising)</h3>
+  <h3>Google AdMob (Advertising)</h3>
   <p>LiquidWalls displays ads served by <strong>Google AdMob</strong>. AdMob may collect:</p>
   <ul>
     <li><strong>Advertising ID</strong> — a resettable device identifier used to personalise
@@ -48,22 +75,16 @@
         ad relevance and analytics.</li>
   </ul>
   <p>Adisoft does not receive, store, or have access to any AdMob data. It is processed entirely
-     by Google under their
-     <a href="https://policies.google.com/privacy">Privacy Policy</a>.</p>
+     by Google under their <a href="https://policies.google.com/privacy">Privacy Policy</a>.</p>
 
-  <h3 style="font-size:14px;margin:16px 0 6px;">Pexels (Optional image search)</h3>
-  <p>If you use the Pexels search feature, your search query is sent to
-     <code>api.pexels.com</code> using our public API key. No account or personal identifier is
-     attached. Pexels' privacy policy applies: <a href="https://www.pexels.com/privacy-policy/">pexels.com/privacy-policy</a>.</p>
-
-  <h3 style="font-size:14px;margin:16px 0 6px;">AI Image Generation (Optional)</h3>
+  <h3>AI Image Generation (Optional)</h3>
   <p>If you choose to use the AI wallpaper generation feature, you supply your own API key for
      the AI provider you select (e.g. OpenAI, Stability AI). That key is stored
      <strong>only on your device</strong> in the app's private DataStore — it is never sent to
      Adisoft or any server other than the AI provider you chose. Your prompts and generated
      images are governed by the AI provider's own privacy policy.</p>
 
-  <h3 style="font-size:14px;margin:16px 0 6px;">Google Play In-App Review</h3>
+  <h3>Google Play In-App Review</h3>
   <p>After a successful wallpaper apply, the app may ask Google Play to display a rating prompt.
      Google controls whether the sheet actually appears. Adisoft never sees your rating, review
      text, or whether you interacted with the prompt.</p>
@@ -76,12 +97,6 @@
       <td>Ads</td>
       <td>Advertising ID, app activity</td>
       <td><a href="https://policies.google.com/privacy">policies.google.com/privacy</a></td>
-    </tr>
-    <tr>
-      <td>Pexels API</td>
-      <td>Image search (optional)</td>
-      <td>Search query text</td>
-      <td><a href="https://www.pexels.com/privacy-policy/">pexels.com/privacy-policy</a></td>
     </tr>
     <tr>
       <td>AI provider (your choice)</td>
@@ -124,7 +139,6 @@
     <li><strong>Optional uploads</strong> — only the file you explicitly selected is uploaded;
         no personal metadata is attached.</li>
     <li><strong>AdMob ad requests</strong> — handled by the Google Mobile Ads SDK.</li>
-    <li><strong>Pexels search</strong> — only when you initiate a search.</li>
     <li><strong>AI generation</strong> — only when you tap Generate; sent to the provider
         whose API key you supplied.</li>
   </ul>
@@ -138,7 +152,7 @@
         <code>POST_NOTIFICATIONS</code> — show a status notification while the auto-changer or
         a download is active.</li>
     <li><code>INTERNET</code> / <code>ACCESS_NETWORK_STATE</code> — store browsing, optional
-        Pexels search, optional AI generation, AdMob ads, Wi-Fi trigger for auto-changer.</li>
+        AI generation, AdMob ads, Wi-Fi trigger for auto-changer.</li>
     <li><code>RECEIVE_BOOT_COMPLETED</code> / <code>WAKE_LOCK</code> — restart scheduled
         wallpaper rotation after a reboot and briefly wake the device when a change is due.</li>
     <li><code>READ_EXTERNAL_STORAGE</code> / <code>READ_MEDIA_IMAGES</code> /
@@ -165,5 +179,13 @@
   <p>Questions or requests?
      Email <a href="mailto:adisoftcollection@gmail.com">adisoftcollection@gmail.com</a>.
      We aim to respond within 5 business days.</p>
+</div>
+
+<footer>
+  &copy; 2026 Adisoft &nbsp;·&nbsp;
+  <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+  <a href="terms.html">Terms of Use</a> &nbsp;·&nbsp;
+  <a href="mailto:adisoftcollection@gmail.com">adisoftcollection@gmail.com</a>
+</footer>
 </body>
 </html>
