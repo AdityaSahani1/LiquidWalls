@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LiquidWalls – Delete Account</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0d0d12;
+            color: #e4e4e7;
+            min-height: 100vh;
+        }
+        .hero {
+            background: linear-gradient(135deg, rgba(99,102,241,0.15) 0%, rgba(217,70,239,0.10) 100%);
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+            padding: 48px 24px 36px;
+            text-align: center;
+        }
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(90deg, #6366f1, #d946ef);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
+        }
+        .hero h1 {
+            font-size: 22px;
+            font-weight: 600;
+            color: #f4f4f5;
+            margin-bottom: 8px;
+        }
+        .hero p {
+            font-size: 14px;
+            color: #71717a;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 32px 20px 60px;
+        }
+        .section {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+        .section h2 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #a5b4fc;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section h2 .icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: rgba(99,102,241,0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            flex-shrink: 0;
+        }
+        .section p {
+            font-size: 14px;
+            color: #a1a1aa;
+            line-height: 1.65;
+        }
+        .step {
+            display: flex;
+            gap: 14px;
+            padding: 10px 0;
+        }
+        .step:not(:last-child) {
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .step-num {
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: rgba(99,102,241,0.25);
+            color: #a5b4fc;
+            font-size: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+        .step-text {
+            font-size: 14px;
+            color: #a1a1aa;
+            line-height: 1.6;
+        }
+        .step-text strong { color: #d4d4d8; }
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 6px;
+        }
+        .table th {
+            text-align: left;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: #52525b;
+            padding: 6px 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .table td {
+            font-size: 13px;
+            color: #a1a1aa;
+            padding: 9px 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            vertical-align: top;
+        }
+        .table tr:last-child td { border-bottom: none; }
+        .badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 99px;
+        }
+        .badge-del  { background: rgba(239,68,68,0.15); color: #f87171; }
+        .badge-keep { background: rgba(99,102,241,0.15); color: #a5b4fc; }
+        .note {
+            font-size: 12px;
+            color: #52525b;
+            text-align: center;
+            margin-top: 32px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="logo">LiquidWalls</div>
+        <h1>Account &amp; Data Deletion</h1>
+        <p>Learn what data is stored, what gets deleted, and how to delete your account.</p>
+    </div>
+
+    <div class="container">
+
+        <div class="section">
+            <h2><span class="icon">📱</span> How to delete your account</h2>
+            <div>
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <div class="step-text">Open <strong>LiquidWalls</strong> and tap the <strong>Profile</strong> tab.</div>
+                </div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <div class="step-text">Scroll down to the <strong>Delete Account</strong> button at the bottom of your profile card.</div>
+                </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <div class="step-text">Read the confirmation dialog, then tap <strong>Delete my account</strong>.</div>
+                </div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <div class="step-text">Your account and all associated data are <strong>permanently deleted immediately</strong>. You will be signed out automatically.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2><span class="icon">🗂</span> Data deleted vs. retained</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Data</th>
+                        <th>Action</th>
+                        <th>Retention</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Profile (username, display name, bio, avatar)</td>
+                        <td><span class="badge badge-del">Deleted</span></td>
+                        <td>Immediately</td>
+                    </tr>
+                    <tr>
+                        <td>Email address &amp; password (auth account)</td>
+                        <td><span class="badge badge-del">Deleted</span></td>
+                        <td>Immediately</td>
+                    </tr>
+                    <tr>
+                        <td>Uploaded wallpapers (images, videos, web)</td>
+                        <td><span class="badge badge-del">Deleted</span></td>
+                        <td>Immediately</td>
+                    </tr>
+                    <tr>
+                        <td>Download history</td>
+                        <td><span class="badge badge-del">Deleted</span></td>
+                        <td>Immediately</td>
+                    </tr>
+                    <tr>
+                        <td>Reports submitted for content</td>
+                        <td><span class="badge badge-del">Deleted</span></td>
+                        <td>Immediately</td>
+                    </tr>
+                    <tr>
+                        <td>Anonymised aggregated download counts</td>
+                        <td><span class="badge badge-keep">Retained</span></td>
+                        <td>Indefinitely (no PII)</td>
+                    </tr>
+                    <tr>
+                        <td>Server access logs</td>
+                        <td><span class="badge badge-keep">Retained</span></td>
+                        <td>Up to 90 days</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2><span class="icon">✉️</span> Contact us</h2>
+            <p>For questions about your data or this process, email us at <strong style="color:#a5b4fc;">support@liquidwalls.app</strong>. We respond within 48 hours.</p>
+        </div>
+
+        <p class="note">LiquidWalls by Adisoft &nbsp;·&nbsp; Data processed via Supabase</p>
+    </div>
+</body>
+</html>
