@@ -1,401 +1,191 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LiquidWalls – Privacy Policy</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LiquidWalls — Privacy Policy</title>
 <style>
-  :root {
-    --bg: #06070c;
-    --surface: #0f1019;
-    --surface2: #161824;
-    --border: #2a2d45;
-    --accent: #7c6fff;
-    --green: #34d399;
-    --text: #e2e8f0;
-    --muted: #8892b0;
-    --radius: 12px;
-  }
+  :root { color-scheme: light dark; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    line-height: 1.75;
-    font-size: 15px;
-  }
-
-  header {
-    background: linear-gradient(135deg, #0f1230 0%, #06070c 60%, #160825 100%);
-    border-bottom: 1px solid var(--border);
-    padding: 52px 24px 44px;
-    text-align: center;
-  }
-  header .app-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: rgba(124,111,255,0.12);
-    border: 1px solid rgba(124,111,255,0.35);
-    color: var(--accent);
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    padding: 5px 16px;
-    border-radius: 50px;
-    margin-bottom: 20px;
-  }
-  header h1 {
-    font-size: clamp(26px, 5vw, 40px);
-    font-weight: 800;
-    background: linear-gradient(135deg, #a5b4fc, #818cf8, #c084fc);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    margin-bottom: 12px;
-    letter-spacing: -0.5px;
-  }
-  header .meta {
-    color: var(--muted);
-    font-size: 13px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-  header .meta span::before { content: '·'; margin-right: 16px; }
-  header .meta span:first-child::before { content: ''; margin: 0; }
-
-  .container { max-width: 780px; margin: 0 auto; padding: 0 20px 80px; }
-
-  .summary-box {
-    background: rgba(52,211,153,0.07);
-    border: 1px solid rgba(52,211,153,0.25);
-    border-radius: var(--radius);
-    padding: 20px 24px;
-    margin: 40px 0 0;
-    font-size: 14px;
-    color: #a7f3d0;
-    line-height: 1.7;
-  }
-  .summary-box strong { color: var(--green); display: block; margin-bottom: 6px; font-size: 15px; }
-
-  section { margin-top: 44px; }
-  section h2 {
-    font-size: 18px;
-    font-weight: 700;
-    color: #c7d2fe;
-    margin-bottom: 14px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  section h2 .num {
-    background: rgba(124,111,255,0.15);
-    border: 1px solid rgba(124,111,255,0.3);
-    color: var(--accent);
-    font-size: 12px;
-    font-weight: 800;
-    width: 28px; height: 28px;
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0;
-  }
-  section h3 {
-    font-size: 14px;
-    font-weight: 700;
-    color: #a5b4fc;
-    margin: 20px 0 8px;
-  }
-  p { color: var(--muted); font-size: 14px; margin-bottom: 12px; }
-  ul { padding-left: 20px; margin-bottom: 12px; }
-  li { color: var(--muted); font-size: 14px; margin-bottom: 6px; }
-  li strong, p strong { color: var(--text); }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-
-  .table-wrap { overflow-x: auto; margin: 14px 0; border-radius: var(--radius); border: 1px solid var(--border); }
-  table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  th {
-    background: var(--surface2);
-    color: var(--muted);
-    text-align: left;
-    padding: 10px 14px;
-    font-weight: 600;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    border-bottom: 1px solid var(--border);
-  }
-  td { padding: 11px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; color: var(--muted); font-size: 13px; }
-  tr:last-child td { border-bottom: none; }
-  tr:hover td { background: rgba(255,255,255,0.02); }
-  td strong { color: var(--text); }
-  td a { color: var(--accent); }
-
-  .perm-block {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    overflow: hidden;
-    margin: 14px 0;
-  }
-  .perm-item {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 14px;
-    padding: 14px 18px;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-    align-items: start;
-  }
-  .perm-item:last-child { border-bottom: none; }
-  .perm-name { font-family: 'SF Mono','Fira Code','Courier New',monospace; font-size: 12px; color: #a5b4fc; background: rgba(165,180,252,0.1); padding: 3px 8px; border-radius: 5px; white-space: nowrap; }
-  .perm-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
-
-  .note-block {
-    background: rgba(124,111,255,0.07);
-    border: 1px solid rgba(124,111,255,0.2);
-    border-radius: var(--radius);
-    padding: 16px 20px;
-    margin: 14px 0;
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.7;
-  }
-  .note-block strong { color: #c7d2fe; }
-
-  footer {
-    text-align: center;
-    padding: 40px 24px;
-    border-top: 1px solid var(--border);
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 2;
-  }
-  footer a { color: var(--accent); }
-
-  @media (max-width: 600px) {
-    header { padding: 36px 16px 32px; }
-    .container { padding: 0 14px 60px; }
-    .perm-item { grid-template-columns: 1fr; gap: 6px; }
-  }
+  body { font-family: -apple-system, Roboto, "Helvetica Neue", Arial, sans-serif;
+         background: #0a0a0f; color: #f0f0fa; line-height: 1.6; }
+  nav { display: flex; align-items: center; gap: 20px; padding: 16px 24px;
+        border-bottom: 1px solid #2a2a3d; background: #13131c; }
+  nav .brand { font-weight: 700; font-size: 18px;
+               background: linear-gradient(135deg, #7c6fff, #ff2bd6);
+               -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  nav a { color: #8888aa; font-size: 14px; text-decoration: none; }
+  nav a:hover { color: #f0f0fa; }
+  .content { max-width: 720px; margin: 0 auto; padding: 40px 24px 80px; }
+  h1 { font-size: 28px; font-weight: 800; margin-bottom: 6px; }
+  .muted { color: #555577; font-size: 13px; margin-bottom: 32px; }
+  .muted a { color: #7c6fff; text-decoration: none; }
+  h2 { font-size: 17px; font-weight: 700; margin: 32px 0 8px;
+       border-bottom: 1px solid #2a2a3d; padding-bottom: 6px; color: #c8c8f0; }
+  h3 { font-size: 15px; font-weight: 600; margin: 20px 0 6px; color: #a0a0d0; }
+  p, li { font-size: 14px; color: #c0c0e0; margin-bottom: 8px; }
+  ul { padding-left: 20px; margin: 8px 0 12px; }
+  li { margin-bottom: 6px; }
+  code { background: #1a1a2e; color: #a78bfa; padding: 1px 6px;
+         border-radius: 4px; font-size: 13px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; margin: 12px 0 20px; }
+  th { text-align: left; padding: 8px 10px; background: #13131c;
+       color: #8888aa; font-weight: 600; }
+  td { padding: 8px 10px; border-bottom: 1px solid #2a2a3d; color: #c0c0e0;
+       vertical-align: top; }
+  .note { background: #13131c; border-left: 3px solid #7c6fff;
+          padding: 10px 14px; border-radius: 0 8px 8px 0; margin: 12px 0;
+          font-size: 13px; color: #a0a0d0; }
+  a { color: #7c6fff; }
+  footer { text-align: center; padding: 32px 24px; color: #555577; font-size: 13px;
+           border-top: 1px solid #2a2a3d; margin-top: 40px; }
+  footer a { color: #7c6fff; text-decoration: none; }
 </style>
 </head>
 <body>
+<nav>
+  <a class="brand" href="index.html">LiquidWalls</a>
+  <a href="privacy.html" style="color:#f0f0fa">Privacy Policy</a>
+  <a href="terms.html">Terms of Use</a>
+</nav>
 
-<header>
-  <div class="app-badge">LiquidWalls · Adisoft</div>
+<div class="content">
   <h1>Privacy Policy</h1>
-  <div class="meta">
-    <span>Effective: April 26, 2026</span>
-    <span>App version: 1.0.0</span>
-    <span>Package: com.adisoft.liquidwalls</span>
-    <span>Contact: <a href="mailto:adisoftcollection@gmail.com" style="color:#818cf8">adisoftcollection@gmail.com</a></span>
-  </div>
-</header>
+  <p class="muted">Effective: April 26, 2026 &middot; LiquidWalls v1.0.0 &middot; Adisoft &middot;
+     <a href="mailto:adisoftcollection@gmail.com">adisoftcollection@gmail.com</a></p>
 
-<div class="container">
+  <p>LiquidWalls is built so that your personal data stays on your phone. This policy explains
+     exactly what the app collects, stores, and transmits — and why.</p>
 
-  <div class="summary-box">
-    <strong>The short version</strong>
-    LiquidWalls is built so your personal data stays on your phone. Adisoft operates no servers that collect personal information. The app has no user accounts, no first-party analytics, and no crash-reporting trackers operated by us. The only third-party service that collects data is Google AdMob (ads). Everything else — your wallpapers, settings, collections, and AI keys — lives exclusively on your device.
-  </div>
+  <h2>1. Data we (Adisoft) collect</h2>
+  <p><strong>Nothing.</strong> Adisoft operates no servers that collect personal information.
+     The app has no user accounts, no first-party analytics, and no crash-reporting trackers
+     operated by us.</p>
 
-  <!-- 1 -->
-  <section>
-    <h2><span class="num">1</span> Data we (Adisoft) collect</h2>
-    <p><strong>Nothing.</strong> Adisoft operates no servers that collect personal information. The app has no user accounts, no first-party analytics, and no crash-reporting trackers operated by us. We cannot identify you, track you, or contact you unless you choose to email us.</p>
-  </section>
+  <h2>2. Third-party services and the data they collect</h2>
 
-  <!-- 2 -->
-  <section>
-    <h2><span class="num">2</span> Third-party services and the data they collect</h2>
+  <h3>Google AdMob (Advertising)</h3>
+  <p>LiquidWalls displays ads served by <strong>Google AdMob</strong>. AdMob may collect:</p>
+  <ul>
+    <li><strong>Advertising ID</strong> — a resettable device identifier used to personalise
+        and measure ads. Reset or opt out via <em>Settings → Google → Ads</em> on your device.</li>
+    <li><strong>Approximate location</strong> — inferred from your IP address by Google, not
+        by LiquidWalls.</li>
+    <li><strong>App activity signals</strong> — aggregated, anonymised data used by Google for
+        ad relevance and analytics.</li>
+  </ul>
+  <p>Adisoft does not receive, store, or have access to any AdMob data. It is processed entirely
+     by Google under their <a href="https://policies.google.com/privacy">Privacy Policy</a>.</p>
 
-    <h3>Google AdMob (Advertising)</h3>
-    <p>LiquidWalls displays ads served by <strong>Google AdMob</strong>. AdMob may collect:</p>
-    <ul>
-      <li><strong>Advertising ID (AAID)</strong> — a resettable device identifier used to personalise and measure ads. You can reset or opt out via <em>Settings → Google → Ads</em> on your device.</li>
-      <li><strong>Approximate location</strong> — inferred from your IP address by Google, not by LiquidWalls.</li>
-      <li><strong>App activity signals</strong> — aggregated, anonymised data used by Google for ad relevance and analytics.</li>
-    </ul>
-    <p>Adisoft does not receive, store, or have access to any AdMob data. It is processed entirely by Google under their <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a>. You can opt out of personalised ads at any time via device settings.</p>
+  <h3>AI Image Generation (Optional)</h3>
+  <p>If you choose to use the AI wallpaper generation feature, you supply your own API key for
+     the AI provider you select (e.g. OpenAI, Stability AI). That key is stored
+     <strong>only on your device</strong> in the app's private DataStore — it is never sent to
+     Adisoft or any server other than the AI provider you chose. Your prompts and generated
+     images are governed by the AI provider's own privacy policy.</p>
 
-    <h3>AI Image Generation (Optional feature)</h3>
-    <p>If you use the optional AI wallpaper generation feature, you supply your own API key from a provider you choose (e.g. OpenAI, Stability AI). That key is stored <strong>only on your device</strong> in the app's private DataStore — it is never sent to Adisoft or any server other than the AI provider you chose. Your prompts and generated images are governed by the AI provider's own privacy policy.</p>
+  <h3>Google Play In-App Review</h3>
+  <p>After a successful wallpaper apply, the app may ask Google Play to display a rating prompt.
+     Google controls whether the sheet actually appears. Adisoft never sees your rating, review
+     text, or whether you interacted with the prompt.</p>
 
-    <h3>Google Play In-App Review</h3>
-    <p>After a successful wallpaper apply, the app may ask Google Play to display a rating prompt. Google controls whether the sheet actually appears. Adisoft never sees your rating, review text, or whether you interacted with the prompt.</p>
+  <h2>3. Quick reference — third-party services</h2>
+  <table>
+    <tr><th>Service</th><th>Purpose</th><th>Data sent</th><th>Their policy</th></tr>
+    <tr>
+      <td>Google AdMob</td>
+      <td>Ads</td>
+      <td>Advertising ID, app activity</td>
+      <td><a href="https://policies.google.com/privacy">policies.google.com/privacy</a></td>
+    </tr>
+    <tr>
+      <td>AI provider (your choice)</td>
+      <td>AI wallpaper generation (optional)</td>
+      <td>Your prompt text, your API key</td>
+      <td>Provider's own policy</td>
+    </tr>
+    <tr>
+      <td>Google Play</td>
+      <td>App delivery, in-app review</td>
+      <td>Standard Play Services data</td>
+      <td><a href="https://policies.google.com/privacy">policies.google.com/privacy</a></td>
+    </tr>
+    <tr>
+      <td>LiquidWalls store</td>
+      <td>Wallpaper catalogue &amp; optional uploads</td>
+      <td>File you choose to upload (no metadata)</td>
+      <td>This policy</td>
+    </tr>
+  </table>
 
-    <h3>LiquidWalls Community Store</h3>
-    <p>The app includes a community wallpaper store powered by Supabase (REST) and Cloudinary (CDN). If you choose to upload a wallpaper, only the file you explicitly selected is uploaded — no personal metadata, account information, or device identifiers are attached. Community uploads are publicly visible to all users.</p>
-  </section>
+  <h2>4. What is stored on your device only</h2>
+  <ul>
+    <li><strong>Settings</strong> (theme, accent, layout, brightness, quiet hours, auto-changer
+        rules) — saved in Android DataStore inside the app's private sandbox.</li>
+    <li><strong>Collections, favourites, and folders</strong> — stored in a private SQLite
+        database (Room) that other apps cannot read.</li>
+    <li><strong>Downloaded wallpapers</strong> — cached in the app's private files directory.</li>
+    <li><strong>Your AI API key</strong> — stored in the app's private DataStore, never
+        transmitted to Adisoft.</li>
+    <li><strong>Backups you export</strong> — written only when you explicitly tap
+        <em>Backup</em>; saved to your Downloads folder or forwarded to an app you choose via
+        the share sheet.</li>
+  </ul>
 
-  <!-- 3 -->
-  <section>
-    <h2><span class="num">3</span> Third-party services — quick reference</h2>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Service</th>
-            <th>Purpose</th>
-            <th>Data sent to them</th>
-            <th>Their privacy policy</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Google AdMob</strong></td>
-            <td>Serving ads</td>
-            <td>Advertising ID, app activity signals</td>
-            <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td>
-          </tr>
-          <tr>
-            <td><strong>AI provider (your choice)</strong></td>
-            <td>AI wallpaper generation (optional)</td>
-            <td>Your prompt text, your API key</td>
-            <td>Provider's own policy</td>
-          </tr>
-          <tr>
-            <td><strong>Google Play</strong></td>
-            <td>App delivery, in-app review</td>
-            <td>Standard Play Services data</td>
-            <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td>
-          </tr>
-          <tr>
-            <td><strong>Supabase / Cloudinary</strong></td>
-            <td>Community wallpaper store</td>
-            <td>File you choose to upload (no metadata)</td>
-            <td>This policy</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
+  <h2>5. Network requests initiated by the app</h2>
+  <ul>
+    <li><strong>Wallpaper store catalogue &amp; downloads</strong> — standard HTTPS; only the
+        default OkHttp <code>User-Agent</code> header is sent.</li>
+    <li><strong>Optional uploads</strong> — only the file you explicitly selected is uploaded;
+        no personal metadata is attached.</li>
+    <li><strong>AdMob ad requests</strong> — handled by the Google Mobile Ads SDK.</li>
+    <li><strong>AI generation</strong> — only when you tap Generate; sent to the provider
+        whose API key you supplied.</li>
+  </ul>
+  <div class="note">The app never uploads your wallpapers, settings, backups, or AI keys
+    unless you explicitly initiate the action.</div>
 
-  <!-- 4 -->
-  <section>
-    <h2><span class="num">4</span> What is stored on your device only</h2>
-    <ul>
-      <li><strong>App settings</strong> (theme, accent colour, layout, brightness, quiet hours, auto-changer rules) — saved in Android DataStore inside the app's private sandbox. Cannot be read by other apps.</li>
-      <li><strong>Collections, favourites, and folders</strong> — stored in a private SQLite/Room database that other apps cannot access.</li>
-      <li><strong>Downloaded wallpapers</strong> — cached in the app's private files directory.</li>
-      <li><strong>Your AI API key</strong> — stored in the app's private DataStore, never transmitted to Adisoft.</li>
-      <li><strong>Legal acceptance flag</strong> — a boolean value recording that you accepted the legal terms on first launch. Contains no personal information.</li>
-      <li><strong>Backups you export</strong> — written only when you explicitly tap <em>Backup</em>; saved to your Downloads folder or forwarded via the share sheet. Adisoft never receives a copy.</li>
-    </ul>
-  </section>
+  <h2>6. Permissions explained</h2>
+  <ul>
+    <li><code>SET_WALLPAPER</code> / <code>SET_WALLPAPER_HINTS</code> — apply a wallpaper.</li>
+    <li><code>FOREGROUND_SERVICE</code> / <code>FOREGROUND_SERVICE_SPECIAL_USE</code> /
+        <code>POST_NOTIFICATIONS</code> — show a status notification while the auto-changer or
+        a download is active.</li>
+    <li><code>INTERNET</code> / <code>ACCESS_NETWORK_STATE</code> — store browsing, optional
+        AI generation, AdMob ads, Wi-Fi trigger for auto-changer.</li>
+    <li><code>RECEIVE_BOOT_COMPLETED</code> / <code>WAKE_LOCK</code> — restart scheduled
+        wallpaper rotation after a reboot and briefly wake the device when a change is due.</li>
+    <li><code>READ_EXTERNAL_STORAGE</code> / <code>READ_MEDIA_IMAGES</code> /
+        <code>READ_MEDIA_VIDEO</code> — only when you pick a file from your gallery or a
+        local folder to use as a wallpaper.</li>
+  </ul>
 
-  <!-- 5 -->
-  <section>
-    <h2><span class="num">5</span> Network requests initiated by the app</h2>
-    <ul>
-      <li><strong>Wallpaper store catalogue and downloads</strong> — standard HTTPS requests to Supabase and Cloudinary CDN. Only the default OkHttp User-Agent header is sent.</li>
-      <li><strong>Optional uploads</strong> — only the file you explicitly selected is uploaded; no personal metadata is attached.</li>
-      <li><strong>AdMob ad requests</strong> — handled entirely by the Google Mobile Ads SDK.</li>
-      <li><strong>AI generation</strong> — only when you tap Generate; sent to the AI provider whose API key you supplied.</li>
-    </ul>
-    <div class="note-block">
-      <strong>The app never uploads your wallpapers, settings, backups, or AI keys unless you explicitly initiate the action.</strong>
-    </div>
-  </section>
+  <h2>7. Children</h2>
+  <p>LiquidWalls is not directed at children under 13. We do not knowingly collect personal
+     data from anyone. The app contains advertising served by Google AdMob; Google's
+     child-directed treatment policies apply to those ad requests.</p>
 
-  <!-- 6 -->
-  <section>
-    <h2><span class="num">6</span> Permissions explained</h2>
-    <div class="perm-block">
-      <div class="perm-item">
-        <span class="perm-name">SET_WALLPAPER<br>SET_WALLPAPER_HINTS</span>
-        <span class="perm-desc">Apply a wallpaper to the home and/or lock screen. Core purpose of the app.</span>
-      </div>
-      <div class="perm-item">
-        <span class="perm-name">FOREGROUND_SERVICE<br>FOREGROUND_SERVICE_SPECIAL_USE<br>POST_NOTIFICATIONS</span>
-        <span class="perm-desc">Show a persistent status notification while the auto-changer or a download is active. Both services are opt-in and can be stopped at any time.</span>
-      </div>
-      <div class="perm-item">
-        <span class="perm-name">INTERNET<br>ACCESS_NETWORK_STATE</span>
-        <span class="perm-desc">Browse the community store, load ads via AdMob, optionally generate AI wallpapers, and trigger the auto-changer on Wi-Fi connect.</span>
-      </div>
-      <div class="perm-item">
-        <span class="perm-name">RECEIVE_BOOT_COMPLETED<br>WAKE_LOCK</span>
-        <span class="perm-desc">Restart scheduled wallpaper rotation after a device reboot, and briefly wake the processor when a scheduled change is due.</span>
-      </div>
-      <div class="perm-item">
-        <span class="perm-name">READ_EXTERNAL_STORAGE<br>READ_MEDIA_IMAGES<br>READ_MEDIA_VIDEO</span>
-        <span class="perm-desc">Only when you pick a file from your gallery or a local folder to use as a wallpaper. The app reads only the file you selected.</span>
-      </div>
-      <div class="perm-item">
-        <span class="perm-name">AD_ID</span>
-        <span class="perm-desc">Android 13+ permission required by the Google Mobile Ads SDK to access the Advertising ID for personalised ads. You can opt out via device settings.</span>
-      </div>
-    </div>
-  </section>
+  <h2>8. Data retention and deletion</h2>
+  <p>All data the app stores lives on your device. Uninstalling the app removes all of it.
+     Adisoft holds no copy. If you uploaded a wallpaper to the community store and want it
+     removed, email us and we will delete it within 30 days.</p>
 
-  <!-- 7 -->
-  <section>
-    <h2><span class="num">7</span> Children</h2>
-    <p>LiquidWalls is not directed at children under 13. We do not knowingly collect personal data from anyone — including children. The app contains advertising served by Google AdMob; Google's child-directed treatment policies apply to those ad requests.</p>
-  </section>
+  <h2>9. Changes to this policy</h2>
+  <p>If this policy changes, the updated version ships inside the app and replaces this page
+     in Settings. We will also update the hosted copy at the same URL. Continued use of the
+     app after an update constitutes acceptance of the revised policy.</p>
 
-  <!-- 8 -->
-  <section>
-    <h2><span class="num">8</span> Data retention and deletion</h2>
-    <p>All data the app stores lives on your device. <strong>Uninstalling the app removes all of it</strong> — Adisoft holds no copy and has no way to retrieve it.</p>
-    <p>If you uploaded a wallpaper to the community store and want it removed, email <a href="mailto:adisoftcollection@gmail.com">adisoftcollection@gmail.com</a> with the wallpaper name or link and we will delete it within 30 days.</p>
-  </section>
-
-  <!-- 9 -->
-  <section>
-    <h2><span class="num">9</span> Data Safety (Google Play)</h2>
-    <p>For the Google Play Data Safety form, the following declarations apply:</p>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr><th>Category</th><th>Collected?</th><th>Notes</th></tr>
-        </thead>
-        <tbody>
-          <tr><td><strong>Location</strong></td><td>No</td><td>App does not request or transmit location data.</td></tr>
-          <tr><td><strong>Personal info</strong></td><td>No</td><td>No accounts, no name, no email collected by Adisoft.</td></tr>
-          <tr><td><strong>Financial info</strong></td><td>No</td><td>No in-app purchases.</td></tr>
-          <tr><td><strong>Health &amp; fitness</strong></td><td>No</td><td>Not applicable.</td></tr>
-          <tr><td><strong>Messages</strong></td><td>No</td><td>Not applicable.</td></tr>
-          <tr><td><strong>Photos &amp; videos</strong></td><td>No*</td><td>App reads files you select; does not upload them without your explicit action.</td></tr>
-          <tr><td><strong>Advertising ID</strong></td><td>Yes (AdMob)</td><td>Collected and used by Google AdMob for ad personalisation. Not shared with Adisoft.</td></tr>
-          <tr><td><strong>App activity</strong></td><td>Yes (AdMob)</td><td>Aggregated signals used by AdMob. Not shared with Adisoft.</td></tr>
-          <tr><td><strong>Device IDs</strong></td><td>No (Adisoft)</td><td>Only AdMob accesses the Advertising ID under Google's terms.</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p style="margin-top:10px;font-size:13px;">Declare <strong>Ads</strong> as the only data-collection category. No other categories require declaration for Adisoft's own practices.</p>
-  </section>
-
-  <!-- 10 -->
-  <section>
-    <h2><span class="num">10</span> Changes to this policy</h2>
-    <p>If this policy changes, the updated version ships inside the app with the next release and replaces the in-app version in Settings. The hosted copy at this URL will also be updated. Continued use of the app after an update constitutes acceptance of the revised policy.</p>
-  </section>
-
-  <!-- 11 -->
-  <section>
-    <h2><span class="num">11</span> Contact</h2>
-    <p>Questions, data requests, or content takedown requests:</p>
-    <p>
-      <strong>Email:</strong> <a href="mailto:adisoftcollection@gmail.com">adisoftcollection@gmail.com</a><br>
-      <strong>Response time:</strong> Within 5 business days.
-    </p>
-  </section>
-
+  <h2>10. Contact</h2>
+  <p>Questions or requests?
+     Email <a href="mailto:adisoftcollection@gmail.com">adisoftcollection@gmail.com</a>.
+     We aim to respond within 5 business days.</p>
 </div>
 
 <footer>
-  <strong style="color:var(--text)">LiquidWalls</strong> · Adisoft · com.adisoft.liquidwalls<br>
-  Privacy Policy · Effective April 26, 2026 · Version 1.0.0<br>
+  &copy; 2026 Adisoft &nbsp;·&nbsp;
+  <a href="privacy.html">Privacy Policy</a> &nbsp;·&nbsp;
+  <a href="terms.html">Terms of Use</a> &nbsp;·&nbsp;
   <a href="mailto:adisoftcollection@gmail.com">adisoftcollection@gmail.com</a>
 </footer>
-
 </body>
 </html>
