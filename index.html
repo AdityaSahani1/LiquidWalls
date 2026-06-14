@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LiquidWalls – Privacy Policy</title>
+<title>LiquidWalls – Live Wallpapers for Android</title>
+<meta name="description" content="LiquidWalls — browse, apply, and create stunning static, live video, and interactive web wallpapers for Android. Free on Google Play.">
 <style>
   :root {
     --bg: #06070c;
@@ -11,10 +12,11 @@
     --surface2: #161824;
     --border: #2a2d45;
     --accent: #7c6fff;
+    --accent2: #c084fc;
     --green: #34d399;
     --text: #e2e8f0;
     --muted: #8892b0;
-    --radius: 12px;
+    --radius: 14px;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -24,15 +26,76 @@
     color: var(--text);
     line-height: 1.75;
     font-size: 15px;
+    overflow-x: hidden;
   }
 
-  header {
-    background: linear-gradient(135deg, #0f1230 0%, #06070c 60%, #160825 100%);
-    border-bottom: 1px solid var(--border);
-    padding: 52px 24px 44px;
+  /* ─── NAV ─── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(6,7,12,0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(42,45,69,0.6);
+    padding: 0 24px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-brand {
+    font-size: 18px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #a5b4fc, #818cf8, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.3px;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    background: var(--accent);
+    color: #fff !important;
+    padding: 7px 18px;
+    border-radius: 50px;
+    font-weight: 700 !important;
+    font-size: 13px !important;
+    transition: opacity 0.2s !important;
+  }
+  .nav-cta:hover { opacity: 0.85; color: #fff !important; }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: 100px 24px 90px;
     text-align: center;
   }
-  header .app-badge {
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% -10%, rgba(124,111,255,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 80% 80%, rgba(192,132,252,0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-badge {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -45,474 +108,713 @@
     text-transform: uppercase;
     padding: 5px 16px;
     border-radius: 50px;
-    margin-bottom: 20px;
+    margin-bottom: 28px;
   }
-  header h1 {
-    font-size: clamp(26px, 5vw, 40px);
-    font-weight: 800;
-    background: linear-gradient(135deg, #a5b4fc, #818cf8, #c084fc);
+  .hero h1 {
+    font-size: clamp(36px, 7vw, 68px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    background: linear-gradient(135deg, #e2e8f0 0%, #a5b4fc 40%, #c084fc 80%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin-bottom: 12px;
-    letter-spacing: -0.5px;
+    margin-bottom: 20px;
   }
-  header .meta {
+  .hero h1 span {
+    background: linear-gradient(135deg, #7c6fff, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero-sub {
+    font-size: clamp(15px, 2.5vw, 18px);
     color: var(--muted);
-    font-size: 13px;
+    max-width: 560px;
+    margin: 0 auto 40px;
+    line-height: 1.7;
+  }
+  .hero-actions {
     display: flex;
+    gap: 14px;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 16px;
+    margin-bottom: 64px;
   }
-  header .meta span::before { content: '·'; margin-right: 16px; }
-  header .meta span:first-child::before { content: ''; margin: 0; }
-
-  .container { max-width: 780px; margin: 0 auto; padding: 0 20px 80px; }
-
-  .summary-box {
-    background: rgba(52,211,153,0.07);
-    border: 1px solid rgba(52,211,153,0.25);
-    border-radius: var(--radius);
-    padding: 20px 24px;
-    margin: 40px 0 0;
-    font-size: 14px;
-    color: #a7f3d0;
-    line-height: 1.7;
-  }
-  .summary-box strong { color: var(--green); display: block; margin-bottom: 6px; font-size: 15px; }
-
-  section { margin-top: 44px; }
-  section h2 {
-    font-size: 18px;
-    font-weight: 700;
-    color: #c7d2fe;
-    margin-bottom: 14px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
+  .btn-primary {
+    display: inline-flex;
     align-items: center;
     gap: 10px;
+    background: linear-gradient(135deg, #7c6fff, #9f7ffe);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 14px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 8px 32px rgba(124,111,255,0.35);
+    transition: transform 0.2s, box-shadow 0.2s;
   }
-  section h2 .num {
-    background: rgba(124,111,255,0.15);
-    border: 1px solid rgba(124,111,255,0.3);
-    color: var(--accent);
-    font-size: 12px;
-    font-weight: 800;
-    width: 28px; height: 28px;
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(124,111,255,0.45);
+  }
+  .btn-primary svg { width: 20px; height: 20px; fill: #fff; }
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 600;
+    padding: 14px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .btn-secondary:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(124,111,255,0.5);
+  }
+
+  /* phone mockup row */
+  .mockup-row {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    align-items: flex-end;
+  }
+  .mockup {
+    width: 130px;
+    border-radius: 22px;
+    border: 2px solid var(--border);
+    overflow: hidden;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.05);
     flex-shrink: 0;
   }
-  section h3 {
-    font-size: 14px;
-    font-weight: 700;
-    color: #a5b4fc;
-    margin: 20px 0 8px;
-  }
-  p { color: var(--muted); font-size: 14px; margin-bottom: 12px; }
-  ul { padding-left: 20px; margin-bottom: 12px; }
-  li { color: var(--muted); font-size: 14px; margin-bottom: 6px; }
-  li strong, p strong { color: var(--text); }
-  a { color: var(--accent); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-
-  .table-wrap { overflow-x: auto; margin: 14px 0; border-radius: var(--radius); border: 1px solid var(--border); }
-  table { width: 100%; border-collapse: collapse; font-size: 13px; }
-  th {
-    background: var(--surface2);
-    color: var(--muted);
-    text-align: left;
-    padding: 10px 14px;
+  .mockup.tall { width: 155px; transform: translateY(-20px); box-shadow: 0 32px 80px rgba(124,111,255,0.2), 0 0 0 1px rgba(124,111,255,0.15); border-color: rgba(124,111,255,0.3); }
+  .mockup-inner {
+    aspect-ratio: 9/19;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
     font-weight: 600;
-    font-size: 12px;
-    text-transform: uppercase;
     letter-spacing: 0.5px;
-    border-bottom: 1px solid var(--border);
+    color: rgba(255,255,255,0.5);
   }
-  td { padding: 11px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; color: var(--muted); font-size: 13px; }
-  tr:last-child td { border-bottom: none; }
-  tr:hover td { background: rgba(255,255,255,0.02); }
-  td strong { color: var(--text); }
-  td a { color: var(--accent); }
-  td code { font-family: 'SF Mono','Fira Code','Courier New',monospace; font-size: 11px; color: #a5b4fc; background: rgba(165,180,252,0.1); padding: 2px 5px; border-radius: 4px; }
+  .mockup-inner.m1 { background: linear-gradient(145deg, #0d0f1e 0%, #1a0533 50%, #0a0a1a 100%); }
+  .mockup-inner.m2 { background: linear-gradient(145deg, #071520 0%, #0a2540 50%, #051020 100%); }
+  .mockup-inner.m3 { background: linear-gradient(145deg, #0f0720 0%, #1e0a3a 50%, #090510 100%); }
+  .mockup-inner.m4 { background: linear-gradient(145deg, #060d15 0%, #0c1e30 50%, #040810 100%); }
+  .mockup-inner.m5 { background: linear-gradient(145deg, #0a0c20 0%, #14183a 50%, #060810 100%); }
+  .mockup-label {
+    padding: 10px;
+    text-align: center;
+    font-size: 9px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.25);
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
 
-  .perm-block {
-    background: var(--surface);
+  /* ─── SECTION SHARED ─── */
+  section { padding: 80px 24px; }
+  .section-inner { max-width: 1000px; margin: 0 auto; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: var(--text);
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+  .section-desc {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 560px;
+    line-height: 1.75;
+  }
+
+  /* ─── FEATURES GRID ─── */
+  .features-section { background: var(--surface); }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    margin-top: 48px;
+  }
+  .feature-card {
+    background: var(--surface2);
     border: 1px solid var(--border);
     border-radius: var(--radius);
-    overflow: hidden;
-    margin: 14px 0;
+    padding: 28px;
+    transition: border-color 0.2s, transform 0.2s;
   }
-  .perm-item {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 14px;
-    padding: 14px 18px;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-    align-items: start;
+  .feature-card:hover {
+    border-color: rgba(124,111,255,0.4);
+    transform: translateY(-3px);
   }
-  .perm-item:last-child { border-bottom: none; }
-  .perm-name { font-family: 'SF Mono','Fira Code','Courier New',monospace; font-size: 12px; color: #a5b4fc; background: rgba(165,180,252,0.1); padding: 3px 8px; border-radius: 5px; white-space: nowrap; }
-  .perm-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
-
-  .note-block {
-    background: rgba(124,111,255,0.07);
-    border: 1px solid rgba(124,111,255,0.2);
-    border-radius: var(--radius);
-    padding: 16px 20px;
-    margin: 14px 0;
+  .feature-icon {
+    width: 44px;
+    height: 44px;
+    background: rgba(124,111,255,0.12);
+    border: 1px solid rgba(124,111,255,0.25);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    font-size: 22px;
+  }
+  .feature-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .feature-desc {
     font-size: 13px;
     color: var(--muted);
-    line-height: 1.7;
+    line-height: 1.65;
   }
-  .note-block strong { color: #c7d2fe; }
 
+  /* ─── STATS ─── */
+  .stats-section {
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 0;
+  }
+  .stat-item {
+    text-align: center;
+    padding: 40px 20px;
+    border-right: 1px solid var(--border);
+  }
+  .stat-item:last-child { border-right: none; }
+  .stat-num {
+    font-size: 38px;
+    font-weight: 900;
+    background: linear-gradient(135deg, #a5b4fc, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -1px;
+  }
+  .stat-label {
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  /* ─── HIGHLIGHTS SPLIT ─── */
+  .highlight-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  .highlight-split.reverse { direction: rtl; }
+  .highlight-split.reverse > * { direction: ltr; }
+  .highlight-visual {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .highlight-visual::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(124,111,255,0.08) 0%, transparent 70%);
+  }
+  .visual-phones {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+    padding: 24px;
+  }
+  .mini-phone {
+    width: 72px;
+    border-radius: 14px;
+    border: 1.5px solid rgba(124,111,255,0.25);
+    overflow: hidden;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.5);
+  }
+  .mini-phone-screen {
+    aspect-ratio: 9/18;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    color: rgba(255,255,255,0.3);
+    font-weight: 600;
+  }
+  .mp1 { background: linear-gradient(160deg, #1a0d3a, #2d1060, #0d0820); }
+  .mp2 { background: linear-gradient(160deg, #062040, #0a3060, #041020); }
+  .mp3 { background: linear-gradient(160deg, #1a1a0d, #2a2a10, #0d0d04); }
+  .mp4 { background: linear-gradient(160deg, #200d0d, #401515, #100808); }
+  .highlight-text .section-label { margin-bottom: 10px; }
+  .highlight-list {
+    list-style: none;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .highlight-list li {
+    display: flex;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--muted);
+    align-items: flex-start;
+  }
+  .highlight-list li::before {
+    content: '✦';
+    color: var(--accent);
+    font-size: 10px;
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+  .highlight-list li strong { color: var(--text); }
+
+  /* ─── PRIVACY BANNER ─── */
+  .privacy-banner {
+    background: rgba(52,211,153,0.06);
+    border: 1px solid rgba(52,211,153,0.2);
+    border-radius: var(--radius);
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-top: 48px;
+  }
+  .privacy-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(52,211,153,0.12);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  .privacy-text p { font-size: 13px; color: var(--muted); margin: 0; line-height: 1.6; }
+  .privacy-text strong { color: #a7f3d0; }
+
+  /* ─── CTA SECTION ─── */
+  .cta-section {
+    text-align: center;
+    background: linear-gradient(135deg, #0f1230 0%, #06070c 60%, #160825 100%);
+    border-top: 1px solid var(--border);
+  }
+  .cta-section .section-title { margin: 0 auto 16px; max-width: 520px; }
+  .cta-section .section-desc { margin: 0 auto 40px; }
+  .play-store-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    background: #fff;
+    color: #000;
+    padding: 14px 28px;
+    border-radius: 14px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .play-store-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  }
+  .play-store-btn svg { width: 28px; height: 28px; }
+  .play-sub { margin-top: 14px; font-size: 12px; color: var(--muted); }
+
+  /* ─── LEGAL LINKS ─── */
+  .legal-section {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 48px 24px;
+  }
+  .legal-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .legal-inner p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 24px;
+  }
+  .legal-cards {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .legal-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 24px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: border-color 0.2s, transform 0.2s;
+    min-width: 180px;
+  }
+  .legal-card:hover {
+    border-color: rgba(124,111,255,0.4);
+    transform: translateY(-2px);
+  }
+  .legal-card-icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(124,111,255,0.1);
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .legal-card-text { text-align: left; }
+  .legal-card-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.3;
+  }
+  .legal-card-sub {
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  /* ─── FOOTER ─── */
   footer {
     text-align: center;
-    padding: 40px 24px;
+    padding: 32px 24px;
     border-top: 1px solid var(--border);
     color: var(--muted);
     font-size: 13px;
     line-height: 2;
   }
-  footer a { color: var(--accent); }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
 
-  @media (max-width: 600px) {
-    header { padding: 36px 16px 32px; }
-    .container { padding: 0 14px 60px; }
-    .perm-item { grid-template-columns: 1fr; gap: 6px; }
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .highlight-split { grid-template-columns: 1fr; gap: 32px; }
+    .highlight-split.reverse { direction: ltr; }
+    .nav-links { display: none; }
+    .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
+    .stat-item:last-child { border-bottom: none; }
+    .privacy-banner { flex-direction: column; text-align: center; }
+  }
+  @media (max-width: 480px) {
+    .hero { padding: 60px 16px 60px; }
+    section { padding: 56px 16px; }
+    .mockup { width: 90px; }
+    .mockup.tall { width: 110px; }
+    .legal-cards { flex-direction: column; align-items: center; }
+    .legal-card { width: 100%; max-width: 320px; }
   }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="app-badge">LiquidWalls · Adisoft</div>
-  <h1>Privacy Policy</h1>
-  <div class="meta">
-    <span>Effective: June 1, 2026</span>
-    <span>Package: com.adisoft.liquidwalls</span>
-    <span>Contact: <a href="mailto:adisoftcollection@gmail.com" style="color:#818cf8">adisoftcollection@gmail.com</a></span>
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="index.html">LiquidWalls</a>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#privacy">Privacy</a></li>
+    <li><a href="#legal">Legal</a></li>
+    <li><a href="https://play.google.com/store/apps/details?id=com.adisoft.liquidwalls" target="_blank" rel="noopener" class="nav-cta">Get the App</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">Free on Google Play</div>
+  <h1>Your walls,<br><span>alive.</span></h1>
+  <p class="hero-sub">Browse thousands of community wallpapers, set live video and interactive web wallpapers, auto-rotate on any schedule — all from one beautiful app.</p>
+  <div class="hero-actions">
+    <a href="https://play.google.com/store/apps/details?id=com.adisoft.liquidwalls" target="_blank" rel="noopener" class="btn-primary">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3.18 23.85c.36.2.77.21 1.15.06l11.72-11.72L12.6 9.74 3.18 23.85zm14.4-14.4L5.1 1.09C4.72.9 4.31.91 3.95 1.1L14.6 11.76l2.98-2.31zm2.07 5.18a1.5 1.5 0 0 0 0-2.76l-2.7-1.56-3.26 3.27 3.26 3.26 2.7-1.21zM4.33 22.91l9.42-14.11-2.4-2.41L3.63 17.1c-.2.38-.2.85 0 1.22l.7 4.59z"/></svg>
+      Download on Google Play
+    </a>
+    <a href="#features" class="btn-secondary">See features ↓</a>
   </div>
-</header>
 
-<div class="container">
-
-  <div class="summary-box">
-    <strong>The short version</strong>
-    LiquidWalls is built to minimise the personal data it handles. Creating an account is optional and only needed for the community Store. If you never sign up, Adisoft collects nothing about you. If you do create an account, your email and profile are stored by Supabase. Everything else — your wallpapers, settings, collections, and AI keys — lives entirely on your device.
+  <!-- Phone mockup row -->
+  <div class="mockup-row">
+    <div class="mockup">
+      <div class="mockup-inner m1">🌌</div>
+      <div class="mockup-label">Community Store</div>
+    </div>
+    <div class="mockup">
+      <div class="mockup-inner m2">🌊</div>
+      <div class="mockup-label">Live Video</div>
+    </div>
+    <div class="mockup tall">
+      <div class="mockup-inner m3">⚡</div>
+      <div class="mockup-label">Auto Changer</div>
+    </div>
+    <div class="mockup">
+      <div class="mockup-inner m4">🤖</div>
+      <div class="mockup-label">AI Generate</div>
+    </div>
+    <div class="mockup">
+      <div class="mockup-inner m5">💻</div>
+      <div class="mockup-label">Web Editor</div>
+    </div>
   </div>
+</section>
 
-  <!-- 1 -->
-  <section>
-    <h2><span class="num">1</span> Who we are</h2>
-    <p>LiquidWalls is an Android wallpaper application developed and operated by <strong>Adisoft</strong>. The app lets you browse, download, and apply static image, live video, and interactive web-based wallpapers. It also provides community store features, an AI image-generation tool, and a web wallpaper editor.</p>
-    <p><strong>Contact:</strong> <a href="mailto:adisoftcollection@gmail.com">adisoftcollection@gmail.com</a></p>
-  </section>
-
-  <!-- 2 -->
-  <section>
-    <h2><span class="num">2</span> Data we (Adisoft) collect</h2>
-    <p><strong>Optional account only.</strong> Creating an account is optional and only needed to access the community Store. If you register, your email address and a securely hashed password are stored by Supabase (our authentication and backend provider) on their servers. If you never create an account, Adisoft collects nothing. The app has no first-party analytics and no crash-reporting trackers operated by Adisoft.</p>
-
-    <h3>Account registration (optional)</h3>
-    <ul>
-      <li><strong>Email address</strong> — used for authentication, account recovery, and mandatory email verification before your account is active.</li>
-      <li><strong>Password</strong> — transmitted over HTTPS and hashed by Supabase's bcrypt-based auth. We never store your plain-text password.</li>
-      <li><strong>Username</strong> — a public, unique handle (3–30 characters) you choose. Visible on uploads you share to the community store.</li>
-    </ul>
-
-    <h3>Profile information (optional, account holders only)</h3>
-    <ul>
-      <li><strong>Display name</strong> — a human-readable name shown on your profile.</li>
-      <li><strong>Bio</strong> — a short text description. Optional.</li>
-      <li><strong>Avatar image</strong> — a photo you select from your device and upload to our storage. Optional.</li>
-    </ul>
-
-    <div class="note-block">
-      <strong>What we do NOT collect:</strong> LiquidWalls contains no analytics SDK, no advertising identifier, no crash-reporting service, and no tracking pixels. We do not collect your device model, OS version, IP address, or location at the application layer. We do not use Firebase Analytics, Google Analytics, or any equivalent service.
-    </div>
-  </section>
-
-  <!-- 3 -->
-  <section>
-    <h2><span class="num">3</span> Data stored locally on your device</h2>
-    <p>The following data lives entirely on your device inside app-private storage and is never sent to our servers unless you explicitly take an action that requires it.</p>
-
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr><th>What</th><th>Where</th><th>Purpose</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Wallpaper metadata (name, tags, aspect ratio, source)</td><td>Room SQLite database (<code>liquidwalls.db</code>)</td><td>Power the local library browser</td></tr>
-          <tr><td>Downloaded store wallpaper files (images, videos, web bundles)</td><td><code>files/store/</code> in internal storage</td><td>Offline playback without re-downloading</td></tr>
-          <tr><td>AI-generated images</td><td><code>files/ai_generated/</code></td><td>Saved to your personal library after generation</td></tr>
-          <tr><td>Web wallpapers you create (HTML, CSS, JS)</td><td><code>files/webs/</code></td><td>Run as live wallpapers without internet</td></tr>
-          <tr><td>Store thumbnail cache</td><td>External cache dir (<code>store_thumbs/</code>)</td><td>Fast grid scrolling</td></tr>
-          <tr><td>App preferences (theme, brightness, auto-changer config, etc.)</td><td>Android DataStore (encrypted at rest on API 23+)</td><td>Persist your settings across sessions</td></tr>
-          <tr><td>AI API keys (OpenAI, Stability AI, Google Imagen)</td><td>Android DataStore</td><td>Stored only on your device; sent directly to the AI provider when you use AI features — never passed through our servers</td></tr>
-          <tr><td>Session auth tokens (access token, refresh token)</td><td>Android DataStore</td><td>Keep you logged in across app restarts</td></tr>
-          <tr><td>Folder URIs granted via Storage Access Framework</td><td>Android DataStore</td><td>Maintain access to local folders you add as wallpaper sources</td></tr>
-          <tr><td>Legal consent flag</td><td>Android DataStore</td><td>Record that you accepted the policies on first launch (boolean only — no personal information)</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <div class="note-block">
-      <strong>Android cloud backup:</strong> The Room database and all local wallpaper files are explicitly excluded from Android Auto Backup via <code>backup_rules.xml</code> and <code>data_extraction_rules.xml</code>. Your library metadata is never backed up to Google's servers by the system.
-    </div>
-  </section>
-
-  <!-- 4 -->
-  <section>
-    <h2><span class="num">4</span> Data sent to our servers</h2>
-    <p>Our backend runs on Supabase. Data is only transmitted when you perform a specific action — nothing is sent automatically in the background.</p>
-
-    <h3>Authentication (account holders)</h3>
-    <ul>
-      <li>Email and password during sign-in and sign-up.</li>
-      <li>Email address when requesting a password reset or re-sending a verification email.</li>
-    </ul>
-
-    <h3>Profile updates</h3>
-    <ul>
-      <li>Display name, bio, and avatar image (avatar uploaded to Cloudinary CDN; URL stored in our database).</li>
-    </ul>
-
-    <h3>Wallpaper uploads (community Store)</h3>
-    <ul>
-      <li>The wallpaper file (image, video, or web bundle) — uploaded to Cloudinary.</li>
-      <li>Metadata: name, category, tags, aspect ratio, dimensions, file size, and color palette.</li>
-      <li>Your user ID (<code>posted_by</code>) is attached so the community can see who shared it.</li>
-    </ul>
-
-    <h3>Download records</h3>
-    <ul>
-      <li>When you download a Store wallpaper while logged in, a record containing your user ID and the wallpaper ID is written to our database. Used to compute download counts and power the "Downloaded only" filter.</li>
-      <li>Guests (not logged in) do not have downloads recorded.</li>
-    </ul>
-
-    <h3>Content reports</h3>
-    <ul>
-      <li>If you submit a content report, we store: wallpaper ID, wallpaper name (optional), reason category, and your description. <strong>Reports are anonymous</strong> — your account is never linked to a report in our database. No account is required to report.</li>
-    </ul>
-
-    <div class="note-block">
-      <strong>The app never uploads your local wallpapers, settings, backups, or AI keys unless you explicitly initiate the action.</strong>
-    </div>
-  </section>
-
-  <!-- 5 -->
-  <section>
-    <h2><span class="num">5</span> Third-party services</h2>
-
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr><th>Service</th><th>Purpose</th><th>Data sent to them</th><th>Their privacy policy</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>Supabase</strong></td>
-            <td>Authentication, user profiles, store backend</td>
-            <td>Email, hashed password, profile data, wallpaper metadata, download records (account holders only)</td>
-            <td><a href="https://supabase.com/privacy" target="_blank" rel="noopener">supabase.com/privacy</a></td>
-          </tr>
-          <tr>
-            <td><strong>Cloudinary</strong></td>
-            <td>Media CDN — wallpaper delivery &amp; storage</td>
-            <td>HTTP request (IP address logged by CDN); uploaded file if you submit a wallpaper</td>
-            <td><a href="https://cloudinary.com/privacy" target="_blank" rel="noopener">cloudinary.com/privacy</a></td>
-          </tr>
-          <tr>
-            <td><strong>OpenAI</strong></td>
-            <td>AI image generation &amp; code generation (optional)</td>
-            <td>The text prompts you enter, sent directly from your device using your own API key. We never see or store your prompts or your key.</td>
-            <td><a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener">openai.com/policies/privacy-policy</a></td>
-          </tr>
-          <tr>
-            <td><strong>Stability AI</strong></td>
-            <td>AI image generation (optional)</td>
-            <td>Text prompts and negative prompts, sent directly from your device using your own API key. We never see or store them.</td>
-            <td><a href="https://stability.ai/privacy-policy" target="_blank" rel="noopener">stability.ai/privacy-policy</a></td>
-          </tr>
-          <tr>
-            <td><strong>Google (Imagen / Gemini)</strong></td>
-            <td>AI image and code generation (optional)</td>
-            <td>Text prompts, sent directly from your device using your own API key. We never see or store them.</td>
-            <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td>
-          </tr>
-          <tr>
-            <td><strong>Google Play</strong></td>
-            <td>App delivery, in-app review &amp; update</td>
-            <td>Standard Play Services data; update checker fetches the public Play Store listing page</td>
-            <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p>We do not sell, rent, or trade your personal data to any third party for commercial purposes.</p>
-  </section>
-
-  <!-- 6 -->
-  <section>
-    <h2><span class="num">6</span> AI features and your prompts</h2>
-    <p>The AI wallpaper generation and web wallpaper AI assistant features are entirely <strong>opt-in</strong> and require you to supply your own API key from the provider you choose (OpenAI, Stability AI, or Google).</p>
-    <ul>
-      <li>Your API key is stored only on your device in Android DataStore. It is never transmitted to LiquidWalls servers.</li>
-      <li>When you generate an image or enhance a prompt, your text is sent <strong>directly from your device to the AI provider's API</strong> over HTTPS using your key.</li>
-      <li>We do not log, store, or view the prompts you send.</li>
-      <li>Generated images are saved to your device's local storage and, if you choose, to your personal wallpaper library. They are not uploaded to our servers unless you explicitly share them to the community Store.</li>
-      <li>Each AI provider has its own data handling practices — please review their respective privacy policies linked in Section 5.</li>
-    </ul>
-  </section>
-
-  <!-- 7 -->
-  <section>
-    <h2><span class="num">7</span> Wallpaper uploads and community content</h2>
-    <p>The community Store allows logged-in users to share wallpapers. When you upload:</p>
-    <ul>
-      <li>The file (image, video, or HTML/CSS/JS bundle) is stored on Cloudinary's CDN and delivered to all app users.</li>
-      <li>Your username is publicly displayed alongside your upload.</li>
-      <li>Metadata (name, category, tags) you provide becomes publicly readable and searchable.</li>
-      <li>You can delete your own uploads at any time from your Profile screen. Deletion removes the record from our database and instructs Cloudinary to destroy the file.</li>
-    </ul>
-
-    <h3>Data export</h3>
-    <ul>
-      <li><strong>Full backup (.wcz):</strong> Exports your Room database, preferences, downloaded store files, web wallpapers, and AI-generated images to a zip file in your Downloads folder. We do not receive a copy.</li>
-      <li><strong>Collection export (.wcc):</strong> Exports a collection as a portable JSON file you can share or import elsewhere.</li>
-    </ul>
-  </section>
-
-  <!-- 8 -->
-  <section>
-    <h2><span class="num">8</span> Android permissions we request</h2>
-
-    <div class="perm-block">
-      <div class="perm-item">
-        <span class="perm-name">INTERNET</span>
-        <span class="perm-desc">Browse and download wallpapers from the community Store; authenticate with Supabase; call AI provider APIs.</span>
+<!-- STATS -->
+<section class="stats-section" style="padding: 0 24px;">
+  <div class="section-inner">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Wallpaper types</div>
       </div>
-      <div class="perm-item">
-        <span class="perm-name">SET_WALLPAPER<br>SET_WALLPAPER_HINTS</span>
-        <span class="perm-desc">Apply wallpapers to your Home screen, Lock screen, or both. Core purpose of the app.</span>
+      <div class="stat-item">
+        <div class="stat-num">0</div>
+        <div class="stat-label">Ads, ever</div>
       </div>
-      <div class="perm-item">
-        <span class="perm-name">RECEIVE_BOOT_COMPLETED</span>
-        <span class="perm-desc">Restart the Auto Changer and scheduled wallpaper rotations after the device reboots.</span>
+      <div class="stat-item">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Free to use</div>
       </div>
-      <div class="perm-item">
-        <span class="perm-name">FOREGROUND_SERVICE<br>FOREGROUND_SERVICE_SPECIAL_USE</span>
-        <span class="perm-desc">Run the Auto Changer's unlock-trigger and reactive-trigger services in the foreground so Android does not kill them. These services are opt-in and can be stopped at any time.</span>
-      </div>
-      <div class="perm-item">
-        <span class="perm-name">POST_NOTIFICATIONS</span>
-        <span class="perm-desc">Show progress notifications while downloading or uploading large wallpaper files. You can revoke this in system settings without affecting core functionality.</span>
-      </div>
-      <div class="perm-item">
-        <span class="perm-name">ACCESS_NETWORK_STATE</span>
-        <span class="perm-desc">Detect Wi-Fi connectivity for the "Auto change on Wi-Fi connect" trigger.</span>
-      </div>
-      <div class="perm-item">
-        <span class="perm-name">WAKE_LOCK</span>
-        <span class="perm-desc">Briefly wake the device CPU when the Auto Changer alarm fires, ensuring the wallpaper is rotated even if the screen is off.</span>
+      <div class="stat-item">
+        <div class="stat-num">0</div>
+        <div class="stat-label">Trackers / analytics</div>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="note-block">
-      <strong>No broad storage permission.</strong> The app uses the Storage Access Framework (SAF) to let you add local device folders as wallpaper sources. No <code>READ_EXTERNAL_STORAGE</code> or <code>MANAGE_EXTERNAL_STORAGE</code> permission is requested. You grant access to individual folders through the standard system folder picker.
+<!-- FEATURES -->
+<section class="features-section" id="features">
+  <div class="section-inner">
+    <div class="section-label">Everything you need</div>
+    <h2 class="section-title">One app for every kind of wallpaper</h2>
+    <p class="section-desc">Static images, live video, and interactive web wallpapers — LiquidWalls handles all three, with tools to create your own.</p>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🏪</div>
+        <div class="feature-title">Community Store</div>
+        <div class="feature-desc">Browse and download thousands of wallpapers shared by creators. Static images, looping videos, and interactive web wallpapers in one place.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⏱️</div>
+        <div class="feature-title">Auto Changer</div>
+        <div class="feature-desc">Set wallpapers to rotate automatically — on a timer, a schedule, on device unlock, on Wi-Fi connect, or when you shake the phone.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🤖</div>
+        <div class="feature-title">AI Image Generation</div>
+        <div class="feature-desc">Generate original wallpapers using OpenAI, Stability AI, or Google Imagen with your own API key. Your prompts never touch our servers.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💻</div>
+        <div class="feature-title">Web Wallpaper Editor</div>
+        <div class="feature-desc">Write HTML, CSS, and JavaScript that runs as a live wallpaper. Animate, react to touch, or pull in live data — full creative freedom.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📁</div>
+        <div class="feature-title">Local Folders</div>
+        <div class="feature-desc">Add any folder on your device as a wallpaper source. The Auto Changer can rotate through your own photo library automatically.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💾</div>
+        <div class="feature-title">Backup &amp; Restore</div>
+        <div class="feature-desc">Export your entire library — settings, collections, downloads, and web wallpapers — to a single .wcz file. Restore it instantly on any device.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎨</div>
+        <div class="feature-title">Collections</div>
+        <div class="feature-desc">Organise wallpapers into named collections and share them as portable .wcc files with other LiquidWalls users.</div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔒</div>
+        <div class="feature-title">Private by Design</div>
+        <div class="feature-desc">No analytics SDK, no advertising ID, no crash trackers. Everything stays on your device unless you explicitly upload it to the Store.</div>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- 9 -->
-  <section>
-    <h2><span class="num">9</span> Data retention and deletion</h2>
-    <p>All data the app stores <strong>locally</strong> lives on your device. Uninstalling the app removes all of it.</p>
-    <p>For <strong>account holders</strong>: your email address, hashed password, and profile data remain on Supabase's servers until you delete your account. Uploaded wallpapers remain on Cloudinary until removed.</p>
-
-    <h3>How to delete your account</h3>
-    <p>You can delete your account directly inside the app:</p>
-    <ul>
-      <li>Open LiquidWalls → tap <strong>Profile</strong> → scroll down to <strong>Delete Account</strong>.</li>
-      <li>This permanently and immediately deletes your profile, uploaded wallpapers, download history, reports, and auth credentials.</li>
-    </ul>
-    <p>Alternatively, email <a href="mailto:adisoftcollection@gmail.com">adisoftcollection@gmail.com</a> with the subject <strong>"Account Deletion Request"</strong> and we will process it within 30 days.</p>
-  </section>
-
-  <!-- 10 -->
-  <section>
-    <h2><span class="num">10</span> Children</h2>
-    <p>LiquidWalls is not directed at children under the age of 13. By using the app you confirm that you are at least 13 years old. If we become aware that we have collected personal data from a child under 13 without verified parental consent, we will delete that data promptly. Contact us at <a href="mailto:adisoftcollection@gmail.com">adisoftcollection@gmail.com</a> if you believe this has occurred.</p>
-  </section>
-
-  <!-- 11 -->
-  <section>
-    <h2><span class="num">11</span> Your rights and choices</h2>
-    <ul>
-      <li><strong>Access:</strong> Request a copy of the personal data we hold about you.</li>
-      <li><strong>Correction:</strong> Update your email, display name, bio, or avatar directly in the Profile screen.</li>
-      <li><strong>Deletion:</strong> Delete individual uploads from your Profile, or delete your full account in-app (Profile → Delete Account) or by emailing us.</li>
-      <li><strong>Portability:</strong> Export your library and settings using the built-in backup feature (Settings → Data &amp; Storage → Export).</li>
-      <li><strong>Opt-out of AI features:</strong> Simply do not enter an AI API key. No key = no data sent to AI providers.</li>
-      <li><strong>Notifications:</strong> Revoke the <code>POST_NOTIFICATIONS</code> permission in Android system settings at any time.</li>
-    </ul>
-    <p>To exercise any right, email <a href="mailto:adisoftcollection@gmail.com">adisoftcollection@gmail.com</a>.</p>
-  </section>
-
-  <!-- 12 -->
-  <section>
-    <h2><span class="num">12</span> Security</h2>
-    <p>All data transmitted between the app and our servers uses HTTPS/TLS encryption. Passwords are hashed by Supabase Auth before storage. Auth tokens are stored in Android DataStore which is encrypted at rest on Android 6.0 (API 23) and above. Row-Level Security (RLS) policies on our Supabase database ensure users can only modify their own records. Despite these measures, no system is 100% secure — please use a strong, unique password and keep your device's OS up to date.</p>
-  </section>
-
-  <!-- 13 -->
-  <section>
-    <h2><span class="num">13</span> Data Safety (Google Play)</h2>
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr><th>Category</th><th>Collected?</th><th>Notes</th></tr>
-        </thead>
-        <tbody>
-          <tr><td><strong>Location</strong></td><td>No</td><td>App does not request or transmit location data.</td></tr>
-          <tr><td><strong>Personal info (email)</strong></td><td>Yes — optional</td><td>Email address collected by Supabase only if you create an account. Account is optional.</td></tr>
-          <tr><td><strong>Financial info</strong></td><td>No</td><td>No in-app purchases.</td></tr>
-          <tr><td><strong>Photos &amp; videos</strong></td><td>No*</td><td>App reads files you select; does not upload them without your explicit action.</td></tr>
-          <tr><td><strong>Advertising ID</strong></td><td>No</td><td>Not collected by LiquidWalls or any SDK it includes.</td></tr>
-          <tr><td><strong>App activity</strong></td><td>No</td><td>No analytics or ad-tracking SDKs are included.</td></tr>
-          <tr><td><strong>Device IDs</strong></td><td>No</td><td>Not collected.</td></tr>
-        </tbody>
-      </table>
+<!-- HIGHLIGHT: AI -->
+<section>
+  <div class="section-inner">
+    <div class="highlight-split">
+      <div class="highlight-visual">
+        <div class="visual-phones">
+          <div class="mini-phone" style="transform: translateY(12px);">
+            <div class="mini-phone-screen mp2">✦</div>
+          </div>
+          <div class="mini-phone">
+            <div class="mini-phone-screen mp1">✦</div>
+          </div>
+          <div class="mini-phone" style="transform: translateY(12px);">
+            <div class="mini-phone-screen mp3">✦</div>
+          </div>
+        </div>
+      </div>
+      <div class="highlight-text">
+        <div class="section-label">AI Generation</div>
+        <h2 class="section-title">Your imagination, rendered in seconds</h2>
+        <p class="section-desc">Type a prompt, pick a provider, and watch your wallpaper appear. The AI never runs on our servers — you bring your own key, your prompts stay private.</p>
+        <ul class="highlight-list">
+          <li><strong>OpenAI DALL·E</strong> — photorealistic and artistic styles</li>
+          <li><strong>Stability AI</strong> — precise control with negative prompts</li>
+          <li><strong>Google Imagen / Gemini</strong> — high-fidelity detail</li>
+          <li>One-tap <strong>AI prompt enhancer</strong> for better results</li>
+          <li>Saved directly to your <strong>local library</strong>, never to our servers</li>
+        </ul>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- 14 -->
-  <section>
-    <h2><span class="num">14</span> Changes to this policy</h2>
-    <p>If this policy changes, the updated version ships inside the app with the next release and replaces the in-app version in Settings. The hosted copy at this URL will also be updated. Continued use of the app after the effective date constitutes acceptance of the revised policy.</p>
-  </section>
+<!-- HIGHLIGHT: AUTO CHANGER -->
+<section style="background: var(--surface);">
+  <div class="section-inner">
+    <div class="highlight-split reverse">
+      <div class="highlight-visual">
+        <div class="visual-phones">
+          <div class="mini-phone" style="transform: translateY(12px);">
+            <div class="mini-phone-screen mp4">⏱</div>
+          </div>
+          <div class="mini-phone">
+            <div class="mini-phone-screen mp2">🔔</div>
+          </div>
+          <div class="mini-phone" style="transform: translateY(12px);">
+            <div class="mini-phone-screen mp1">📶</div>
+          </div>
+        </div>
+      </div>
+      <div class="highlight-text">
+        <div class="section-label">Auto Changer</div>
+        <h2 class="section-title">Your wallpaper changes so you don't have to</h2>
+        <p class="section-desc">Set triggers, schedules, and quiet hours. The Auto Changer runs silently in the background and rotates through any combination of your libraries.</p>
+        <ul class="highlight-list">
+          <li>Change on <strong>timer</strong>, <strong>unlock</strong>, <strong>Wi-Fi connect</strong>, or <strong>device shake</strong></li>
+          <li>Multiple independent <strong>schedules</strong> (morning, night, weekend)</li>
+          <li>Configurable <strong>Quiet Hours</strong> — no changes while you sleep</li>
+          <li>Apply to <strong>Home screen</strong>, <strong>Lock screen</strong>, or both simultaneously</li>
+          <li>Works with Store wallpapers, local folders, and AI-generated images</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- 15 -->
-  <section>
-    <h2><span class="num">15</span> Contact</h2>
-    <p>Questions, data requests, account deletion, or content takedown requests:</p>
-    <p>
-      <strong>Email:</strong> <a href="mailto:adisoftcollection@gmail.com">adisoftcollection@gmail.com</a><br>
-      <strong>Response time:</strong> Within 5 business days for general inquiries; within 30 days for data rights requests.
-    </p>
-  </section>
+<!-- PRIVACY -->
+<section id="privacy">
+  <div class="section-inner">
+    <div class="section-label">Privacy</div>
+    <h2 class="section-title">Built to collect as little as possible</h2>
+    <p class="section-desc">No account required to use the app. No analytics. No advertising. Your AI keys, settings, and wallpapers live entirely on your device.</p>
 
-</div>
+    <div class="privacy-banner">
+      <div class="privacy-icon">🛡️</div>
+      <div class="privacy-text">
+        <p><strong>Guest users: zero data collected.</strong> If you never create an account, Adisoft collects absolutely nothing about you. No identifier, no IP log, no usage data.</p>
+        <p style="margin-top: 8px;">Account holders store only an email, username, and any content they choose to upload to the community Store — all handled by Supabase. <a href="privacy.html" style="color: #34d399;">Read the full Privacy Policy →</a></p>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- CTA -->
+<section class="cta-section">
+  <div class="section-inner" style="text-align: center;">
+    <div class="section-label" style="text-align: center;">Get started</div>
+    <h2 class="section-title">Download LiquidWalls for free</h2>
+    <p class="section-desc" style="margin: 0 auto 40px;">Available now on Google Play. No in-app purchases, no subscriptions, no ads — just great wallpapers.</p>
+    <a href="https://play.google.com/store/apps/details?id=com.adisoft.liquidwalls" target="_blank" rel="noopener" class="play-store-btn">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M3.18 23.85c.36.2.77.21 1.15.06l11.72-11.72L12.6 9.74 3.18 23.85zm14.4-14.4L5.1 1.09C4.72.9 4.31.91 3.95 1.1L14.6 11.76l2.98-2.31zm2.07 5.18a1.5 1.5 0 0 0 0-2.76l-2.7-1.56-3.26 3.27 3.26 3.26 2.7-1.21zM4.33 22.91l9.42-14.11-2.4-2.41L3.63 17.1c-.2.38-.2.85 0 1.22l.7 4.59z"/>
+      </svg>
+      <div>
+        <div style="font-size:11px; font-weight:500; opacity:0.7; margin-bottom:2px;">GET IT ON</div>
+        <div style="font-size:17px; font-weight:800;">Google Play</div>
+      </div>
+    </a>
+    <p class="play-sub">Free · Android 7.0+ · com.adisoft.liquidwalls</p>
+  </div>
+</section>
+
+<!-- LEGAL LINKS -->
+<section class="legal-section" id="legal">
+  <div class="legal-inner">
+    <p>LiquidWalls is developed by <strong style="color:var(--text)">Adisoft</strong>. Questions? <a href="mailto:adisoftcollection@gmail.com" style="color: var(--accent);">adisoftcollection@gmail.com</a></p>
+    <div class="legal-cards">
+      <a href="privacy.html" class="legal-card">
+        <div class="legal-card-icon">🔒</div>
+        <div class="legal-card-text">
+          <div class="legal-card-title">Privacy Policy</div>
+          <div class="legal-card-sub">What data we collect</div>
+        </div>
+      </a>
+      <a href="terms.html" class="legal-card">
+        <div class="legal-card-icon">📋</div>
+        <div class="legal-card-text">
+          <div class="legal-card-title">Terms of Service</div>
+          <div class="legal-card-sub">Rules of use</div>
+        </div>
+      </a>
+      <a href="cookies.html" class="legal-card">
+        <div class="legal-card-icon">🍪</div>
+        <div class="legal-card-text">
+          <div class="legal-card-title">Cookies &amp; Identifiers</div>
+          <div class="legal-card-sub">Storage &amp; tracking</div>
+        </div>
+      </a>
+      <a href="acc_delete.html" class="legal-card">
+        <div class="legal-card-icon">🗑️</div>
+        <div class="legal-card-text">
+          <div class="legal-card-title">Delete Account</div>
+          <div class="legal-card-sub">Data deletion &amp; steps</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
-  <strong style="color:var(--text)">LiquidWalls</strong> · Adisoft · com.adisoft.liquidwalls<br>
-  Privacy Policy · Effective June 1, 2026<br>
-  <a href="mailto:adisoftcollection@gmail.com">adisoftcollection@gmail.com</a>
+  <strong style="color:var(--text)">LiquidWalls</strong> by Adisoft · com.adisoft.liquidwalls<br>
+  <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="cookies.html">Cookies</a> · <a href="acc_delete.html">Delete Account</a> · <a href="mailto:adisoftcollection@gmail.com">Contact</a><br>
+  © 2026 Adisoft. All rights reserved.
 </footer>
 
 </body>

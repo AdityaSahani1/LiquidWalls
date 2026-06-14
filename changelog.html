@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LiquidWalls – Changelog</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #06070c;
+    --surface: #0f1019;
+    --surface2: #161824;
+    --border: #2a2d45;
+    --accent: #7c6fff;
+    --accent2: #c084fc;
+    --green: #10b981;
+    --amber: #f59e0b;
+    --sky: #38bdf8;
+    --rose: #f43f5e;
+    --text: #e2e8f0;
+    --muted: #8892b0;
+    --radius: 14px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg); color: var(--text);
+    line-height: 1.7; font-size: 15px; overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(6,7,12,0.85);
+    backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(42,45,69,0.6);
+    padding: 0 24px; height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-brand {
+    font-size: 18px; font-weight: 800;
+    background: linear-gradient(135deg, #a5b4fc, #818cf8, #c084fc);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    letter-spacing: -0.3px; text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 20px; list-style: none; align-items: center; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+  .nav-cta {
+    background: var(--accent); color: #fff !important; padding: 7px 18px;
+    border-radius: 50px; font-weight: 700 !important; font-size: 13px !important; transition: opacity 0.2s !important;
+  }
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* ─── HEADER ─── */
+  header {
+    padding: 72px 24px 56px; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  header::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(124,111,255,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(124,111,255,0.1); border: 1px solid rgba(124,111,255,0.3);
+    color: #a5b4fc; font-size: 12px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    padding: 5px 16px; border-radius: 50px; margin-bottom: 24px;
+  }
+  header h1 {
+    font-size: clamp(34px, 6vw, 58px); font-weight: 800;
+    letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 16px;
+    background: linear-gradient(135deg, #e2e8f0 0%, #a5b4fc 40%, #c084fc 80%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  header p { color: var(--muted); font-size: 16px; max-width: 480px; margin: 0 auto; line-height: 1.75; }
+
+  /* ─── LAYOUT ─── */
+  .container { max-width: 760px; margin: 0 auto; padding: 56px 24px 96px; }
+
+  /* ─── VERSION BLOCK ─── */
+  .version-block {
+    position: relative; padding-left: 36px; margin-bottom: 56px;
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+  }
+  .version-block.visible { opacity: 1; transform: translateY(0); }
+
+  .version-block::before {
+    content: ''; position: absolute; left: 11px; top: 36px; bottom: -20px; width: 2px;
+    background: linear-gradient(to bottom, var(--border), transparent);
+  }
+  .version-block:last-child::before { display: none; }
+
+  .version-dot {
+    position: absolute; left: 0; top: 10px;
+    width: 24px; height: 24px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; flex-shrink: 0;
+    box-shadow: 0 0 0 4px var(--bg);
+  }
+  .version-dot.current { background: rgba(124,111,255,0.2); border: 2px solid rgba(124,111,255,0.6); }
+  .version-dot.current::after {
+    content: ''; width: 8px; height: 8px; border-radius: 50%; background: #a5b4fc;
+  }
+  .version-dot.stable { background: rgba(16,185,129,0.15); border: 2px solid rgba(16,185,129,0.4); }
+  .version-dot.stable::after {
+    content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--green);
+  }
+
+  .version-header { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+  .version-num {
+    font-size: 20px; font-weight: 800; color: var(--text); letter-spacing: -0.5px;
+  }
+  .version-tag {
+    font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 50px; letter-spacing: 0.3px;
+  }
+  .tag-current { background: rgba(124,111,255,0.15); border: 1px solid rgba(124,111,255,0.35); color: #a5b4fc; }
+  .tag-stable  { background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3); color: #10b981; }
+  .version-date { font-size: 12px; color: var(--muted); font-weight: 500; margin-left: auto; }
+
+  /* ─── CHANGE ENTRIES ─── */
+  .changes { display: flex; flex-direction: column; gap: 8px; }
+  .change-item {
+    display: flex; gap: 12px; align-items: flex-start;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 11px; padding: 13px 15px;
+    transition: border-color 0.2s;
+  }
+  .change-item:hover { border-color: rgba(124,111,255,0.3); }
+
+  .change-icon {
+    width: 30px; height: 30px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; flex-shrink: 0;
+  }
+  .change-icon.new     { background: rgba(124,111,255,0.12); }
+  .change-icon.improve { background: rgba(56,189,248,0.1); }
+  .change-icon.fix     { background: rgba(16,185,129,0.1); }
+  .change-icon.remove  { background: rgba(244,63,94,0.1); }
+
+  .change-body { flex: 1; }
+  .change-title { font-size: 13px; font-weight: 600; color: var(--text); line-height: 1.4; }
+  .change-desc  { font-size: 12px; color: var(--muted); margin-top: 2px; line-height: 1.5; }
+
+  .change-type {
+    font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 50px;
+    letter-spacing: 0.5px; flex-shrink: 0; align-self: flex-start; margin-top: 2px;
+  }
+  .type-new     { background: rgba(124,111,255,0.12); color: #a5b4fc; }
+  .type-improve { background: rgba(56,189,248,0.1); color: #7dd3fc; }
+  .type-fix     { background: rgba(16,185,129,0.1); color: #6ee7b7; }
+  .type-remove  { background: rgba(244,63,94,0.1); color: #fda4af; }
+
+  /* ─── SECTION LABEL ─── */
+  .section-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 28px;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    text-align: center; padding: 36px 24px;
+    border-top: 1px solid var(--border);
+    color: var(--muted); font-size: 13px; line-height: 2;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    .container { padding: 40px 16px 72px; }
+    .version-block { padding-left: 28px; }
+    .version-date { width: 100%; margin-left: 0; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">LiquidWalls</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="roadmap.html">Roadmap</a></li>
+    <li><a href="https://play.google.com/store/apps/details?id=com.adisoft.liquidwalls" target="_blank" rel="noopener" class="nav-cta">Get the App</a></li>
+  </ul>
+</nav>
+
+<header>
+  <div class="header-badge">Release History</div>
+  <h1>Changelog</h1>
+  <p>Every update, every improvement — a full history of what's changed in LiquidWalls.</p>
+</header>
+
+<div class="container">
+  <div class="section-label">All releases</div>
+
+  <!-- Build 12 — Current -->
+  <div class="version-block">
+    <div class="version-dot current"></div>
+    <div class="version-header">
+      <span class="version-num">Build 12</span>
+      <span class="version-tag tag-current">Current</span>
+      <span class="version-date">June 2026</span>
+    </div>
+    <div class="changes">
+      <div class="change-item">
+        <div class="change-icon new">🗺️</div>
+        <div class="change-body">
+          <div class="change-title">Custom Day Schedules</div>
+          <div class="change-desc">Set exact per-day/time alarms for wallpaper rotation — self-rearming after each tick</div>
+        </div>
+        <span class="change-type type-new">New</span>
+      </div>
+      <div class="change-item">
+        <div class="change-icon new">📊</div>
+        <div class="change-body">
+          <div class="change-title">Multiple Triggers Simultaneously</div>
+          <div class="change-desc">Run interval + unlock + shake all at once — mix and match any combination of auto-changer triggers</div>
+        </div>
+        <span class="change-type type-new">New</span>
+      </div>
+      <div class="change-item">
+        <div class="change-icon new">📱</div>
+        <div class="change-body">
+          <div class="change-title">Mirror Lock Screen Mode</div>
+          <div class="change-desc">Horizontally flip the wallpaper when applying to the lock screen for a mirrored look</div>
+        </div>
+        <span class="change-type type-new">New</span>
+      </div>
+      <div class="change-item">
+        <div class="change-icon new">📝</div>
+        <div class="change-body">
+          <div class="change-title">AI Prompt History</div>
+          <div class="change-desc">Your recent prompts are saved and displayed so you can re-use them instantly</div>
+        </div>
+        <span class="change-type type-new">New</span>
+      </div>
+      <div class="change-item">
+        <div class="change-icon new">🔗</div>
+        <div class="change-body">
+          <div class="change-title">Content Takedown &amp; Report Flow</div>
+          <div class="change-desc">In-app DMCA / report tool for community store wallpapers — fully anonymous</div>
+        </div>
+        <span class="change-type type-new">New</span>
+      </div>
+      <div class="change-item">
+        <div class="change-icon improve">⚡</div>
+        <div class="change-body">
+          <div class="change-title">Cross-type Auto-changer</div>
+          <div class="change-desc">Smooth transitions when the auto-changer rotates between image, video, and web wallpaper types</div>
+        </div>
+        <span class="change-type type-improve">Improved</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Build 11 -->
+  <div class="version-block">
+    <div class="version-dot stable"></div>
+    <div class="version-header">
+      <span class="version-num">Build 11</span>
+      <span class="version-tag tag-stable">Stable</span>
+      <span class="version-date">May 2026</span>
+    </div>
+    <div class="changes">
+      <div class="change-item">
+        <div class="change-icon new">🎨</div>
+        <div class="change-body">
+          <div class="change-title">Accent Color Themes</div>
+          <div class="change-desc">Six accent colors — Indigo, Magenta, Emerald, Amber, Sky, Rose — applied across the entire UI</div>
+        </div>
+        <span class="change-type type-new">New</span>
+      </div>
+      <div class="change-item">
+        <div class="change-icon new">🌈</div>
+        <div class="change-body">
+          <div class="change-title">Color Palette Extraction</div>
+          <div class="change-desc">Each wallpaper now shows its dominant color palette — tap a color to filter the store by it</div>
+        </div>
+        <span class="change-type type-new">New</span>
+      </div>
+      <div class="change-item">
+        <div class="change-icon new">🔋</div>
+        <div class="change-body">
+          <div class="change-title">Battery Saver Mode</div>
+          <div class="change-desc">Reduces video wallpaper resolution when system battery saver is active to extend battery life</div>
+        </div>
+        <span class="change-type type-new">New</span>
+      </div>
+      <div class="change-item">
+        <div class="change-icon new">🔔</div>
+        <div class="change-body">
+          <div class="change-title">Notification Settings Screen</div>
+          <div class="change-desc">Fine-grained toggles for in-app, background, and persistent notification channels</div>
+        </div>
+        <span class="change-type type-new">New</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Build 10 -->
+  <div class="version-block">
+    <div class="version-dot stable"></div>
+    <div class="version-header">
+      <span class="version-num">Build 10</span>
+      <span class="version-tag tag-stable">Stable</span>
+      <span class="version-date">April 2026</span>
+    </div>
+    <div class="changes">
+      <div class="change-item">
+        <div class="change-icon new">✏️</div>
+        <div class="change-body">
+          <div class="change-title">Web Wallpaper Editor</div>
+          <div class="change-desc">Write HTML, CSS, and JavaScript directly in the app — live WebView preview as you type</div>
+        </div>
+        <span class="change-type type-new">New</span>
+      </div>
+      <div class="change-item">
+        <div class="change-icon new">🌐</div>
+        <div class="change-body">
+          <div class="change-title">AI Web Wallpaper Generator</div>
+          <div class="change-desc">Describe an animation in plain English — get a working live wallpaper powered by GPT-4.1 or Gemini 2.5</div>
+        </div>
+        <span class="change-type type-new">New</span>
+      </div>
+      <div class="change-item">
+        <div class="change-icon new">🖌️</div>
+        <div class="change-body">
+          <div class="change-title">Style Presets for AI Images</div>
+          <div class="change-desc">One-tap style selection: Cinematic, Anime, Oil Painting, Neon Glow, Watercolour, and more</div>
+        </div>
+        <span class="change-type type-new">New</span>
+      </div>
+      <div class="change-item">
+        <div class="change-icon new">🚫</div>
+        <div class="change-body">
+          <div class="change-title">Negative Prompts (Stability AI)</div>
+          <div class="change-desc">Tell the AI exactly what to leave out — for more precise image generation results</div>
+        </div>
+        <span class="change-type type-new">New</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Build 9 -->
+  <div class="version-block">
+    <div class="version-dot stable"></div>
+    <div class="version-header">
+      <span class="version-num">Build 9</span>
+      <span class="version-tag tag-stable">Stable</span>
+      <span class="version-date">March 2026</span>
+    </div>
+    <div class="changes">
+      <div class="change-item">
+        <div class="change-icon new">🎨</div>
+        <div class="change-body">
+          <div class="change-title">AI Image Generation</div>
+          <div class="change-desc">Generate wallpapers from text using OpenAI DALL·E, Stability AI, or Google Imagen 3 — with your own API key</div>
+        </div>
+        <span class="change-type type-new">New</span>
+      </div>
+      <div class="change-item">
+        <div class="change-icon new">✨</div>
+        <div class="change-body">
+          <div class="change-title">Prompt Enhancer</div>
+          <div class="change-desc">One tap rewrites your prompt with AI to produce richer, more detailed generations</div>
+        </div>
+        <span class="change-type type-new">New</span>
+      </div>
+      <div class="change-item">
+        <div class="change-icon new">⭐</div>
+        <div class="change-body">
+          <div class="change-title">In-App Review &amp; Update Checker</div>
+          <div class="change-desc">Rate LiquidWalls without leaving the app, and get notified when a new version is available</div>
+        </div>
+        <span class="change-type type-new">New</span>
+      </div>
+      <div class="change-item">
+        <div class="change-icon new">🔕</div>
+        <div class="change-body">
+          <div class="change-title">Quiet Hours</div>
+          <div class="change-desc">Define a time window where the auto-changer pauses — no wallpaper changes while you sleep</div>
+        </div>
+        <span class="change-type type-new">New</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Build 6–8 -->
+  <div class="version-block">
+    <div class="version-dot stable"></div>
+    <div class="version-header">
+      <span class="version-num">Builds 6 – 8</span>
+      <span class="version-tag tag-stable">Stable</span>
+      <span class="version-date">Jan – Feb 2026</span>
+    </div>
+    <div class="changes">
+      <div class="change-item">
+        <div class="change-icon new">⏱️</div>
+        <div class="change-body">
+          <div class="change-title">Auto Wallpaper Changer</div>
+          <div class="change-desc">Rotate wallpapers automatically on a timer, device unlock, charging start, screen off, Wi-Fi connect, or shake</div>
+        </div>
+        <span class="change-type type-new">New</span>
+      </div>
+      <div class="change-item">
+        <div class="change-icon new">📦</div>
+        <div class="change-body">
+          <div class="change-title">Collections &amp; .wcc File Sharing</div>
+          <div class="change-desc">Group wallpapers into named collections and share them as a portable .wcc file with anyone</div>
+        </div>
+        <span class="change-type type-new">New</span>
+      </div>
+      <div class="change-item">
+        <div class="change-icon new">💾</div>
+        <div class="change-body">
+          <div class="change-title">Full Backup &amp; Restore (.wcz)</div>
+          <div class="change-desc">Export your entire library — wallpapers, settings, and collections — to one file; restore instantly on any device</div>
+        </div>
+        <span class="change-type type-new">New</span>
+      </div>
+      <div class="change-item">
+        <div class="change-icon new">🔍</div>
+        <div class="change-body">
+          <div class="change-title">Search &amp; Color Search</div>
+          <div class="change-desc">Full-text search across the store, plus filter by dominant color palette</div>
+        </div>
+        <span class="change-type type-new">New</span>
+      </div>
+      <div class="change-item">
+        <div class="change-icon new">📁</div>
+        <div class="change-body">
+          <div class="change-title">Local Device Folders</div>
+          <div class="change-desc">Add any folder on your phone as a wallpaper source — no permissions beyond what you explicitly grant</div>
+        </div>
+        <span class="change-type type-new">New</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Builds 1–5 -->
+  <div class="version-block">
+    <div class="version-dot stable"></div>
+    <div class="version-header">
+      <span class="version-num">Builds 1 – 5</span>
+      <span class="version-tag tag-stable">Foundation</span>
+      <span class="version-date">Late 2025 – Early 2026</span>
+    </div>
+    <div class="changes">
+      <div class="change-item">
+        <div class="change-icon new">🚀</div>
+        <div class="change-body">
+          <div class="change-title">Initial Release</div>
+          <div class="change-desc">LiquidWalls launches with the core wallpaper engine — browse and set static image wallpapers</div>
+        </div>
+        <span class="change-type type-new">Launch</span>
+      </div>
+      <div class="change-item">
+        <div class="change-icon new">🎬</div>
+        <div class="change-body">
+          <div class="change-title">Video Live Wallpapers</div>
+          <div class="change-desc">Loop any MP4 or WebM file as a true live wallpaper — no root required</div>
+        </div>
+        <span class="change-type type-new">New</span>
+      </div>
+      <div class="change-item">
+        <div class="change-icon new">🌐</div>
+        <div class="change-body">
+          <div class="change-title">Web Live Wallpapers</div>
+          <div class="change-desc">Render any HTML/CSS/JS animation as a full-screen live wallpaper</div>
+        </div>
+        <span class="change-type type-new">New</span>
+      </div>
+      <div class="change-item">
+        <div class="change-icon new">☁️</div>
+        <div class="change-body">
+          <div class="change-title">Community Store &amp; Accounts</div>
+          <div class="change-desc">Browse, download, and upload wallpapers to a shared community store — account optional</div>
+        </div>
+        <span class="change-type type-new">New</span>
+      </div>
+      <div class="change-item">
+        <div class="change-icon new">🏠</div>
+        <div class="change-body">
+          <div class="change-title">Home &amp; Lock Screen Targets</div>
+          <div class="change-desc">Apply wallpapers to the home screen, lock screen, or both — independently</div>
+        </div>
+        <span class="change-type type-new">New</span>
+      </div>
+      <div class="change-item">
+        <div class="change-icon new">✂️</div>
+        <div class="change-body">
+          <div class="change-title">Smart Crop</div>
+          <div class="change-desc">Automatically fills any screen ratio — no black bars, no cropped faces</div>
+        </div>
+        <span class="change-type type-new">New</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <strong style="color:var(--text)">LiquidWalls</strong> · Adisoft · com.adisoft.liquidwalls<br>
+  <a href="index.html">Home</a> · <a href="roadmap.html">Roadmap</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="acc_delete.html">Delete Account</a><br>
+  © 2026 Adisoft. All rights reserved.
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+  document.querySelectorAll('.version-block').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

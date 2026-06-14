@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LiquidWalls – Terms of Service</title>
+<style>
+  :root {
+    --bg: #06070c;
+    --surface: #0f1019;
+    --surface2: #161824;
+    --border: #2a2d45;
+    --accent: #7c6fff;
+    --green: #34d399;
+    --text: #e2e8f0;
+    --muted: #8892b0;
+    --radius: 12px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+    font-size: 15px;
+  }
+
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(6,7,12,0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(42,45,69,0.6);
+    padding: 0 24px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-brand {
+    font-size: 18px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #a5b4fc, #818cf8, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.3px;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  header {
+    background: linear-gradient(135deg, #0f1230 0%, #06070c 60%, #160825 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 52px 24px 44px;
+    text-align: center;
+  }
+  header .app-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(124,111,255,0.12);
+    border: 1px solid rgba(124,111,255,0.35);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+  }
+  header h1 {
+    font-size: clamp(26px, 5vw, 40px);
+    font-weight: 800;
+    background: linear-gradient(135deg, #a5b4fc, #818cf8, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+  header .meta {
+    color: var(--muted);
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  header .meta span::before { content: '·'; margin-right: 16px; }
+  header .meta span:first-child::before { content: ''; margin: 0; }
+
+  .container { max-width: 780px; margin: 0 auto; padding: 0 20px 80px; }
+
+  .summary-box {
+    background: rgba(52,211,153,0.07);
+    border: 1px solid rgba(52,211,153,0.25);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin: 40px 0 0;
+    font-size: 14px;
+    color: #a7f3d0;
+    line-height: 1.7;
+  }
+  .summary-box strong { color: var(--green); display: block; margin-bottom: 6px; font-size: 15px; }
+
+  section { margin-top: 44px; }
+  section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #c7d2fe;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  section h2 .num {
+    background: rgba(124,111,255,0.15);
+    border: 1px solid rgba(124,111,255,0.3);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 800;
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  section h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #a5b4fc;
+    margin: 20px 0 8px;
+  }
+  p { color: var(--muted); font-size: 14px; margin-bottom: 12px; }
+  ul { padding-left: 20px; margin-bottom: 12px; }
+  li { color: var(--muted); font-size: 14px; margin-bottom: 6px; }
+  li strong, p strong { color: var(--text); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .note-block {
+    background: rgba(124,111,255,0.07);
+    border: 1px solid rgba(124,111,255,0.2);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    margin: 14px 0;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .note-block strong { color: #c7d2fe; }
+
+  .warn-block {
+    background: rgba(251,191,36,0.07);
+    border: 1px solid rgba(251,191,36,0.2);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    margin: 14px 0;
+    font-size: 13px;
+    color: #fde68a;
+    line-height: 1.7;
+  }
+  .warn-block strong { color: #fbbf24; }
+
+  footer {
+    text-align: center;
+    padding: 40px 24px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 2;
+  }
+  footer a { color: var(--accent); }
+
+  @media (max-width: 600px) {
+    header { padding: 36px 16px 32px; }
+    .container { padding: 0 14px 60px; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">LiquidWalls</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+    <li><a href="cookies.html">Cookies</a></li>
+    <li><a href="acc_delete.html">Delete Account</a></li>
+  </ul>
+</nav>
+
+<header>
+  <div class="app-badge">LiquidWalls · Adisoft</div>
+  <h1>Terms of Service</h1>
+  <div class="meta">
+    <span>Effective: June 1, 2026</span>
+    <span>Package: com.adisoft.liquidwalls</span>
+    <span>Contact: <a href="mailto:adisoftcollection@gmail.com" style="color:#818cf8">adisoftcollection@gmail.com</a></span>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="summary-box">
+    <strong>The short version</strong>
+    Use LiquidWalls for personal, lawful wallpaper enjoyment. Don't upload content you don't own, don't abuse the community Store, and don't try to break the app. The core app — browsing, applying, and creating wallpapers — is free. Account features require you to be at least 13. If something breaks, we're liable only within the limits the law allows.
+  </div>
+
+  <!-- 1 -->
+  <section>
+    <h2><span class="num">1</span> Acceptance of terms</h2>
+    <p>By installing or using LiquidWalls (the "App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree, do not use the App.</p>
+    <p>These Terms apply to all users of the App, including visitors, registered account holders, and community Store contributors. Your continued use of the App after any update to these Terms constitutes acceptance of the revised Terms.</p>
+    <p><strong>Age requirement:</strong> You must be at least 13 years old to use the App. By using the App you confirm that you meet this requirement.</p>
+  </section>
+
+  <!-- 2 -->
+  <section>
+    <h2><span class="num">2</span> Description of the service</h2>
+    <p>LiquidWalls is an Android wallpaper application developed and operated by <strong>Adisoft</strong>. It provides:</p>
+    <ul>
+      <li>A community <strong>Store</strong> to browse, download, and share static image, live video, and interactive web-based wallpapers.</li>
+      <li>An <strong>Auto Changer</strong> to rotate wallpapers automatically by schedule, trigger, or timer.</li>
+      <li>An <strong>AI image generation</strong> tool powered by third-party providers (OpenAI, Stability AI, Google) using your own API keys.</li>
+      <li>A <strong>Web Wallpaper Editor</strong> to create interactive wallpapers with HTML, CSS, and JavaScript.</li>
+      <li>Library management, collections, local folder sources, and backup/restore features.</li>
+    </ul>
+    <p>Adisoft reserves the right to modify, suspend, or discontinue any feature of the App at any time without notice, though we will make reasonable efforts to communicate significant changes.</p>
+  </section>
+
+  <!-- 3 -->
+  <section>
+    <h2><span class="num">3</span> Accounts</h2>
+    <p>Creating an account is <strong>optional</strong>. It is required only to access community Store features (uploading, downloading while logged in, and profile pages).</p>
+
+    <h3>Registration</h3>
+    <ul>
+      <li>You must provide a valid email address and choose a unique username (3–30 characters).</li>
+      <li>Your email address must be verified before your account is fully active.</li>
+      <li>You are responsible for keeping your password secure and for all activity under your account.</li>
+      <li>You must not create accounts on behalf of others or use another person's identity.</li>
+    </ul>
+
+    <h3>Account termination</h3>
+    <ul>
+      <li>You may delete your account at any time from the Profile screen. Deletion is immediate and permanent.</li>
+      <li>Adisoft may suspend or terminate accounts that violate these Terms, engage in abusive behaviour, or upload prohibited content.</li>
+    </ul>
+  </section>
+
+  <!-- 4 -->
+  <section>
+    <h2><span class="num">4</span> User-generated content</h2>
+    <p>When you upload a wallpaper to the community Store, you:</p>
+    <ul>
+      <li><strong>Represent and warrant</strong> that you own the content or have all necessary rights and licences to share it publicly.</li>
+      <li><strong>Grant Adisoft</strong> a non-exclusive, worldwide, royalty-free licence to host, store, deliver, and display the content to other App users via our CDN (Cloudinary) for as long as the upload remains on the platform.</li>
+      <li><strong>Retain ownership</strong> of your content. Adisoft does not claim intellectual property rights over what you upload.</li>
+      <li>Understand that your content and username will be <strong>publicly visible</strong> to all App users.</li>
+    </ul>
+
+    <div class="warn-block">
+      <strong>Prohibited uploads.</strong> You must not upload content that: infringes copyright, trademark, or other intellectual property rights; contains nudity or sexually explicit material; depicts or promotes violence, self-harm, or hate speech; includes personal data of third parties without consent; is deceptive, malicious, or contains hidden code intended to harm users; or violates any applicable law or regulation.
+    </div>
+
+    <p>Adisoft reserves the right to remove any content that violates these Terms without prior notice. Repeat violations will result in account termination.</p>
+
+    <h3>Content reports</h3>
+    <p>Any user can report content they believe violates these Terms using the in-app report feature. Reports are reviewed by Adisoft and acted upon at our discretion. Reports are anonymous — the reporting user's identity is not disclosed to the uploader.</p>
+  </section>
+
+  <!-- 5 -->
+  <section>
+    <h2><span class="num">5</span> Acceptable use</h2>
+    <p>You agree not to:</p>
+    <ul>
+      <li>Use the App for any unlawful purpose or in violation of any applicable laws or regulations.</li>
+      <li>Attempt to gain unauthorised access to the App's servers, databases, or other users' accounts.</li>
+      <li>Reverse-engineer, decompile, or disassemble any part of the App except as permitted by law.</li>
+      <li>Use automated scripts, bots, or scrapers to access the Store or any App API endpoint.</li>
+      <li>Upload malicious code, scripts, or web wallpapers designed to harm or mislead other users.</li>
+      <li>Impersonate Adisoft, another user, or any other person or entity.</li>
+      <li>Interfere with or disrupt the App's infrastructure, servers, or networks.</li>
+      <li>Circumvent any security or access-control features of the App.</li>
+    </ul>
+  </section>
+
+  <!-- 6 -->
+  <section>
+    <h2><span class="num">6</span> AI features</h2>
+    <p>The AI wallpaper generation and web wallpaper AI assistant features are entirely <strong>opt-in</strong>. To use them you must supply your own API key from the provider you choose (OpenAI, Stability AI, or Google).</p>
+    <ul>
+      <li>You are solely responsible for obtaining, managing, and paying for your AI provider API key.</li>
+      <li>You must comply with the terms of service of the AI provider whose key you use.</li>
+      <li>Adisoft is not responsible for AI-generated content, inaccuracies, or outputs produced by third-party models.</li>
+      <li>You must not use the AI features to generate content that violates Section 4 (prohibited uploads) or Section 5 (acceptable use).</li>
+      <li>AI-generated images are saved locally on your device. Sharing them to the community Store is subject to the same content rules as any other upload.</li>
+    </ul>
+  </section>
+
+  <!-- 7 -->
+  <section>
+    <h2><span class="num">7</span> Web wallpaper editor</h2>
+    <p>The Web Wallpaper Editor allows you to write HTML, CSS, and JavaScript that runs as a live wallpaper on your device.</p>
+    <ul>
+      <li>Web wallpapers run in a sandboxed WebView. You are responsible for the code you write and run.</li>
+      <li>Do not write web wallpapers that attempt to access, exfiltrate, or damage device data.</li>
+      <li>If you share a web wallpaper to the community Store, it undergoes the same content review as other uploads. Any web wallpaper found to contain malicious or deceptive code will be removed and the account terminated.</li>
+    </ul>
+  </section>
+
+  <!-- 8 -->
+  <section>
+    <h2><span class="num">8</span> Intellectual property</h2>
+    <p><strong>Adisoft's IP.</strong> The LiquidWalls App — including its design, source code, branding, icons, and non-user-generated content — is owned by Adisoft and protected by copyright and other intellectual property laws. Nothing in these Terms grants you any right to use Adisoft's trademarks, logos, or brand assets.</p>
+    <p><strong>Your content.</strong> You retain all rights in the content you create and upload. By uploading to the Store you grant the limited licence described in Section 4.</p>
+    <p><strong>Third-party content.</strong> Wallpapers on the community Store are uploaded by users. Adisoft does not verify ownership of uploaded content. If you believe your copyright has been infringed, see Section 9.</p>
+  </section>
+
+  <!-- 9 -->
+  <section>
+    <h2><span class="num">9</span> Copyright takedown (DMCA-style)</h2>
+    <p>If you believe content on the community Store infringes your copyright, please submit a takedown request using the in-app report feature or email <a href="mailto:adisoftcollection@gmail.com">adisoftcollection@gmail.com</a> with:</p>
+    <ul>
+      <li>Identification of the copyrighted work you claim has been infringed.</li>
+      <li>Identification of the infringing material and its location in the App.</li>
+      <li>Your contact information (name and email address).</li>
+      <li>A statement that you have a good-faith belief the use is unauthorised.</li>
+      <li>A statement, under penalty of perjury, that the information is accurate and you are authorised to act on behalf of the copyright owner.</li>
+    </ul>
+    <p>We will act on valid notices promptly, typically within 5 business days.</p>
+  </section>
+
+  <!-- 10 -->
+  <section>
+    <h2><span class="num">10</span> Disclaimers</h2>
+    <div class="warn-block">
+      <strong>No warranty.</strong> The App is provided "as is" and "as available" without any warranty of any kind, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, and non-infringement. Adisoft does not warrant that the App will be uninterrupted, error-free, or free of harmful components.
+    </div>
+    <p>Adisoft does not endorse, verify, or take responsibility for community Store content uploaded by users. Use of third-party wallpapers is at your own risk.</p>
+    <p>AI-generated content is produced by third-party models and may be inaccurate, inappropriate, or unexpected. Adisoft makes no representations about AI outputs.</p>
+  </section>
+
+  <!-- 11 -->
+  <section>
+    <h2><span class="num">11</span> Limitation of liability</h2>
+    <p>To the maximum extent permitted by applicable law, Adisoft shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of data, loss of profits, or device damage, arising from your use of or inability to use the App.</p>
+    <p>Adisoft's total liability for any claim arising out of or relating to these Terms or the App shall not exceed the amount you paid to Adisoft in the twelve months preceding the claim. As the App is currently free, this amount is zero in most cases.</p>
+  </section>
+
+  <!-- 12 -->
+  <section>
+    <h2><span class="num">12</span> Third-party services</h2>
+    <p>The App integrates with third-party services including Supabase (backend), Cloudinary (CDN), and AI providers. Use of these services is governed by their own terms and privacy policies. Adisoft is not responsible for the availability, accuracy, or conduct of third-party services.</p>
+    <p>Links to third-party websites or services are provided for convenience. Adisoft does not endorse and is not responsible for third-party content.</p>
+  </section>
+
+  <!-- 13 -->
+  <section>
+    <h2><span class="num">13</span> Governing law</h2>
+    <p>These Terms are governed by and construed in accordance with applicable law. Any disputes arising under these Terms shall be subject to the exclusive jurisdiction of the courts in the jurisdiction where Adisoft is located. If any provision of these Terms is found to be unenforceable, the remaining provisions will continue in full force.</p>
+  </section>
+
+  <!-- 14 -->
+  <section>
+    <h2><span class="num">14</span> Changes to these terms</h2>
+    <p>We publish updates to these Terms on our website first and notify you inside the app — you'll see a banner in Settings → Legal when the hosted version changes. The updated Terms also ship with the next app release. Continued use of the App after the effective date constitutes acceptance of the revised Terms.</p>
+    <div class="note-block">
+      <strong>In-app notifications:</strong> When these Terms are updated, a notification will appear inside LiquidWalls directing you to this page. You can always find the latest version at this URL or in Settings → Legal → Terms of Service.
+    </div>
+  </section>
+
+  <!-- 15 -->
+  <section>
+    <h2><span class="num">15</span> Contact</h2>
+    <p>Questions about these Terms, content takedown requests, or account issues:</p>
+    <p>
+      <strong>Email:</strong> <a href="mailto:adisoftcollection@gmail.com">adisoftcollection@gmail.com</a><br>
+      <strong>Response time:</strong> Within 5 business days for general inquiries.
+    </p>
+  </section>
+
+</div>
+
+<footer>
+  <strong style="color:var(--text)">LiquidWalls</strong> · Adisoft · com.adisoft.liquidwalls<br>
+  <a href="index.html">Home</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="cookies.html">Cookies</a> · <a href="acc_delete.html">Delete Account</a><br>
+  © 2026 Adisoft. All rights reserved.
+</footer>
+
+</body>
+</html>

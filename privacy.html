@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LiquidWalls – Privacy Policy</title>
+<style>
+  :root {
+    --bg: #06070c;
+    --surface: #0f1019;
+    --surface2: #161824;
+    --border: #2a2d45;
+    --accent: #7c6fff;
+    --green: #34d399;
+    --text: #e2e8f0;
+    --muted: #8892b0;
+    --radius: 12px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+    font-size: 15px;
+  }
+
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(6,7,12,0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(42,45,69,0.6);
+    padding: 0 24px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-brand {
+    font-size: 18px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #a5b4fc, #818cf8, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.3px;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+  .nav-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--muted) !important;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-back:hover { color: var(--text) !important; }
+
+  header {
+    background: linear-gradient(135deg, #0f1230 0%, #06070c 60%, #160825 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 52px 24px 44px;
+    text-align: center;
+  }
+  header .app-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(124,111,255,0.12);
+    border: 1px solid rgba(124,111,255,0.35);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+  }
+  header h1 {
+    font-size: clamp(26px, 5vw, 40px);
+    font-weight: 800;
+    background: linear-gradient(135deg, #a5b4fc, #818cf8, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+  header .meta {
+    color: var(--muted);
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  header .meta span::before { content: '·'; margin-right: 16px; }
+  header .meta span:first-child::before { content: ''; margin: 0; }
+
+  .container { max-width: 780px; margin: 0 auto; padding: 0 20px 80px; }
+
+  .summary-box {
+    background: rgba(52,211,153,0.07);
+    border: 1px solid rgba(52,211,153,0.25);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin: 40px 0 0;
+    font-size: 14px;
+    color: #a7f3d0;
+    line-height: 1.7;
+  }
+  .summary-box strong { color: var(--green); display: block; margin-bottom: 6px; font-size: 15px; }
+
+  section { margin-top: 44px; }
+  section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #c7d2fe;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  section h2 .num {
+    background: rgba(124,111,255,0.15);
+    border: 1px solid rgba(124,111,255,0.3);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 800;
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  section h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #a5b4fc;
+    margin: 20px 0 8px;
+  }
+  p { color: var(--muted); font-size: 14px; margin-bottom: 12px; }
+  ul { padding-left: 20px; margin-bottom: 12px; }
+  li { color: var(--muted); font-size: 14px; margin-bottom: 6px; }
+  li strong, p strong { color: var(--text); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .table-wrap { overflow-x: auto; margin: 14px 0; border-radius: var(--radius); border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th {
+    background: var(--surface2);
+    color: var(--muted);
+    text-align: left;
+    padding: 10px 14px;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border);
+  }
+  td { padding: 11px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; color: var(--muted); font-size: 13px; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+  td strong { color: var(--text); }
+  td a { color: var(--accent); }
+  td code { font-family: 'SF Mono','Fira Code','Courier New',monospace; font-size: 11px; color: #a5b4fc; background: rgba(165,180,252,0.1); padding: 2px 5px; border-radius: 4px; }
+
+  .perm-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin: 14px 0;
+  }
+  .perm-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 14px;
+    padding: 14px 18px;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    align-items: start;
+  }
+  .perm-item:last-child { border-bottom: none; }
+  .perm-name { font-family: 'SF Mono','Fira Code','Courier New',monospace; font-size: 12px; color: #a5b4fc; background: rgba(165,180,252,0.1); padding: 3px 8px; border-radius: 5px; white-space: nowrap; }
+  .perm-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  .note-block {
+    background: rgba(124,111,255,0.07);
+    border: 1px solid rgba(124,111,255,0.2);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    margin: 14px 0;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .note-block strong { color: #c7d2fe; }
+
+  footer {
+    text-align: center;
+    padding: 40px 24px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 2;
+  }
+  footer a { color: var(--accent); }
+
+  @media (max-width: 600px) {
+    header { padding: 36px 16px 32px; }
+    .container { padding: 0 14px 60px; }
+    .perm-item { grid-template-columns: 1fr; gap: 6px; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">LiquidWalls</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="terms.html">Terms</a></li>
+    <li><a href="cookies.html">Cookies</a></li>
+    <li><a href="acc_delete.html">Delete Account</a></li>
+  </ul>
+</nav>
+
+<header>
+  <div class="app-badge">LiquidWalls · Adisoft</div>
+  <h1>Privacy Policy</h1>
+  <div class="meta">
+    <span>Effective: June 1, 2026</span>
+    <span>Package: com.adisoft.liquidwalls</span>
+    <span>Contact: <a href="mailto:adisoftcollection@gmail.com" style="color:#818cf8">adisoftcollection@gmail.com</a></span>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="summary-box">
+    <strong>The short version</strong>
+    LiquidWalls is built to minimise the personal data it handles. Creating an account is optional and only needed for the community Store. If you never sign up, Adisoft collects nothing about you. If you do create an account, your email and profile are stored by Supabase. Everything else — your wallpapers, settings, collections, and AI keys — lives entirely on your device.
+  </div>
+
+  <!-- 1 -->
+  <section>
+    <h2><span class="num">1</span> Who we are</h2>
+    <p>LiquidWalls is an Android wallpaper application developed and operated by <strong>Adisoft</strong>. The app lets you browse, download, and apply static image, live video, and interactive web-based wallpapers. It also provides community store features, an AI image-generation tool, and a web wallpaper editor.</p>
+    <p><strong>Contact:</strong> <a href="mailto:adisoftcollection@gmail.com">adisoftcollection@gmail.com</a></p>
+  </section>
+
+  <!-- 2 -->
+  <section>
+    <h2><span class="num">2</span> Data we (Adisoft) collect</h2>
+    <p><strong>Optional account only.</strong> Creating an account is optional and only needed to access the community Store. If you register, your email address and a securely hashed password are stored by Supabase (our authentication and backend provider) on their servers. If you never create an account, Adisoft collects nothing. The app has no first-party analytics and no crash-reporting trackers operated by Adisoft.</p>
+
+    <h3>Account registration (optional)</h3>
+    <ul>
+      <li><strong>Email address</strong> — used for authentication, account recovery, and mandatory email verification before your account is active.</li>
+      <li><strong>Password</strong> — transmitted over HTTPS and hashed by Supabase's bcrypt-based auth. We never store your plain-text password.</li>
+      <li><strong>Username</strong> — a public, unique handle (3–30 characters) you choose. Visible on uploads you share to the community store.</li>
+    </ul>
+
+    <h3>Profile information (optional, account holders only)</h3>
+    <ul>
+      <li><strong>Display name</strong> — a human-readable name shown on your profile.</li>
+      <li><strong>Bio</strong> — a short text description. Optional.</li>
+      <li><strong>Avatar image</strong> — a photo you select from your device and upload to our storage. Optional.</li>
+    </ul>
+
+    <div class="note-block">
+      <strong>What we do NOT collect:</strong> LiquidWalls contains no analytics SDK, no advertising identifier, no crash-reporting service, and no tracking pixels. We do not collect your device model, OS version, IP address, or location at the application layer. We do not use Firebase Analytics, Google Analytics, or any equivalent service.
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section>
+    <h2><span class="num">3</span> Data stored locally on your device</h2>
+    <p>The following data lives entirely on your device inside app-private storage and is never sent to our servers unless you explicitly take an action that requires it.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>What</th><th>Where</th><th>Purpose</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Wallpaper metadata (name, tags, aspect ratio, source)</td><td>Room SQLite database (<code>liquidwalls.db</code>)</td><td>Power the local library browser</td></tr>
+          <tr><td>Downloaded store wallpaper files (images, videos, web bundles)</td><td><code>files/store/</code> in internal storage</td><td>Offline playback without re-downloading</td></tr>
+          <tr><td>AI-generated images</td><td><code>files/ai_generated/</code></td><td>Saved to your personal library after generation</td></tr>
+          <tr><td>Web wallpapers you create (HTML, CSS, JS)</td><td><code>files/webs/</code></td><td>Run as live wallpapers without internet</td></tr>
+          <tr><td>Store thumbnail cache</td><td>External cache dir (<code>store_thumbs/</code>)</td><td>Fast grid scrolling</td></tr>
+          <tr><td>App preferences (theme, brightness, auto-changer config, etc.)</td><td>Android DataStore (encrypted at rest on API 23+)</td><td>Persist your settings across sessions</td></tr>
+          <tr><td>AI API keys (OpenAI, Stability AI, Google Imagen)</td><td>Android DataStore</td><td>Stored only on your device; sent directly to the AI provider when you use AI features — never passed through our servers</td></tr>
+          <tr><td>Session auth tokens (access token, refresh token)</td><td>Android DataStore</td><td>Keep you logged in across app restarts</td></tr>
+          <tr><td>Folder URIs granted via Storage Access Framework</td><td>Android DataStore</td><td>Maintain access to local folders you add as wallpaper sources</td></tr>
+          <tr><td>Legal consent flag</td><td>Android DataStore</td><td>Record that you accepted the policies on first launch (boolean only — no personal information)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note-block">
+      <strong>Android cloud backup:</strong> The Room database and all local wallpaper files are explicitly excluded from Android Auto Backup via <code>backup_rules.xml</code> and <code>data_extraction_rules.xml</code>. Your library metadata is never backed up to Google's servers by the system.
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section>
+    <h2><span class="num">4</span> Data sent to our servers</h2>
+    <p>Our backend runs on Supabase. Data is only transmitted when you perform a specific action — nothing is sent automatically in the background.</p>
+
+    <h3>Authentication (account holders)</h3>
+    <ul>
+      <li>Email and password during sign-in and sign-up.</li>
+      <li>Email address when requesting a password reset or re-sending a verification email.</li>
+    </ul>
+
+    <h3>Profile updates</h3>
+    <ul>
+      <li>Display name, bio, and avatar image (avatar uploaded to Cloudinary CDN; URL stored in our database).</li>
+    </ul>
+
+    <h3>Wallpaper uploads (community Store)</h3>
+    <ul>
+      <li>The wallpaper file (image, video, or web bundle) — uploaded to Cloudinary.</li>
+      <li>Metadata: name, category, tags, aspect ratio, dimensions, file size, and color palette.</li>
+      <li>Your user ID (<code>posted_by</code>) is attached so the community can see who shared it.</li>
+    </ul>
+
+    <h3>Download records</h3>
+    <ul>
+      <li>When you download a Store wallpaper while logged in, a record containing your user ID and the wallpaper ID is written to our database. Used to compute download counts and power the "Downloaded only" filter.</li>
+      <li>Guests (not logged in) do not have downloads recorded.</li>
+    </ul>
+
+    <h3>Content reports</h3>
+    <ul>
+      <li>If you submit a content report, we store: wallpaper ID, wallpaper name (optional), reason category, and your description. <strong>Reports are anonymous</strong> — your account is never linked to a report in our database. No account is required to report.</li>
+    </ul>
+
+    <div class="note-block">
+      <strong>The app never uploads your local wallpapers, settings, backups, or AI keys unless you explicitly initiate the action.</strong>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section>
+    <h2><span class="num">5</span> Third-party services</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Service</th><th>Purpose</th><th>Data sent to them</th><th>Their privacy policy</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Supabase</strong></td>
+            <td>Authentication, user profiles, store backend</td>
+            <td>Email, hashed password, profile data, wallpaper metadata, download records (account holders only)</td>
+            <td><a href="https://supabase.com/privacy" target="_blank" rel="noopener">supabase.com/privacy</a></td>
+          </tr>
+          <tr>
+            <td><strong>Cloudinary</strong></td>
+            <td>Media CDN — wallpaper delivery &amp; storage</td>
+            <td>HTTP request (IP address logged by CDN); uploaded file if you submit a wallpaper</td>
+            <td><a href="https://cloudinary.com/privacy" target="_blank" rel="noopener">cloudinary.com/privacy</a></td>
+          </tr>
+          <tr>
+            <td><strong>OpenAI</strong></td>
+            <td>AI image generation &amp; code generation (optional)</td>
+            <td>The text prompts you enter, sent directly from your device using your own API key. We never see or store your prompts or your key.</td>
+            <td><a href="https://openai.com/policies/privacy-policy" target="_blank" rel="noopener">openai.com/policies/privacy-policy</a></td>
+          </tr>
+          <tr>
+            <td><strong>Stability AI</strong></td>
+            <td>AI image generation (optional)</td>
+            <td>Text prompts and negative prompts, sent directly from your device using your own API key. We never see or store them.</td>
+            <td><a href="https://stability.ai/privacy-policy" target="_blank" rel="noopener">stability.ai/privacy-policy</a></td>
+          </tr>
+          <tr>
+            <td><strong>Google (Imagen / Gemini)</strong></td>
+            <td>AI image and code generation (optional)</td>
+            <td>Text prompts, sent directly from your device using your own API key. We never see or store them.</td>
+            <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td>
+          </tr>
+          <tr>
+            <td><strong>Google Play</strong></td>
+            <td>App delivery, in-app review &amp; update</td>
+            <td>Standard Play Services data; update checker fetches the public Play Store listing page</td>
+            <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p>We do not sell, rent, or trade your personal data to any third party for commercial purposes.</p>
+  </section>
+
+  <!-- 6 -->
+  <section>
+    <h2><span class="num">6</span> AI features and your prompts</h2>
+    <p>The AI wallpaper generation and web wallpaper AI assistant features are entirely <strong>opt-in</strong> and require you to supply your own API key from the provider you choose (OpenAI, Stability AI, or Google).</p>
+    <ul>
+      <li>Your API key is stored only on your device in Android DataStore. It is never transmitted to LiquidWalls servers.</li>
+      <li>When you generate an image or enhance a prompt, your text is sent <strong>directly from your device to the AI provider's API</strong> over HTTPS using your key.</li>
+      <li>We do not log, store, or view the prompts you send.</li>
+      <li>Generated images are saved to your device's local storage and, if you choose, to your personal wallpaper library. They are not uploaded to our servers unless you explicitly share them to the community Store.</li>
+      <li>Each AI provider has its own data handling practices — please review their respective privacy policies linked in Section 5.</li>
+    </ul>
+  </section>
+
+  <!-- 7 -->
+  <section>
+    <h2><span class="num">7</span> Wallpaper uploads and community content</h2>
+    <p>The community Store allows logged-in users to share wallpapers. When you upload:</p>
+    <ul>
+      <li>The file (image, video, or HTML/CSS/JS bundle) is stored on Cloudinary's CDN and delivered to all app users.</li>
+      <li>Your username is publicly displayed alongside your upload.</li>
+      <li>Metadata (name, category, tags) you provide becomes publicly readable and searchable.</li>
+      <li>You can delete your own uploads at any time from your Profile screen. Deletion removes the record from our database and instructs Cloudinary to destroy the file.</li>
+    </ul>
+
+    <h3>Data export</h3>
+    <ul>
+      <li><strong>Full backup (.wcz):</strong> Exports your Room database, preferences, downloaded store files, web wallpapers, and AI-generated images to a zip file in your Downloads folder. We do not receive a copy.</li>
+      <li><strong>Collection export (.wcc):</strong> Exports a collection as a portable JSON file you can share or import elsewhere.</li>
+    </ul>
+  </section>
+
+  <!-- 8 -->
+  <section>
+    <h2><span class="num">8</span> Android permissions we request</h2>
+
+    <div class="perm-block">
+      <div class="perm-item">
+        <span class="perm-name">INTERNET</span>
+        <span class="perm-desc">Browse and download wallpapers from the community Store; authenticate with Supabase; call AI provider APIs.</span>
+      </div>
+      <div class="perm-item">
+        <span class="perm-name">SET_WALLPAPER<br>SET_WALLPAPER_HINTS</span>
+        <span class="perm-desc">Apply wallpapers to your Home screen, Lock screen, or both. Core purpose of the app.</span>
+      </div>
+      <div class="perm-item">
+        <span class="perm-name">RECEIVE_BOOT_COMPLETED</span>
+        <span class="perm-desc">Restart the Auto Changer and scheduled wallpaper rotations after the device reboots.</span>
+      </div>
+      <div class="perm-item">
+        <span class="perm-name">FOREGROUND_SERVICE<br>FOREGROUND_SERVICE_SPECIAL_USE</span>
+        <span class="perm-desc">Run the Auto Changer's unlock-trigger and reactive-trigger services in the foreground so Android does not kill them. These services are opt-in and can be stopped at any time.</span>
+      </div>
+      <div class="perm-item">
+        <span class="perm-name">POST_NOTIFICATIONS</span>
+        <span class="perm-desc">Show progress notifications while downloading or uploading large wallpaper files. You can revoke this in system settings without affecting core functionality.</span>
+      </div>
+      <div class="perm-item">
+        <span class="perm-name">ACCESS_NETWORK_STATE</span>
+        <span class="perm-desc">Detect Wi-Fi connectivity for the "Auto change on Wi-Fi connect" trigger.</span>
+      </div>
+      <div class="perm-item">
+        <span class="perm-name">WAKE_LOCK</span>
+        <span class="perm-desc">Briefly wake the device CPU when the Auto Changer alarm fires, ensuring the wallpaper is rotated even if the screen is off.</span>
+      </div>
+    </div>
+
+    <div class="note-block">
+      <strong>No broad storage permission.</strong> The app uses the Storage Access Framework (SAF) to let you add local device folders as wallpaper sources. No <code>READ_EXTERNAL_STORAGE</code> or <code>MANAGE_EXTERNAL_STORAGE</code> permission is requested. You grant access to individual folders through the standard system folder picker.
+    </div>
+  </section>
+
+  <!-- 9 -->
+  <section>
+    <h2><span class="num">9</span> Data retention and deletion</h2>
+    <p>All data the app stores <strong>locally</strong> lives on your device. Uninstalling the app removes all of it.</p>
+    <p>For <strong>account holders</strong>: your email address, hashed password, and profile data remain on Supabase's servers until you delete your account. Uploaded wallpapers remain on Cloudinary until removed.</p>
+
+    <h3>How to delete your account</h3>
+    <p>You can delete your account directly inside the app:</p>
+    <ul>
+      <li>Open LiquidWalls → tap <strong>Profile</strong> → scroll down to <strong>Delete Account</strong>.</li>
+      <li>This permanently and immediately deletes your profile, uploaded wallpapers, download history, reports, and auth credentials.</li>
+    </ul>
+    <p>Alternatively, email <a href="mailto:adisoftcollection@gmail.com">adisoftcollection@gmail.com</a> with the subject <strong>"Account Deletion Request"</strong> and we will process it within 30 days. See also: <a href="acc_delete.html">Account Deletion page →</a></p>
+  </section>
+
+  <!-- 10 -->
+  <section>
+    <h2><span class="num">10</span> Children</h2>
+    <p>LiquidWalls is not directed at children under the age of 13. By using the app you confirm that you are at least 13 years old. If we become aware that we have collected personal data from a child under 13 without verified parental consent, we will delete that data promptly. Contact us at <a href="mailto:adisoftcollection@gmail.com">adisoftcollection@gmail.com</a> if you believe this has occurred.</p>
+  </section>
+
+  <!-- 11 -->
+  <section>
+    <h2><span class="num">11</span> Your rights and choices</h2>
+    <ul>
+      <li><strong>Access:</strong> Request a copy of the personal data we hold about you.</li>
+      <li><strong>Correction:</strong> Update your email, display name, bio, or avatar directly in the Profile screen.</li>
+      <li><strong>Deletion:</strong> Delete individual uploads from your Profile, or delete your full account in-app (Profile → Delete Account) or by emailing us.</li>
+      <li><strong>Portability:</strong> Export your library and settings using the built-in backup feature (Settings → Data &amp; Storage → Export).</li>
+      <li><strong>Opt-out of AI features:</strong> Simply do not enter an AI API key. No key = no data sent to AI providers.</li>
+      <li><strong>Notifications:</strong> Revoke the <code>POST_NOTIFICATIONS</code> permission in Android system settings at any time.</li>
+    </ul>
+    <p>To exercise any right, email <a href="mailto:adisoftcollection@gmail.com">adisoftcollection@gmail.com</a>.</p>
+  </section>
+
+  <!-- 12 -->
+  <section>
+    <h2><span class="num">12</span> Security</h2>
+    <p>All data transmitted between the app and our servers uses HTTPS/TLS encryption. Passwords are hashed by Supabase Auth before storage. Auth tokens are stored in Android DataStore which is encrypted at rest on Android 6.0 (API 23) and above. Row-Level Security (RLS) policies on our Supabase database ensure users can only modify their own records. Despite these measures, no system is 100% secure — please use a strong, unique password and keep your device's OS up to date.</p>
+  </section>
+
+  <!-- 13 -->
+  <section>
+    <h2><span class="num">13</span> Changes to this policy</h2>
+    <p>We publish updates to this policy on our website first and notify you inside the app — you'll see a banner in Settings → Legal when the hosted version changes. The updated policy also ships with the next app release. Continued use of the App after the effective date constitutes acceptance of the revised policy.</p>
+    <div class="note-block">
+      <strong>In-app notifications:</strong> When this policy is updated, a notification will appear inside LiquidWalls directing you to this page. You can always find the latest version at this URL or in Settings → Legal → Privacy Policy.
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section>
+    <h2><span class="num">14</span> Contact</h2>
+    <p>Questions, data requests, or account deletion:</p>
+    <p>
+      <strong>Email:</strong> <a href="mailto:adisoftcollection@gmail.com">adisoftcollection@gmail.com</a><br>
+      <strong>Subject line for deletion:</strong> "Account Deletion Request"<br>
+      <strong>Response time:</strong> Within 5 business days for general inquiries; 30 days for deletion requests.
+    </p>
+  </section>
+
+</div>
+
+<footer>
+  <strong style="color:var(--text)">LiquidWalls</strong> · Adisoft · com.adisoft.liquidwalls<br>
+  <a href="index.html">Home</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="cookies.html">Cookies</a> · <a href="acc_delete.html">Delete Account</a><br>
+  © 2026 Adisoft. All rights reserved.
+</footer>
+
+</body>
+</html>

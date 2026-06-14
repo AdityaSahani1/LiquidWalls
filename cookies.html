@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LiquidWalls – Cookies &amp; Identifiers</title>
+<style>
+  :root {
+    --bg: #06070c;
+    --surface: #0f1019;
+    --surface2: #161824;
+    --border: #2a2d45;
+    --accent: #7c6fff;
+    --green: #34d399;
+    --text: #e2e8f0;
+    --muted: #8892b0;
+    --radius: 12px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.75;
+    font-size: 15px;
+  }
+
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(6,7,12,0.85);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(42,45,69,0.6);
+    padding: 0 24px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-brand {
+    font-size: 18px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #a5b4fc, #818cf8, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.3px;
+    text-decoration: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+    align-items: center;
+  }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  header {
+    background: linear-gradient(135deg, #0f1230 0%, #06070c 60%, #160825 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 52px 24px 44px;
+    text-align: center;
+  }
+  header .app-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(124,111,255,0.12);
+    border: 1px solid rgba(124,111,255,0.35);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 16px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+  }
+  header h1 {
+    font-size: clamp(26px, 5vw, 40px);
+    font-weight: 800;
+    background: linear-gradient(135deg, #a5b4fc, #818cf8, #c084fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+  header .meta {
+    color: var(--muted);
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  header .meta span::before { content: '·'; margin-right: 16px; }
+  header .meta span:first-child::before { content: ''; margin: 0; }
+
+  .container { max-width: 780px; margin: 0 auto; padding: 0 20px 80px; }
+
+  .summary-box {
+    background: rgba(52,211,153,0.07);
+    border: 1px solid rgba(52,211,153,0.25);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin: 40px 0 0;
+    font-size: 14px;
+    color: #a7f3d0;
+    line-height: 1.7;
+  }
+  .summary-box strong { color: var(--green); display: block; margin-bottom: 6px; font-size: 15px; }
+
+  section { margin-top: 44px; }
+  section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #c7d2fe;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  section h2 .num {
+    background: rgba(124,111,255,0.15);
+    border: 1px solid rgba(124,111,255,0.3);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 800;
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  section h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #a5b4fc;
+    margin: 20px 0 8px;
+  }
+  p { color: var(--muted); font-size: 14px; margin-bottom: 12px; }
+  ul { padding-left: 20px; margin-bottom: 12px; }
+  li { color: var(--muted); font-size: 14px; margin-bottom: 6px; }
+  li strong, p strong { color: var(--text); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .table-wrap { overflow-x: auto; margin: 14px 0; border-radius: var(--radius); border: 1px solid var(--border); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th {
+    background: var(--surface2);
+    color: var(--muted);
+    text-align: left;
+    padding: 10px 14px;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--border);
+  }
+  td { padding: 11px 14px; border-bottom: 1px solid rgba(255,255,255,0.04); vertical-align: top; color: var(--muted); font-size: 13px; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,0.02); }
+  td strong { color: var(--text); }
+  td a { color: var(--accent); }
+  td code { font-family: 'SF Mono','Fira Code','Courier New',monospace; font-size: 11px; color: #a5b4fc; background: rgba(165,180,252,0.1); padding: 2px 5px; border-radius: 4px; }
+
+  .note-block {
+    background: rgba(124,111,255,0.07);
+    border: 1px solid rgba(124,111,255,0.2);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    margin: 14px 0;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .note-block strong { color: #c7d2fe; }
+
+  .badge-no {
+    display: inline-block;
+    background: rgba(52,211,153,0.1);
+    border: 1px solid rgba(52,211,153,0.3);
+    color: #34d399;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 50px;
+  }
+  .badge-yes {
+    display: inline-block;
+    background: rgba(124,111,255,0.1);
+    border: 1px solid rgba(124,111,255,0.3);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 50px;
+  }
+
+  footer {
+    text-align: center;
+    padding: 40px 24px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 2;
+  }
+  footer a { color: var(--accent); }
+
+  @media (max-width: 600px) {
+    header { padding: 36px 16px 32px; }
+    .container { padding: 0 14px 60px; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-brand" href="index.html">LiquidWalls</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="privacy.html">Privacy</a></li>
+    <li><a href="terms.html">Terms</a></li>
+    <li><a href="acc_delete.html">Delete Account</a></li>
+  </ul>
+</nav>
+
+<header>
+  <div class="app-badge">LiquidWalls · Adisoft</div>
+  <h1>Cookies &amp; Identifiers</h1>
+  <div class="meta">
+    <span>Effective: June 1, 2026</span>
+    <span>Package: com.adisoft.liquidwalls</span>
+    <span>Contact: <a href="mailto:adisoftcollection@gmail.com" style="color:#818cf8">adisoftcollection@gmail.com</a></span>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="summary-box">
+    <strong>The short version</strong>
+    LiquidWalls is a native Android app — it does not use browser cookies. It stores only the data strictly needed to run the app locally on your device: authentication tokens, your settings, and a thumbnail cache. No advertising identifiers, no cross-app tracking, no analytics SDKs. A session token is stored only if you create an account; guests have no persistent identifier at all.
+  </div>
+
+  <!-- 1 -->
+  <section>
+    <h2><span class="num">1</span> Cookies in native Android apps</h2>
+    <p>Traditional "cookies" are a web browser technology. Because LiquidWalls is a <strong>native Android application</strong>, it does not use HTTP cookies in the way a website would. There is no browser cookie banner to accept because there are no tracking or marketing cookies.</p>
+    <p>What Android apps use instead of cookies are local storage mechanisms built into the Android OS. This page explains every storage mechanism and identifier LiquidWalls uses, what it stores, and why.</p>
+  </section>
+
+  <!-- 2 -->
+  <section>
+    <h2><span class="num">2</span> Storage mechanisms used</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Mechanism</th><th>What is stored</th><th>Shared externally?</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Android DataStore</strong><br><code>liquidwalls_prefs</code></td>
+            <td>App settings (theme, brightness, auto-changer config), auth tokens, AI API keys, folder access URIs, legal consent flag, policy hash</td>
+            <td><span class="badge-no">No</span> — private to the app</td>
+          </tr>
+          <tr>
+            <td><strong>Room SQLite database</strong><br><code>liquidwalls.db</code></td>
+            <td>Wallpaper metadata, collections, download records for the local library</td>
+            <td><span class="badge-no">No</span> — private to the app</td>
+          </tr>
+          <tr>
+            <td><strong>Internal file storage</strong><br><code>files/store/</code>, <code>files/webs/</code>, <code>files/ai_generated/</code></td>
+            <td>Downloaded wallpaper files, web wallpaper bundles, AI-generated images</td>
+            <td><span class="badge-no">No</span> — private to the app unless you explicitly export/share</td>
+          </tr>
+          <tr>
+            <td><strong>External cache</strong><br><code>store_thumbs/</code></td>
+            <td>Store wallpaper thumbnail images cached for fast grid scrolling</td>
+            <td><span class="badge-no">No</span> — cache only, cleared by system when storage is low</td>
+          </tr>
+          <tr>
+            <td><strong>WebView storage</strong><br>(web wallpaper renderer)</td>
+            <td>LocalStorage/IndexedDB used by web wallpapers you run. Scoped to each wallpaper's origin.</td>
+            <td><span class="badge-no">No</span> — sandboxed WebView, no external network access from wallpaper JS</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section>
+    <h2><span class="num">3</span> Authentication tokens (session identifiers)</h2>
+    <p>If you create an account, Supabase Auth issues a <strong>JWT access token</strong> and a <strong>refresh token</strong> after login. These are the closest equivalent to a session cookie.</p>
+    <ul>
+      <li>Both tokens are stored in Android DataStore, which is encrypted at rest on Android 6.0 (API 23) and above.</li>
+      <li>The access token is a short-lived JWT (typically 1 hour) that is sent to Supabase servers on authenticated API calls to verify your identity.</li>
+      <li>The refresh token is long-lived and is used to obtain a new access token when the current one expires, without requiring you to log in again.</li>
+      <li>Neither token is ever shared with third parties other than Supabase.</li>
+      <li>Tokens are deleted from your device when you log out or delete your account.</li>
+      <li><strong>Guest users</strong> (no account) have no session tokens and no persistent identifier.</li>
+    </ul>
+
+    <div class="note-block">
+      <strong>Supabase Auth:</strong> Token issuance and validation is handled by Supabase. See <a href="https://supabase.com/privacy" target="_blank" rel="noopener">supabase.com/privacy</a> for how Supabase handles authentication data.
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section>
+    <h2><span class="num">4</span> Advertising and analytics identifiers</h2>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Identifier type</th><th>Used?</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Android Advertising ID (AAID / GAID)</strong></td>
+            <td><span class="badge-no">Not used</span></td>
+            <td>LiquidWalls does not access, read, or transmit the Android Advertising ID. No ad SDK is included.</td>
+          </tr>
+          <tr>
+            <td><strong>Firebase Analytics / Google Analytics</strong></td>
+            <td><span class="badge-no">Not used</span></td>
+            <td>No analytics SDK of any kind is included in the App.</td>
+          </tr>
+          <tr>
+            <td><strong>Crash reporting / telemetry</strong></td>
+            <td><span class="badge-no">Not used</span></td>
+            <td>No Crashlytics, Sentry, or equivalent service. Crashes are not reported back to Adisoft.</td>
+          </tr>
+          <tr>
+            <td><strong>Cross-app tracking</strong></td>
+            <td><span class="badge-no">Not used</span></td>
+            <td>The App does not track you across other apps or websites.</td>
+          </tr>
+          <tr>
+            <td><strong>Device fingerprinting</strong></td>
+            <td><span class="badge-no">Not used</span></td>
+            <td>The App does not collect device model, OS version, screen resolution, or other fingerprinting attributes.</td>
+          </tr>
+          <tr>
+            <td><strong>IP address logging</strong></td>
+            <td><span class="badge-yes">Indirect</span></td>
+            <td>Your IP address may be logged by Supabase's servers on authenticated requests and by Cloudinary's CDN when downloading Store content. This is standard server infrastructure, not targeted tracking.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section>
+    <h2><span class="num">5</span> AI API keys</h2>
+    <p>If you use the AI image generation features, you supply your own API key from the provider of your choice (OpenAI, Stability AI, or Google). This key:</p>
+    <ul>
+      <li>Is stored exclusively in Android DataStore on your device — it never leaves your device to LiquidWalls servers.</li>
+      <li>Is sent directly from your device to the AI provider's API over HTTPS when you generate an image or use the AI assistant.</li>
+      <li>Is treated as a credential — it is not logged, displayed in plaintext in the UI, or accessible to other apps.</li>
+      <li>Can be cleared at any time from Settings → AI Settings → clear your key.</li>
+    </ul>
+  </section>
+
+  <!-- 6 -->
+  <section>
+    <h2><span class="num">6</span> Legal consent and policy hash</h2>
+    <p>Two small flags are stored in DataStore related to these legal policies:</p>
+    <ul>
+      <li><strong>Legal consent flag</strong> — a boolean (<code>true</code>/<code>false</code>) recorded when you accept the policies on first launch. Contains no personal information.</li>
+      <li><strong>Policy hash</strong> — a SHA-256 hash of the hosted legal page content, used to detect when policies are updated so the App can notify you in-app. No personal data is involved — it is purely a content fingerprint.</li>
+    </ul>
+    <p>Neither value is transmitted to our servers.</p>
+  </section>
+
+  <!-- 7 -->
+  <section>
+    <h2><span class="num">7</span> Third-party SDKs and libraries</h2>
+    <p>The App uses the following third-party libraries. None of them set advertising identifiers or engage in cross-app tracking:</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Library</th><th>Purpose</th><th>Data access</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Supabase Android SDK</strong></td>
+            <td>Authentication and database calls</td>
+            <td>Reads/writes auth tokens and makes HTTPS calls to Supabase. No tracking.</td>
+          </tr>
+          <tr>
+            <td><strong>Coil</strong></td>
+            <td>Image loading and thumbnail caching</td>
+            <td>Writes image files to the external cache directory. No network telemetry.</td>
+          </tr>
+          <tr>
+            <td><strong>OkHttp</strong></td>
+            <td>HTTP networking</td>
+            <td>Makes HTTPS requests on your behalf (Store downloads, AI API calls). No telemetry.</td>
+          </tr>
+          <tr>
+            <td><strong>Room</strong></td>
+            <td>Local SQLite database abstraction</td>
+            <td>Reads/writes <code>liquidwalls.db</code> locally. No network access.</td>
+          </tr>
+          <tr>
+            <td><strong>Jetpack DataStore</strong></td>
+            <td>Encrypted key-value preferences</td>
+            <td>Reads/writes encrypted preferences locally. No network access.</td>
+          </tr>
+          <tr>
+            <td><strong>ExoPlayer / Media3</strong></td>
+            <td>Video wallpaper playback</td>
+            <td>Plays local video files. No telemetry or network calls for local files.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section>
+    <h2><span class="num">8</span> Android Auto Backup</h2>
+    <p>Android's Auto Backup feature can sync app data to Google's servers. LiquidWalls explicitly <strong>opts out</strong> of backing up sensitive data:</p>
+    <ul>
+      <li>The Room database (<code>liquidwalls.db</code>) is excluded via <code>backup_rules.xml</code>.</li>
+      <li>Downloaded wallpaper files and web bundles are excluded via <code>data_extraction_rules.xml</code>.</li>
+      <li>Auth tokens stored in DataStore are not backed up.</li>
+    </ul>
+    <p>This means your local wallpaper library does not automatically sync to Google Drive. You can create manual backups using the in-app backup feature (Settings → Data &amp; Storage → Export).</p>
+  </section>
+
+  <!-- 9 -->
+  <section>
+    <h2><span class="num">9</span> Your controls</h2>
+    <ul>
+      <li><strong>Clear cache:</strong> The thumbnail cache can be cleared from Settings → Data &amp; Storage → Clear cache, or via Android system settings → Apps → LiquidWalls → Storage → Clear cache.</li>
+      <li><strong>Clear app data:</strong> Clearing all app data (Android system settings → Apps → LiquidWalls → Storage → Clear data) removes all DataStore preferences, the Room database, and cached files from your device.</li>
+      <li><strong>Log out:</strong> Logging out removes session tokens from your device. Your account and uploaded content on Supabase remain until you delete your account.</li>
+      <li><strong>Delete account:</strong> Profile → Delete Account. This permanently deletes your Supabase profile, uploaded wallpapers, and all associated server-side data.</li>
+      <li><strong>Revoke folder access:</strong> Any local folder permissions granted via Storage Access Framework can be revoked in Android system settings → Privacy → Permission manager, or by removing the folder from LiquidWalls settings.</li>
+    </ul>
+  </section>
+
+  <!-- 10 -->
+  <section>
+    <h2><span class="num">10</span> Changes to this policy</h2>
+    <p>We publish updates to this policy on our website first and notify you inside the app — you'll see a banner in Settings → Legal when the hosted version changes. The updated policy also ships with the next app release. Continued use of the App after the effective date constitutes acceptance of the revised policy.</p>
+    <div class="note-block">
+      <strong>In-app notifications:</strong> When this policy is updated, a notification will appear inside LiquidWalls directing you to this page. You can always find the latest version at this URL or in Settings → Legal → Cookies &amp; Identifiers.
+    </div>
+  </section>
+
+  <!-- 11 -->
+  <section>
+    <h2><span class="num">11</span> Contact</h2>
+    <p>Questions about identifiers, data storage, or this policy:</p>
+    <p>
+      <strong>Email:</strong> <a href="mailto:adisoftcollection@gmail.com">adisoftcollection@gmail.com</a><br>
+      <strong>Response time:</strong> Within 5 business days.
+    </p>
+  </section>
+
+</div>
+
+<footer>
+  <strong style="color:var(--text)">LiquidWalls</strong> · Adisoft · com.adisoft.liquidwalls<br>
+  <a href="index.html">Home</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="cookies.html">Cookies</a> · <a href="acc_delete.html">Delete Account</a><br>
+  © 2026 Adisoft. All rights reserved.
+</footer>
+
+</body>
+</html>
