@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LiquidWalls – Features</title>
+<meta name="description" content="Explore every feature in LiquidWalls: live video wallpapers, auto-changer, custom schedules, AI generation, collections, and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #06070c; --surface: #0f1019; --surface2: #161824; --surface3: #1c1f2e;
+  --border: #2a2d45; --accent: #7c6fff; --accent2: #c084fc;
+  --green: #10b981; --amber: #f59e0b; --sky: #38bdf8; --rose: #f43f5e;
+  --text: #e2e8f0; --muted: #8892b0; --radius: 16px; --nav-h: 64px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 15px; overflow-x: hidden; }
+
+/* ── NAV ── */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: var(--nav-h); background: rgba(6,7,12,0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(42,45,69,0.5); transition: background 0.3s; }
+nav.scrolled { background: rgba(6,7,12,0.95); }
+.nav-inner { max-width: 1120px; margin: 0 auto; height: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; }
+.nav-brand { font-size: 19px; font-weight: 900; text-decoration: none; letter-spacing: -0.4px; background: linear-gradient(135deg, #a5b4fc, #818cf8, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.nav-links { display: flex; gap: 6px; list-style: none; align-items: center; }
+.nav-links a { color: var(--muted); text-decoration: none; font-size: 13.5px; font-weight: 500; padding: 6px 12px; border-radius: 8px; transition: color 0.2s, background 0.2s; }
+.nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+.nav-links a.active { color: var(--text); }
+.nav-cta { background: linear-gradient(135deg, var(--accent), #9f7ffe) !important; color: #fff !important; font-weight: 700 !important; padding: 8px 18px !important; border-radius: 50px !important; box-shadow: 0 4px 20px rgba(124,111,255,0.35); transition: opacity 0.2s, transform 0.2s !important; }
+.nav-cta:hover { opacity: 0.9; transform: translateY(-1px); background: none !important; }
+.hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; cursor: pointer; background: none; border: none; padding: 8px; width: 38px; height: 38px; border-radius: 8px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s cubic-bezier(.68,-.6,.32,1.6); }
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  .nav-links { position: fixed; top: var(--nav-h); left: 0; right: 0; background: rgba(6,7,12,0.98); backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); flex-direction: column; align-items: stretch; gap: 0; padding: 0; max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(.4,0,.2,1); }
+  .nav-links.open { max-height: 420px; }
+  .nav-links li { border-bottom: 1px solid rgba(42,45,69,0.4); }
+  .nav-links a { display: block; padding: 15px 24px; font-size: 15px; border-radius: 0; }
+  .nav-cta { margin: 16px 24px 20px; border-radius: 50px !important; text-align: center; }
+}
+
+/* ── PAGE HERO ── */
+.page-hero { padding: calc(var(--nav-h) + 70px) 24px 70px; text-align: center; position: relative; overflow: hidden; background: var(--surface); border-bottom: 1px solid var(--border); }
+.page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 80% at 50% 0%, rgba(124,111,255,0.12) 0%, transparent 70%); pointer-events: none; }
+.page-hero-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+.page-label { font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+.page-title { font-size: clamp(32px, 6vw, 58px); font-weight: 900; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 18px; background: linear-gradient(135deg, #e2e8f0 0%, #a5b4fc 50%, #c084fc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.page-sub { font-size: 16px; color: var(--muted); line-height: 1.8; }
+
+/* ── SHARED ── */
+.section { padding: 80px 24px; }
+.section-inner { max-width: 1120px; margin: 0 auto; }
+.section-label { font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 10px; }
+.section-title { font-size: clamp(24px, 3.5vw, 36px); font-weight: 800; letter-spacing: -0.8px; line-height: 1.2; margin-bottom: 10px; }
+.section-desc { font-size: 15px; color: var(--muted); max-width: 540px; line-height: 1.8; margin-bottom: 40px; }
+
+/* ── CATEGORY HEADER ── */
+.cat-header { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 16px; margin-bottom: 36px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+.cat-icon-title { display: flex; align-items: center; gap: 16px; }
+.cat-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+
+/* ── FEATURE LIST ── */
+.feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.feat-item { background: var(--surface2); border: 1px solid var(--border); border-radius: 14px; padding: 24px; transition: border-color 0.2s, transform 0.25s, box-shadow 0.25s; }
+.feat-item:hover { border-color: rgba(124,111,255,0.4); transform: translateY(-3px); box-shadow: 0 16px 44px rgba(0,0,0,0.35); }
+.feat-item-icon { font-size: 24px; margin-bottom: 12px; }
+.feat-item-title { font-size: 14.5px; font-weight: 700; margin-bottom: 6px; }
+.feat-item-desc { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+/* ── HIGHLIGHT ROW ── */
+.highlight-row { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; padding: 60px 0; border-bottom: 1px solid rgba(42,45,69,0.5); }
+.highlight-row:last-child { border-bottom: none; }
+.highlight-row.rev { direction: rtl; }
+.highlight-row.rev > * { direction: ltr; }
+.highlight-visual { background: var(--surface2); border: 1px solid var(--border); border-radius: 22px; overflow: hidden; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; position: relative; }
+.highlight-visual::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(124,111,255,0.06) 0%, transparent 70%); }
+.vis-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; padding: 24px; width: 100%; }
+.vis-cell { border-radius: 10px; aspect-ratio: 1; overflow: hidden; }
+.vc1 { background: linear-gradient(145deg, #14082a, #28104a); }
+.vc2 { background: linear-gradient(145deg, #06151e, #0a2438); }
+.vc3 { background: linear-gradient(145deg, #1a0a14, #320f28); }
+.vc4 { background: linear-gradient(145deg, #0a0c1e, #12183a); }
+.vc5 { background: linear-gradient(145deg, #051214, #082428); }
+.vc6 { background: linear-gradient(145deg, #140a06, #281806); }
+.vc7 { background: linear-gradient(145deg, #060e14, #0a1c2a); }
+.vc8 { background: linear-gradient(145deg, #0e140a, #1c2810); }
+.vc9 { background: linear-gradient(145deg, #14060a, #280c14); }
+.vis-phone-row { display: flex; gap: 8px; align-items: flex-end; padding: 20px; }
+.vis-phone { width: 68px; border-radius: 13px; border: 1.5px solid rgba(255,255,255,0.08); overflow: hidden; }
+.vis-screen { aspect-ratio: 9/19; }
+.vp1 { background: linear-gradient(160deg, #0c0620, #1e0a40, #08040f); }
+.vp2 { background: linear-gradient(160deg, #04131e, #0a2040, #02080f); }
+.vp3 { background: linear-gradient(160deg, #14050c, #2a0a1a, #070308); }
+.vis-list { padding: 24px; display: flex; flex-direction: column; gap: 10px; }
+.vis-list-row { background: var(--surface3); border-radius: 10px; padding: 12px 14px; display: flex; align-items: center; gap: 10px; }
+.vis-list-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.vis-list-text { font-size: 12px; color: var(--muted); }
+.highlight-list { list-style: none; margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
+.highlight-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: var(--muted); line-height: 1.6; }
+.highlight-list li::before { content: ''; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); margin-top: 9px; flex-shrink: 0; }
+@media (max-width: 840px) { .highlight-row { grid-template-columns: 1fr; gap: 32px; } .highlight-row.rev { direction: ltr; } }
+
+/* ── TAGS ── */
+.tag { display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 50px; margin-bottom: 10px; }
+.tag-purple { background: rgba(124,111,255,0.12); border: 1px solid rgba(124,111,255,0.3); color: #a5b4fc; }
+.tag-green  { background: rgba(16,185,129,0.1);  border: 1px solid rgba(16,185,129,0.3); color: #34d399; }
+.tag-sky    { background: rgba(56,189,248,0.1);  border: 1px solid rgba(56,189,248,0.3); color: #7dd3fc; }
+.tag-amber  { background: rgba(245,158,11,0.1);  border: 1px solid rgba(245,158,11,0.3); color: #fcd34d; }
+.tag-rose   { background: rgba(244,63,94,0.1);   border: 1px solid rgba(244,63,94,0.3);  color: #fda4af; }
+.tag-pink   { background: rgba(192,132,252,0.12); border: 1px solid rgba(192,132,252,0.3); color: #d8b4fe; }
+
+/* ── CTA ── */
+.cta-section { padding: 90px 24px; text-align: center; background: var(--surface); border-top: 1px solid var(--border); }
+.cta-inner { max-width: 620px; margin: 0 auto; }
+.cta-inner h2 { font-size: clamp(26px, 4vw, 44px); font-weight: 900; letter-spacing: -1px; margin-bottom: 14px; background: linear-gradient(135deg, #e2e8f0 0%, #a5b4fc 50%, #c084fc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.cta-inner p { font-size: 15px; color: var(--muted); margin-bottom: 36px; line-height: 1.8; }
+.cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.btn-primary { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #7c6fff, #9f7ffe); color: #fff; font-size: 15px; font-weight: 700; padding: 14px 28px; border-radius: 50px; text-decoration: none; box-shadow: 0 8px 32px rgba(124,111,255,0.4); transition: transform 0.25s, box-shadow 0.25s; }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(124,111,255,0.5); }
+.btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--text); font-size: 15px; font-weight: 600; padding: 14px 28px; border-radius: 50px; text-decoration: none; transition: background 0.2s, border-color 0.2s, transform 0.25s; }
+.btn-secondary:hover { background: rgba(255,255,255,0.09); border-color: rgba(124,111,255,0.5); transform: translateY(-2px); }
+.play-icon { width: 20px; height: 20px; fill: currentColor; }
+
+/* ── FOOTER ── */
+footer { background: var(--surface); border-top: 1px solid var(--border); padding: 60px 24px 32px; }
+.footer-inner { max-width: 1120px; margin: 0 auto; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+.footer-brand-name { font-size: 20px; font-weight: 900; background: linear-gradient(135deg, #a5b4fc, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 12px; }
+.footer-tagline { font-size: 13.5px; color: var(--muted); line-height: 1.8; max-width: 260px; }
+.footer-col-title { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col a { color: var(--muted); text-decoration: none; font-size: 13.5px; transition: color 0.2s; }
+.footer-col a:hover { color: var(--text); }
+.footer-bottom { border-top: 1px solid var(--border); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.footer-copy { font-size: 12.5px; color: var(--muted); }
+.footer-dev { font-size: 12.5px; color: var(--muted); }
+.footer-dev a { color: var(--accent); text-decoration: none; }
+@media (max-width: 768px) { .footer-top { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .footer-top { grid-template-columns: 1fr; } }
+
+/* ── SCROLL REVEAL ── */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal.d1 { transition-delay: 0.07s; } .reveal.d2 { transition-delay: 0.14s; } .reveal.d3 { transition-delay: 0.21s; } .reveal.d4 { transition-delay: 0.28s; } .reveal.d5 { transition-delay: 0.35s; } .reveal.d6 { transition-delay: 0.42s; }
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">LiquidWalls</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="features.html" class="active">Features</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="changelog.html">Changelog</a></li>
+      <li><a href="roadmap.html">Roadmap</a></li>
+      <li><a href="https://play.google.com/store/apps/details?id=com.adisoft.liquidwalls" target="_blank" rel="noopener" class="nav-cta">Get the App</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-label">What's Inside</div>
+    <h1 class="page-title">Everything you need.<br>Nothing you don't.</h1>
+    <p class="page-sub">A complete breakdown of every feature in LiquidWalls — organised by category so you can find exactly what you're looking for.</p>
+  </div>
+</header>
+
+<!-- ─────────────── WALLPAPER LIBRARY ─────────────── -->
+<section class="section">
+  <div class="section-inner">
+    <div class="cat-header reveal">
+      <div class="cat-icon-title">
+        <div class="cat-icon" style="background:rgba(124,111,255,0.12);border:1px solid rgba(124,111,255,0.25)">🖼️</div>
+        <div>
+          <div class="section-label">Category 1</div>
+          <h2 class="section-title">Wallpaper Library</h2>
+        </div>
+      </div>
+      <span class="tag tag-purple">Core</span>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-item reveal d1">
+        <div class="feat-item-icon">🖼️</div>
+        <div class="feat-item-title">Static Image Wallpapers</div>
+        <p class="feat-item-desc">Import any JPEG, PNG, or WebP from your device. Apply with full crop control, brightness adjustment, and per-screen targeting.</p>
+      </div>
+      <div class="feat-item reveal d2">
+        <div class="feat-item-icon">🎬</div>
+        <div class="feat-item-title">Live Video Wallpapers</div>
+        <p class="feat-item-desc">Import MP4 or other video files and run them as a native live wallpaper service. Loops seamlessly, no battery drain spikes.</p>
+      </div>
+      <div class="feat-item reveal d3">
+        <div class="feat-item-icon">🌐</div>
+        <div class="feat-item-title">Web & HTML Wallpapers</div>
+        <p class="feat-item-desc">Enter any URL or drop in a local HTML file. The page renders live as your wallpaper — shaders, animations, dashboards.</p>
+      </div>
+      <div class="feat-item reveal d4">
+        <div class="feat-item-icon">📁</div>
+        <div class="feat-item-title">Collections</div>
+        <p class="feat-item-desc">Group wallpapers into named collections. Assign a collection to the auto-changer or schedule and rotate through them automatically.</p>
+      </div>
+      <div class="feat-item reveal d5">
+        <div class="feat-item-icon">🔍</div>
+        <div class="feat-item-title">Search & Filter</div>
+        <p class="feat-item-desc">Full-text search across your library with type filters (Image / Video / Web). Find any wallpaper instantly no matter how large your library is.</p>
+      </div>
+      <div class="feat-item reveal d6">
+        <div class="feat-item-icon">☁️</div>
+        <div class="feat-item-title">Built-In Store</div>
+        <p class="feat-item-desc">Browse curated wallpaper packs in the integrated store. Preview before downloading. New content added regularly by the Adisoft team.</p>
+      </div>
+      <div class="feat-item reveal d1">
+        <div class="feat-item-icon">📂</div>
+        <div class="feat-item-title">Folder Import</div>
+        <p class="feat-item-desc">Point LiquidWalls at any folder on your device and import everything at once. Keeps your device gallery separate from your wallpaper library.</p>
+      </div>
+      <div class="feat-item reveal d2">
+        <div class="feat-item-icon">🏷️</div>
+        <div class="feat-item-title">Wallpaper Metadata</div>
+        <p class="feat-item-desc">Each wallpaper stores its name, type, source path, and colour palette. Used by the auto-changer and schedule to apply content correctly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── AUTO-CHANGER ─────────────── -->
+<section class="section" style="background:var(--surface)">
+  <div class="section-inner">
+    <div class="cat-header reveal">
+      <div class="cat-icon-title">
+        <div class="cat-icon" style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25)">⏱️</div>
+        <div>
+          <div class="section-label">Category 2</div>
+          <h2 class="section-title">Auto-Changer</h2>
+        </div>
+      </div>
+      <span class="tag tag-green">Background</span>
+    </div>
+    <div class="section-desc">Automatically rotate wallpapers without touching your phone. The auto-changer runs in the background using precise OS alarms — not a permanent foreground service.</div>
+
+    <div style="padding: 0 0 40px">
+      <div class="highlight-row reveal">
+        <div class="highlight-visual">
+          <div class="vis-phone-row">
+            <div class="vis-phone"><div class="vis-screen vp1"></div></div>
+            <div class="vis-phone" style="transform:translateY(-16px);border-color:rgba(124,111,255,0.35)"><div class="vis-screen vp2"></div></div>
+            <div class="vis-phone"><div class="vis-screen vp3"></div></div>
+          </div>
+        </div>
+        <div class="reveal d2">
+          <span class="tag tag-green">Smart triggers</span>
+          <h3 style="font-size:22px;font-weight:800;margin-bottom:10px;letter-spacing:-0.5px">Change on your terms</h3>
+          <p style="color:var(--muted);font-size:14px;line-height:1.8">Pick one or more triggers and the changer fires whenever the condition is met. Mix and match freely.</p>
+          <ul class="highlight-list">
+            <li>Interval — from 15 seconds to 24 hours</li>
+            <li>Screen unlock</li>
+            <li>Charging plug-in</li>
+            <li>Screen-off event</li>
+            <li>Wi-Fi connected</li>
+            <li>Device shake (accelerometer-based)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="feat-grid">
+      <div class="feat-item reveal d1">
+        <div class="feat-item-icon">🎯</div>
+        <div class="feat-item-title">Source Filtering</div>
+        <p class="feat-item-desc">Pin the auto-changer to one or more specific collections instead of using your whole library. Perfect for themed rotation.</p>
+      </div>
+      <div class="feat-item reveal d2">
+        <div class="feat-item-icon">🔀</div>
+        <div class="feat-item-title">Sequential or Shuffle</div>
+        <p class="feat-item-desc">Step through wallpapers in alphabetical order, or enable shuffle for a random pick each time — never repeating the last one shown.</p>
+      </div>
+      <div class="feat-item reveal d3">
+        <div class="feat-item-icon">🏠</div>
+        <div class="feat-item-title">Target: Home / Lock / Both</div>
+        <p class="feat-item-desc">Apply changes to just the home screen, just the lock screen, or both simultaneously. Configurable independently from any schedule.</p>
+      </div>
+      <div class="feat-item reveal d4">
+        <div class="feat-item-icon">🌙</div>
+        <div class="feat-item-title">Quiet Hours</div>
+        <p class="feat-item-desc">Pause all automatic changes during a configurable time window — for sleep, meetings, or Do Not Disturb periods.</p>
+      </div>
+      <div class="feat-item reveal d5">
+        <div class="feat-item-icon">🔋</div>
+        <div class="feat-item-title">Skip on Low Battery</div>
+        <p class="feat-item-desc">Optionally pause the changer when battery drops below 20%. Automatically resumes when the phone charges above the threshold.</p>
+      </div>
+      <div class="feat-item reveal d6">
+        <div class="feat-item-icon">📡</div>
+        <div class="feat-item-title">Skip on Mobile Data</div>
+        <p class="feat-item-desc">Optionally pause rotation when on cellular to prevent store downloads or web wallpaper loading from using your data plan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── SCHEDULE ─────────────── -->
+<section class="section">
+  <div class="section-inner">
+    <div class="cat-header reveal">
+      <div class="cat-icon-title">
+        <div class="cat-icon" style="background:rgba(56,189,248,0.1);border:1px solid rgba(56,189,248,0.25)">📅</div>
+        <div>
+          <div class="section-label">Category 3</div>
+          <h2 class="section-title">Custom Scheduling</h2>
+        </div>
+      </div>
+      <span class="tag tag-sky">Time-Based</span>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-item reveal d1">
+        <div class="feat-item-icon">🕘</div>
+        <div class="feat-item-title">Exact Time of Day</div>
+        <p class="feat-item-desc">Specify hour and minute precisely. The app uses OS exact alarms so the wallpaper fires at the exact second you set — not "sometime near it".</p>
+      </div>
+      <div class="feat-item reveal d2">
+        <div class="feat-item-icon">📆</div>
+        <div class="feat-item-title">Day-of-Week Selection</div>
+        <p class="feat-item-desc">Each schedule repeats on selected days — any combination of Mon–Sun. A morning schedule can run on weekdays only, for example.</p>
+      </div>
+      <div class="feat-item reveal d3">
+        <div class="feat-item-icon">🗂️</div>
+        <div class="feat-item-title">Source: Single or Collection</div>
+        <p class="feat-item-desc">Assign a specific wallpaper for a fixed look, or a collection to rotate through — each schedule pick remembers where it left off.</p>
+      </div>
+      <div class="feat-item reveal d4">
+        <div class="feat-item-icon">🔁</div>
+        <div class="feat-item-title">Multiple Simultaneous Schedules</div>
+        <p class="feat-item-desc">Run as many schedules as you like at once. Morning collection at 7 AM, night collection at 10 PM — each fully independent.</p>
+      </div>
+      <div class="feat-item reveal d5">
+        <div class="feat-item-icon">💤</div>
+        <div class="feat-item-title">Quiet Hours Compatible</div>
+        <p class="feat-item-desc">Schedules respect quiet hours — a 3 AM schedule won't fire if quiet hours are active from 23:00 to 07:00.</p>
+      </div>
+      <div class="feat-item reveal d6">
+        <div class="feat-item-icon">📱</div>
+        <div class="feat-item-title">OEM-Reliable Alarms</div>
+        <p class="feat-item-desc">Uses setExactAndAllowWhileIdle with receiver-side re-arming. Survives Xiaomi MIUI, Samsung One UI, and OnePlus battery management.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── LIVE WALLPAPERS ─────────────── -->
+<section class="section" style="background:var(--surface)">
+  <div class="section-inner">
+    <div class="cat-header reveal">
+      <div class="cat-icon-title">
+        <div class="cat-icon" style="background:rgba(192,132,252,0.12);border:1px solid rgba(192,132,252,0.25)">✨</div>
+        <div>
+          <div class="section-label">Category 4</div>
+          <h2 class="section-title">Live Wallpapers</h2>
+        </div>
+      </div>
+      <span class="tag tag-pink">Animated</span>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-item reveal d1">
+        <div class="feat-item-icon">🎬</div>
+        <div class="feat-item-title">Video Live Wallpaper Service</div>
+        <p class="feat-item-desc">A native Android live wallpaper service that plays your video files in a hardware-accelerated loop — no foreground notification required.</p>
+      </div>
+      <div class="feat-item reveal d2">
+        <div class="feat-item-icon">🌐</div>
+        <div class="feat-item-title">Web Live Wallpaper Service</div>
+        <p class="feat-item-desc">Renders a WebView as a live wallpaper. Any URL or local HTML file — including Three.js scenes, particle simulations, or clock apps.</p>
+      </div>
+      <div class="feat-item reveal d3">
+        <div class="feat-item-icon">⚙️</div>
+        <div class="feat-item-title">Live Wallpaper Settings</div>
+        <p class="feat-item-desc">Configure playback speed, loop behaviour, muting, and viewport settings for web wallpapers — all from a dedicated settings screen.</p>
+      </div>
+      <div class="feat-item reveal d4">
+        <div class="feat-item-icon">🔄</div>
+        <div class="feat-item-title">Instant Path Swap</div>
+        <p class="feat-item-desc">When the same live service is already active, changing to another video or web wallpaper swaps the content instantly — no picker, no interruption.</p>
+      </div>
+      <div class="feat-item reveal d5">
+        <div class="feat-item-icon">✏️</div>
+        <div class="feat-item-title">Web Wallpaper Editor</div>
+        <p class="feat-item-desc">Built-in code editor for web wallpapers. Write and preview HTML/CSS/JS directly in the app before setting it as your live wallpaper.</p>
+      </div>
+      <div class="feat-item reveal d6">
+        <div class="feat-item-icon">📱</div>
+        <div class="feat-item-title">One-Tap Preview</div>
+        <p class="feat-item-desc">Preview any live or image wallpaper full-screen before committing. Includes a mock home screen layout so you can see it in context.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── AI GENERATION ─────────────── -->
+<section class="section">
+  <div class="section-inner">
+    <div class="cat-header reveal">
+      <div class="cat-icon-title">
+        <div class="cat-icon" style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.25)">🤖</div>
+        <div>
+          <div class="section-label">Category 5</div>
+          <h2 class="section-title">AI Generation</h2>
+        </div>
+      </div>
+      <span class="tag tag-amber">AI-Powered</span>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-item reveal d1">
+        <div class="feat-item-icon">🎨</div>
+        <div class="feat-item-title">Text-to-Image Generation</div>
+        <p class="feat-item-desc">Describe your ideal wallpaper and generate it with AI. Works for landscapes, abstract art, sci-fi scenes, minimalist patterns, and more.</p>
+      </div>
+      <div class="feat-item reveal d2">
+        <div class="feat-item-icon">🖌️</div>
+        <div class="feat-item-title">Style Controls</div>
+        <p class="feat-item-desc">Choose from a variety of artistic styles — photorealistic, anime, oil painting, pixel art, watercolour, and cinematic presets.</p>
+      </div>
+      <div class="feat-item reveal d3">
+        <div class="feat-item-icon">📐</div>
+        <div class="feat-item-title">Phone-Optimised Aspect Ratios</div>
+        <p class="feat-item-desc">Generates at portrait aspect ratios designed for phone screens, not square social media crops. Full-bleed coverage from the first save.</p>
+      </div>
+      <div class="feat-item reveal d4">
+        <div class="feat-item-icon">💾</div>
+        <div class="feat-item-title">Direct Library Import</div>
+        <p class="feat-item-desc">Generated images go straight into your LiquidWalls library — no extra download step. Apply immediately or save to a collection.</p>
+      </div>
+      <div class="feat-item reveal d5">
+        <div class="feat-item-icon">🔄</div>
+        <div class="feat-item-title">Regenerate Variations</div>
+        <p class="feat-item-desc">Generate multiple variations of the same prompt with one tap. Compare them side by side and save your favourites.</p>
+      </div>
+      <div class="feat-item reveal d6">
+        <div class="feat-item-icon">📜</div>
+        <div class="feat-item-title">Generation History</div>
+        <p class="feat-item-desc">Every AI generation is stored in your history with its prompt and settings — revisit and re-run any past generation at any time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── PRIVACY & ACCOUNT ─────────────── -->
+<section class="section" style="background:var(--surface)">
+  <div class="section-inner">
+    <div class="cat-header reveal">
+      <div class="cat-icon-title">
+        <div class="cat-icon" style="background:rgba(244,63,94,0.1);border:1px solid rgba(244,63,94,0.25)">🔒</div>
+        <div>
+          <div class="section-label">Category 6</div>
+          <h2 class="section-title">Privacy &amp; Account</h2>
+        </div>
+      </div>
+      <span class="tag tag-rose">Secure</span>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-item reveal d1">
+        <div class="feat-item-icon">🔐</div>
+        <div class="feat-item-title">Supabase Authentication</div>
+        <p class="feat-item-desc">Secure sign-in with email/password via Supabase. Passwords are never stored in plaintext. Your account is protected by industry-standard auth flows.</p>
+      </div>
+      <div class="feat-item reveal d2">
+        <div class="feat-item-icon">☁️</div>
+        <div class="feat-item-title">Cloud Profile Sync</div>
+        <p class="feat-item-desc">Your store purchases and settings sync to your account. Reinstall the app or switch devices and your library transfers across.</p>
+      </div>
+      <div class="feat-item reveal d3">
+        <div class="feat-item-icon">🗑️</div>
+        <div class="feat-item-title">Account Deletion</div>
+        <p class="feat-item-desc">Delete your account and all associated data at any time — directly from inside the app or via the web form. Full GDPR compliance.</p>
+      </div>
+      <div class="feat-item reveal d4">
+        <div class="feat-item-icon">📤</div>
+        <div class="feat-item-title">Data Export</div>
+        <p class="feat-item-desc">Export your entire wallpaper library and collections as a ZIP. Take your data anywhere, no lock-in.</p>
+      </div>
+      <div class="feat-item reveal d5">
+        <div class="feat-item-icon">🚫</div>
+        <div class="feat-item-title">No Ad Tracking by Default</div>
+        <p class="feat-item-desc">LiquidWalls blocks ad-ID access in the manifest by default. No fingerprinting, no behavioural ad tracking, no selling of your data.</p>
+      </div>
+      <div class="feat-item reveal d6">
+        <div class="feat-item-icon">📲</div>
+        <div class="feat-item-title">Granular Notification Control</div>
+        <p class="feat-item-desc">Per-channel notification settings for store activity, auto-changer events, and service status. Silence exactly what you don't need.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────── CTA ─────────────── -->
+<section class="cta-section">
+  <div class="cta-inner reveal">
+    <h2>All of this. For free.</h2>
+    <p>No subscriptions, no feature locks, no hidden paywalls. Download LiquidWalls on Google Play and get started today.</p>
+    <div class="cta-actions">
+      <a class="btn-primary" href="https://play.google.com/store/apps/details?id=com.adisoft.liquidwalls" target="_blank" rel="noopener">
+        <svg class="play-icon" viewBox="0 0 24 24"><path d="M3 20.5v-17c0-.83 1.01-1.3 1.65-.77l13 8.5c.55.36.55 1.18 0 1.54l-13 8.5C4.01 21.8 3 21.33 3 20.5z"/></svg>
+        Download Free
+      </a>
+      <a class="btn-secondary" href="faq.html">Got questions? FAQ →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">LiquidWalls</div>
+        <p class="footer-tagline">The complete wallpaper app for Android. Live video, web, image, auto-changer, and scheduling — all in one free app.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">App</div>
+        <ul>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="changelog.html">Changelog</a></li>
+          <li><a href="roadmap.html">Roadmap</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Legal</div>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="cookies.html">Cookie Policy</a></li>
+          <li><a href="acc_delete.html">Delete Account</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Download</div>
+        <ul>
+          <li><a href="https://play.google.com/store/apps/details?id=com.adisoft.liquidwalls" target="_blank" rel="noopener">Google Play</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 LiquidWalls. All rights reserved.</div>
+      <div class="footer-dev">Made by <a href="#">Adisoft</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 20); }, { passive: true });
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navLinks.classList.toggle('open'); });
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hamburger.classList.remove('active'); navLinks.classList.remove('open'); }));
+const observer = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }); }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

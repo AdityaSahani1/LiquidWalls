@@ -40,41 +40,37 @@
     align-items: center;
     justify-content: space-between;
   }
-  .nav-brand {
-    font-size: 18px;
-    font-weight: 800;
-    background: linear-gradient(135deg, #a5b4fc, #818cf8, #c084fc);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: -0.3px;
-    text-decoration: none;
+  nav {
+    position: sticky; top: 0; z-index: 200;
+    height: 64px;
+    background: rgba(6,7,12,0.88);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(42,45,69,0.5);
+    transition: background 0.3s;
+    padding: 0; display: block;
   }
-  .nav-links {
-    display: flex;
-    gap: 20px;
-    list-style: none;
-    align-items: center;
+  nav.scrolled { background: rgba(6,7,12,0.98); }
+  .nav-inner { max-width: 1120px; margin: 0 auto; height: 64px; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; }
+  .nav-brand { font-size: 19px; font-weight: 900; text-decoration: none; letter-spacing: -0.4px; background: linear-gradient(135deg, #a5b4fc, #818cf8, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .nav-links { display: flex; gap: 6px; list-style: none; align-items: center; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: 13.5px; font-weight: 500; padding: 6px 12px; border-radius: 8px; transition: color 0.2s, background 0.2s; }
+  .nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+  .nav-links a.active { color: var(--text); }
+  .nav-cta { background: linear-gradient(135deg, #7c6fff, #9f7ffe) !important; color: #fff !important; font-weight: 700 !important; padding: 8px 18px !important; border-radius: 50px !important; box-shadow: 0 4px 20px rgba(124,111,255,0.35); transition: opacity 0.2s !important; }
+  .nav-cta:hover { opacity: 0.9 !important; }
+  .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; cursor: pointer; background: none; border: none; padding: 8px; width: 38px; height: 38px; border-radius: 8px; }
+  .hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s cubic-bezier(.68,-.6,.32,1.6); }
+  .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+  @media (max-width: 768px) {
+    .hamburger { display: flex; }
+    .nav-links { position: fixed; top: 64px; left: 0; right: 0; background: rgba(6,7,12,0.98); backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); flex-direction: column; align-items: stretch; gap: 0; padding: 0; max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(.4,0,.2,1); }
+    .nav-links.open { max-height: 420px; }
+    .nav-links li { border-bottom: 1px solid rgba(42,45,69,0.4); }
+    .nav-links a { display: block; padding: 15px 24px; font-size: 15px; border-radius: 0; }
+    .nav-cta { margin: 16px 24px 20px; border-radius: 50px !important; text-align: center; }
   }
-  .nav-links a {
-    color: var(--muted);
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 500;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--text); }
-  .nav-back {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    color: var(--muted) !important;
-    font-size: 13px;
-    font-weight: 500;
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .nav-back:hover { color: var(--text) !important; }
 
   header {
     background: linear-gradient(135deg, #0f1230 0%, #06070c 60%, #160825 100%);
@@ -219,34 +215,39 @@
   }
   .note-block strong { color: #c7d2fe; }
 
+  /* ─── FOOTER ─── */
   footer {
-    text-align: center;
-    padding: 40px 24px;
-    border-top: 1px solid var(--border);
-    color: var(--muted);
-    font-size: 13px;
-    line-height: 2;
+    background: var(--surface); border-top: 1px solid var(--border);
+    padding: 56px 24px 28px; color: var(--muted); font-size: 13.5px; line-height: 1.7;
   }
-  footer a { color: var(--accent); }
+  footer a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  footer a:hover { color: var(--text); }
 
   @media (max-width: 600px) {
     header { padding: 36px 16px 32px; }
     .container { padding: 0 14px 60px; }
     .perm-item { grid-template-columns: 1fr; gap: 6px; }
-    .nav-links { display: none; }
+
   }
 </style>
 </head>
 <body>
 
-<nav>
-  <a class="nav-brand" href="index.html">LiquidWalls</a>
-  <ul class="nav-links">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="terms.html">Terms</a></li>
-    <li><a href="cookies.html">Cookies</a></li>
-    <li><a href="acc_delete.html">Delete Account</a></li>
-  </ul>
+<nav id="navbar">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">LiquidWalls</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="features.html">Features</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="changelog.html">Changelog</a></li>
+      <li><a href="roadmap.html">Roadmap</a></li>
+      <li><a href="https://play.google.com/store/apps/details?id=com.adisoft.liquidwalls" target="_blank" rel="noopener" class="nav-cta">Get the App</a></li>
+    </ul>
+  </div>
 </nav>
 
 <header>
@@ -554,10 +555,49 @@
 </div>
 
 <footer>
-  <strong style="color:var(--text)">LiquidWalls</strong> · Adisoft · com.adisoft.liquidwalls<br>
-  <a href="index.html">Home</a> · <a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a> · <a href="cookies.html">Cookies</a> · <a href="acc_delete.html">Delete Account</a><br>
-  © 2026 Adisoft. All rights reserved.
+  <div style="max-width:1120px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;padding-bottom:36px">
+    <div>
+      <div style="font-size:18px;font-weight:900;background:linear-gradient(135deg,#a5b4fc,#c084fc);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:10px">LiquidWalls</div>
+      <p style="font-size:13px;color:var(--muted);line-height:1.8;max-width:240px">The complete wallpaper app for Android. Free on Google Play.</p>
+    </div>
+    <div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:14px">App</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a href="features.html">Features</a>
+        <a href="faq.html">FAQ</a>
+        <a href="changelog.html">Changelog</a>
+        <a href="roadmap.html">Roadmap</a>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:14px">Legal</div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="cookies.html">Cookie Policy</a>
+        <a href="acc_delete.html">Delete Account</a>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:14px">Download</div>
+      <a href="https://play.google.com/store/apps/details?id=com.adisoft.liquidwalls" target="_blank" rel="noopener">Google Play</a>
+    </div>
+  </div>
+  <div style="border-top:1px solid var(--border);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px">
+    <span>© 2025 LiquidWalls. All rights reserved.</span>
+    <span>Made by <a href="#">Adisoft</a></span>
+  </div>
 </footer>
 
+<script>
+const _nb = document.getElementById('navbar');
+const _ham = document.getElementById('hamburger');
+const _nl = document.getElementById('navLinks');
+if (_nb) window.addEventListener('scroll', () => { _nb.classList.toggle('scrolled', window.scrollY > 20); }, { passive: true });
+if (_ham && _nl) {
+  _ham.addEventListener('click', () => { _ham.classList.toggle('active'); _nl.classList.toggle('open'); });
+  _nl.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { _ham.classList.remove('active'); _nl.classList.remove('open'); }));
+}
+</script>
 </body>
 </html>

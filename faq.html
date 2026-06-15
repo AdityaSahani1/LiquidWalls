@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LiquidWalls – FAQ</title>
+<meta name="description" content="Frequently asked questions about LiquidWalls — wallpaper types, auto-changer, scheduling, account management, and more.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #06070c; --surface: #0f1019; --surface2: #161824; --surface3: #1c1f2e;
+  --border: #2a2d45; --accent: #7c6fff; --accent2: #c084fc;
+  --green: #10b981; --amber: #f59e0b; --sky: #38bdf8; --rose: #f43f5e;
+  --text: #e2e8f0; --muted: #8892b0; --radius: 16px; --nav-h: 64px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; font-size: 15px; overflow-x: hidden; }
+
+/* ── NAV ── */
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: var(--nav-h); background: rgba(6,7,12,0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(42,45,69,0.5); transition: background 0.3s; }
+nav.scrolled { background: rgba(6,7,12,0.95); }
+.nav-inner { max-width: 1120px; margin: 0 auto; height: 100%; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; }
+.nav-brand { font-size: 19px; font-weight: 900; text-decoration: none; letter-spacing: -0.4px; background: linear-gradient(135deg, #a5b4fc, #818cf8, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.nav-links { display: flex; gap: 6px; list-style: none; align-items: center; }
+.nav-links a { color: var(--muted); text-decoration: none; font-size: 13.5px; font-weight: 500; padding: 6px 12px; border-radius: 8px; transition: color 0.2s, background 0.2s; }
+.nav-links a:hover { color: var(--text); background: rgba(255,255,255,0.05); }
+.nav-links a.active { color: var(--text); }
+.nav-cta { background: linear-gradient(135deg, var(--accent), #9f7ffe) !important; color: #fff !important; font-weight: 700 !important; padding: 8px 18px !important; border-radius: 50px !important; box-shadow: 0 4px 20px rgba(124,111,255,0.35); transition: opacity 0.2s, transform 0.2s !important; }
+.nav-cta:hover { opacity: 0.9; transform: translateY(-1px); background: none !important; }
+.hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; cursor: pointer; background: none; border: none; padding: 8px; width: 38px; height: 38px; border-radius: 8px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s cubic-bezier(.68,-.6,.32,1.6); }
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  .nav-links { position: fixed; top: var(--nav-h); left: 0; right: 0; background: rgba(6,7,12,0.98); backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); flex-direction: column; align-items: stretch; gap: 0; padding: 0; max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(.4,0,.2,1); }
+  .nav-links.open { max-height: 420px; }
+  .nav-links li { border-bottom: 1px solid rgba(42,45,69,0.4); }
+  .nav-links a { display: block; padding: 15px 24px; font-size: 15px; border-radius: 0; }
+  .nav-cta { margin: 16px 24px 20px; border-radius: 50px !important; text-align: center; }
+}
+
+/* ── PAGE HERO ── */
+.page-hero { padding: calc(var(--nav-h) + 70px) 24px 70px; text-align: center; position: relative; overflow: hidden; background: var(--surface); border-bottom: 1px solid var(--border); }
+.page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 80% at 50% 0%, rgba(124,111,255,0.12) 0%, transparent 70%); pointer-events: none; }
+.page-hero-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+.page-label { font-size: 11px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 16px; }
+.page-title { font-size: clamp(32px, 6vw, 58px); font-weight: 900; letter-spacing: -1.5px; line-height: 1.1; margin-bottom: 18px; background: linear-gradient(135deg, #e2e8f0 0%, #a5b4fc 50%, #c084fc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.page-sub { font-size: 16px; color: var(--muted); line-height: 1.8; }
+
+/* ── FAQ LAYOUT ── */
+.faq-body { padding: 80px 24px 40px; }
+.faq-inner { max-width: 800px; margin: 0 auto; }
+
+/* ── CATEGORY TABS ── */
+.faq-cats { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 48px; }
+.faq-cat-btn { background: var(--surface2); border: 1px solid var(--border); color: var(--muted); font-size: 13px; font-weight: 600; padding: 8px 18px; border-radius: 50px; cursor: pointer; transition: all 0.2s; }
+.faq-cat-btn:hover { border-color: rgba(124,111,255,0.4); color: var(--text); }
+.faq-cat-btn.active { background: rgba(124,111,255,0.12); border-color: rgba(124,111,255,0.4); color: #a5b4fc; }
+
+/* ── FAQ CATEGORY SECTION ── */
+.faq-cat { margin-bottom: 52px; }
+.faq-cat-title { font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+
+/* ── ACCORDION ── */
+.faq-list { display: flex; flex-direction: column; gap: 8px; }
+.faq-item { background: var(--surface2); border: 1px solid var(--border); border-radius: 14px; overflow: hidden; transition: border-color 0.2s; }
+.faq-item.open { border-color: rgba(124,111,255,0.35); }
+.faq-q { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 22px; cursor: pointer; user-select: none; transition: background 0.2s; }
+.faq-q:hover { background: rgba(255,255,255,0.02); }
+.faq-q-text { font-size: 15px; font-weight: 600; line-height: 1.5; flex: 1; }
+.faq-chevron { width: 20px; height: 20px; flex-shrink: 0; transition: transform 0.35s cubic-bezier(.4,0,.2,1); color: var(--muted); }
+.faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--accent); }
+.faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(.4,0,.2,1); }
+.faq-a-inner { padding: 0 22px 20px; font-size: 14px; color: var(--muted); line-height: 1.85; }
+.faq-a-inner a { color: var(--accent); text-decoration: none; }
+.faq-a-inner a:hover { text-decoration: underline; }
+.faq-a-inner strong { color: var(--text); font-weight: 600; }
+.faq-a-inner ul { margin: 10px 0 0 18px; display: flex; flex-direction: column; gap: 6px; }
+.faq-item.open .faq-a { max-height: 500px; }
+
+/* ── CONTACT ── */
+.contact-section { padding: 0 24px 80px; }
+.contact-inner { max-width: 800px; margin: 0 auto; }
+.contact-card { background: var(--surface2); border: 1px solid var(--border); border-radius: 20px; padding: 40px; text-align: center; }
+.contact-card h3 { font-size: 22px; font-weight: 800; margin-bottom: 10px; }
+.contact-card p { font-size: 14px; color: var(--muted); margin-bottom: 28px; line-height: 1.8; max-width: 480px; margin-left: auto; margin-right: auto; }
+.contact-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.btn-primary { display: inline-flex; align-items: center; gap: 10px; background: linear-gradient(135deg, #7c6fff, #9f7ffe); color: #fff; font-size: 14px; font-weight: 700; padding: 12px 24px; border-radius: 50px; text-decoration: none; box-shadow: 0 8px 28px rgba(124,111,255,0.35); transition: transform 0.25s, box-shadow 0.25s; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 40px rgba(124,111,255,0.45); }
+.btn-secondary { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); color: var(--text); font-size: 14px; font-weight: 600; padding: 12px 24px; border-radius: 50px; text-decoration: none; transition: background 0.2s, border-color 0.2s, transform 0.25s; }
+.btn-secondary:hover { background: rgba(255,255,255,0.09); border-color: rgba(124,111,255,0.5); transform: translateY(-2px); }
+.play-icon { width: 18px; height: 18px; fill: currentColor; }
+
+/* ── CTA ── */
+.cta-section { padding: 90px 24px; text-align: center; background: var(--surface); border-top: 1px solid var(--border); }
+.cta-inner { max-width: 600px; margin: 0 auto; }
+.cta-inner h2 { font-size: clamp(26px, 4vw, 42px); font-weight: 900; letter-spacing: -1px; margin-bottom: 14px; background: linear-gradient(135deg, #e2e8f0 0%, #a5b4fc 50%, #c084fc 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.cta-inner p { font-size: 15px; color: var(--muted); margin-bottom: 36px; line-height: 1.8; }
+.cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+/* ── FOOTER ── */
+footer { background: var(--surface); border-top: 1px solid var(--border); padding: 60px 24px 32px; }
+.footer-inner { max-width: 1120px; margin: 0 auto; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 48px; }
+.footer-brand-name { font-size: 20px; font-weight: 900; background: linear-gradient(135deg, #a5b4fc, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-bottom: 12px; }
+.footer-tagline { font-size: 13.5px; color: var(--muted); line-height: 1.8; max-width: 260px; }
+.footer-col-title { font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 18px; }
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col a { color: var(--muted); text-decoration: none; font-size: 13.5px; transition: color 0.2s; }
+.footer-col a:hover { color: var(--text); }
+.footer-bottom { border-top: 1px solid var(--border); padding-top: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+.footer-copy { font-size: 12.5px; color: var(--muted); }
+.footer-dev { font-size: 12.5px; color: var(--muted); }
+.footer-dev a { color: var(--accent); text-decoration: none; }
+@media (max-width: 768px) { .footer-top { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .footer-top { grid-template-columns: 1fr; } }
+
+/* ── SCROLL REVEAL ── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s cubic-bezier(.4,0,.2,1), transform 0.65s cubic-bezier(.4,0,.2,1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal.d1 { transition-delay: 0.07s; } .reveal.d2 { transition-delay: 0.14s; }
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html">LiquidWalls</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="features.html">Features</a></li>
+      <li><a href="faq.html" class="active">FAQ</a></li>
+      <li><a href="changelog.html">Changelog</a></li>
+      <li><a href="roadmap.html">Roadmap</a></li>
+      <li><a href="https://play.google.com/store/apps/details?id=com.adisoft.liquidwalls" target="_blank" rel="noopener" class="nav-cta">Get the App</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="page-hero-inner">
+    <div class="page-label">Help & Support</div>
+    <h1 class="page-title">Frequently Asked<br>Questions</h1>
+    <p class="page-sub">Can't find your answer here? Leave a review on Google Play and the Adisoft team will respond directly.</p>
+  </div>
+</header>
+
+<section class="faq-body">
+  <div class="faq-inner">
+
+    <!-- General -->
+    <div class="faq-cat reveal">
+      <div class="faq-cat-title">General</div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">
+            <span class="faq-q-text">Is LiquidWalls completely free?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">Yes. LiquidWalls is completely free to download and use with no subscriptions, no premium tiers, and no feature locks. All features described on this site are available to every user from day one.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <span class="faq-q-text">Which Android versions does LiquidWalls support?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">LiquidWalls targets Android 8.0 (API 26) and above. Some features — such as exact alarm scheduling — require Android 12+ and the user to grant the SCHEDULE_EXACT_ALARM permission. The app detects what your device supports and adapts accordingly.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <span class="faq-q-text">Does it work on tablets and foldables?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">Yes. The app runs on any Android device including tablets and foldables. The crop editor accounts for screen aspect ratios, so you can compose wallpapers for wide displays just as easily as for phones.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <span class="faq-q-text">What permissions does the app need and why?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">LiquidWalls requests only the permissions it genuinely needs:<ul><li><strong>Set Wallpaper</strong> — to apply wallpapers to home and lock screen.</li><li><strong>Read External Storage / Media</strong> — to import images and videos from your device.</li><li><strong>Post Notifications</strong> (Android 13+) — to show optional auto-changer status notifications.</li><li><strong>Schedule Exact Alarm</strong> (Android 12+) — for time-precise scheduled wallpaper changes.</li><li><strong>Request Ignore Battery Optimizations</strong> — recommended so background services survive OEM power management.</li></ul>None of these permissions are used for advertising or data collection.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <span class="faq-q-text">Does LiquidWalls drain the battery?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">Minimal impact. The auto-changer fires using one-shot OS alarms — there is no persistent foreground service polling in the background when not in use. Live video and web wallpapers use Android's native live wallpaper framework, which is hardware-accelerated. The app also has a built-in "skip on low battery" toggle (below 20%) for peace of mind.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wallpapers -->
+    <div class="faq-cat reveal">
+      <div class="faq-cat-title">Wallpaper Types</div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">
+            <span class="faq-q-text">What image formats can I import?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">LiquidWalls supports JPEG, PNG, WebP, BMP, and GIF (static frame). HEIC files imported from some devices may be supported depending on your Android version's media decoder.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <span class="faq-q-text">What video formats work for live video wallpapers?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">Any format supported by Android's MediaPlayer — including MP4 (H.264/H.265), MKV, and WebM. For smoothest playback, use an H.264 MP4 encoded at a reasonable bitrate with no audio track. The app loops the video automatically.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <span class="faq-q-text">Can I use a website URL as a live wallpaper?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">Yes. Any publicly accessible HTTPS URL or locally-stored HTML file can be used as a web live wallpaper. The WebView renders the page and displays it as your home screen background. JavaScript is enabled, so interactive animations, Three.js scenes, and clock widgets all work.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <span class="faq-q-text">Will my wallpapers sync across devices?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">Store downloads and your account profile sync via Supabase when you're signed in. Local files (images/videos you import from your device) are device-specific and do not upload to the cloud automatically. Use the Export feature to back up your library manually.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Auto-Changer -->
+    <div class="faq-cat reveal">
+      <div class="faq-cat-title">Auto-Changer &amp; Scheduling</div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">
+            <span class="faq-q-text">The auto-changer isn't working. What should I check?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">
+            Check the following in order:<ul>
+              <li>Confirm the auto-changer is <strong>enabled</strong> with at least one trigger selected.</li>
+              <li>Make sure you have at least one wallpaper in the selected source collection.</li>
+              <li>On Android 12+, grant <strong>Alarms &amp; Reminders</strong> permission in Settings → Special App Access.</li>
+              <li>Tap <strong>Remove Battery Restriction</strong> on the Schedule page and select "Don't optimise" for LiquidWalls.</li>
+              <li>If your library contains <em>only</em> video or web wallpapers and no live wallpaper service is currently active, the changer will skip them. Add at least one image wallpaper as a fallback.</li>
+            </ul>
+          </div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <span class="faq-q-text">Why do video/web wallpapers not rotate in the auto-changer?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">Android requires explicit user action to activate a live wallpaper service the first time — apps cannot silently switch your live wallpaper from the background if a <em>different</em> service is currently active. Once you have manually activated LiquidWalls' Video or Web service (via the Preview screen), subsequent auto-changer swaps of the same type work instantly by just updating the file path. If your source contains a mix of image and live wallpapers, the changer will always fall back to the next available image wallpaper rather than skipping the rotation entirely.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <span class="faq-q-text">Can I run a schedule and the interval auto-changer at the same time?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">Yes — they are completely independent. You can have a schedule that fires at 7 AM with your morning collection, and an interval changer running every 30 minutes throughout the day from a different collection. The last-applied wallpaper tracking is shared, so they stay in sync.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <span class="faq-q-text">My scheduled wallpaper didn't fire on time on my Xiaomi/Samsung phone.</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">OEM Android skins (MIUI, One UI, OxygenOS) aggressively kill background apps. You must:<ul><li>Grant exact alarm permission (Settings → Special App Access → Alarms &amp; Reminders).</li><li>Disable battery optimisation for LiquidWalls (the Schedule page shows a "Battery restriction detected" banner with a direct button if this is needed).</li><li>On MIUI: also enable "Autostart" for LiquidWalls in Security settings.</li></ul>After granting these, scheduled changes fire reliably even after the phone has been off recents for hours.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <span class="faq-q-text">What is Quiet Hours and how does it work?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">Quiet Hours is a configurable time window during which the auto-changer and scheduled changes are paused. Set a start and end time (e.g. 23:00–07:00) and no wallpaper swaps will happen overnight. Quiet Hours wraps correctly over midnight — a 23:00–07:00 window works as expected.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Account & Privacy -->
+    <div class="faq-cat reveal">
+      <div class="faq-cat-title">Account &amp; Privacy</div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">
+            <span class="faq-q-text">Do I need an account to use LiquidWalls?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">No. All core features — the wallpaper library, auto-changer, schedules, live wallpapers, and AI generation — work without signing in. An account is only required to use the Cloud Store and sync downloads across devices.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <span class="faq-q-text">How do I delete my account and all my data?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">You can delete your account directly inside the app: go to <strong>Settings → Profile → Delete Account</strong>. If you no longer have access to the app, use the <a href="acc_delete.html">Account Deletion Request form</a> on this website. All personal data is removed within 30 days of your request.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <span class="faq-q-text">What data does LiquidWalls collect?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">Minimal data, only what is needed to run the service:<ul><li><strong>Account users:</strong> email address and hashed password (via Supabase).</li><li><strong>Store activity:</strong> which wallpaper packs you've downloaded, stored in your account.</li><li><strong>Crash reports:</strong> anonymous crash logs to help fix bugs (no personal identifiers).</li></ul>We do not sell data. We do not use advertising identifiers — the AD_ID permission is explicitly blocked in the app manifest. See the full <a href="privacy.html">Privacy Policy</a> for details.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <span class="faq-q-text">Is my password stored securely?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">Yes. Authentication is handled entirely by Supabase, which uses bcrypt hashing for passwords. Adisoft never has access to your plaintext password at any point.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Customisation -->
+    <div class="faq-cat reveal">
+      <div class="faq-cat-title">Customisation</div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-q">
+            <span class="faq-q-text">Can I set different wallpapers for home and lock screen?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">Yes (on Android 7.0+). When applying a wallpaper you can choose <strong>Home Screen</strong>, <strong>Lock Screen</strong>, or <strong>Both</strong>. The auto-changer and schedules also have independent target settings. You can also enable <strong>Mirror Lock Screen</strong> to automatically apply a horizontally-flipped version of your home screen wallpaper to the lock screen for a paired look.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <span class="faq-q-text">How does the crop editor work?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">The crop editor opens when you tap an image wallpaper to preview it. Use pinch-to-zoom and drag to position the image. The crop fills your full screen resolution with no distortion — the wallpaper is composed at your exact screen pixel dimensions. You can also set a background colour fill for images that are narrower than your screen.</div></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">
+            <span class="faq-q-text">Can I dim the wallpaper?</span>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-a"><div class="faq-a-inner">Yes. The Appearance Settings screen has a brightness slider that applies a semi-transparent black overlay when composing the final wallpaper bitmap. This is baked in at apply time, not a system overlay, so there is no persistent accessibility service running.</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Contact Card -->
+<section class="contact-section">
+  <div class="contact-inner reveal">
+    <div class="contact-card">
+      <h3>Still have a question?</h3>
+      <p>Can't find the answer above? Leave a review on Google Play with your question and the Adisoft team will respond. You can also browse the full feature list for more details.</p>
+      <div class="contact-actions">
+        <a class="btn-primary" href="https://play.google.com/store/apps/details?id=com.adisoft.liquidwalls" target="_blank" rel="noopener">
+          <svg class="play-icon" viewBox="0 0 24 24"><path d="M3 20.5v-17c0-.83 1.01-1.3 1.65-.77l13 8.5c.55.36.55 1.18 0 1.54l-13 8.5C4.01 21.8 3 21.33 3 20.5z"/></svg>
+          Open on Google Play
+        </a>
+        <a class="btn-secondary" href="features.html">Browse all features →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="cta-inner reveal">
+    <h2>Ready to try it yourself?</h2>
+    <p>Free download. All features included. No catch.</p>
+    <div class="cta-actions">
+      <a class="btn-primary" href="https://play.google.com/store/apps/details?id=com.adisoft.liquidwalls" target="_blank" rel="noopener">
+        <svg class="play-icon" viewBox="0 0 24 24"><path d="M3 20.5v-17c0-.83 1.01-1.3 1.65-.77l13 8.5c.55.36.55 1.18 0 1.54l-13 8.5C4.01 21.8 3 21.33 3 20.5z"/></svg>
+        Download LiquidWalls
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">LiquidWalls</div>
+        <p class="footer-tagline">The complete wallpaper app for Android. Live video, web, image, auto-changer, and scheduling — all in one free app.</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">App</div>
+        <ul>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="changelog.html">Changelog</a></li>
+          <li><a href="roadmap.html">Roadmap</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Legal</div>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="cookies.html">Cookie Policy</a></li>
+          <li><a href="acc_delete.html">Delete Account</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Download</div>
+        <ul>
+          <li><a href="https://play.google.com/store/apps/details?id=com.adisoft.liquidwalls" target="_blank" rel="noopener">Google Play</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 LiquidWalls. All rights reserved.</div>
+      <div class="footer-dev">Made by <a href="#">Adisoft</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 20); }, { passive: true });
+const hamburger = document.getElementById('hamburger');
+const navLinks  = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => { hamburger.classList.toggle('active'); navLinks.classList.toggle('open'); });
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { hamburger.classList.remove('active'); navLinks.classList.remove('open'); }));
+
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    // Open clicked if it was closed
+    if (!isOpen) item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>
